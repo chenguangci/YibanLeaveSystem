@@ -7,8 +7,10 @@
           <element id="module-output" name="YibanLeaveSystem" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: junit:junit:4.12" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.5" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.42" />
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
         </element>
       </element>

@@ -2,17 +2,21 @@
 <!DOCTYPE configuration PUBLIC "--//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <environments default="default">
+    <environments default="yiban">
         <environment id="yiban">
             <transactionManager type="JDBC">
                 <property name="" value=""/>
             </transactionManager>
             <dataSource type="UNPOOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:8080/class?characterEncoding=utf8&amp;useSSL=true"/>
-                <property name="user" value="root"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/class?characterEncoding=utf8&amp;useSSL=true"/>
+                <property name="username" value="root"/>
                 <property name="password" value="17876253432"/>
             </dataSource>
         </environment>
     </environments>
+    <mappers>
+        <mapper resource="com/yiban/config/Content.xml"/>
+        <mapper resource="com/yiban/config/Token.xml"/>
+    </mappers>
 </configuration>

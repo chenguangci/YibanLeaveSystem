@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yiban.mapper.TokenMapper">
+    <resultMap id="token" type="com.yiban.bean.Token">
+        <result column="token_type" property="tokenType"/>
+        <result column="token" property="token"/>
+        <result column="add_time" property="addTime"/>
+    </resultMap>
+
+    <select id="selectToken" resultType="String">
+        SELECT token FROM token WHERE token_type = #{tokenType} ORDER BY id DESC LIMIT 0,1
+    </select>
+
+    <insert id="addToken" parameterType="com.yiban.bean.Token">
+        INSERT INTO token VALUES
+            (0,#{tokenType},#{token},#{addTime})
+    </insert>
+    
+</mapper>

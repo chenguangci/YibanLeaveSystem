@@ -9,9 +9,17 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class DBAccess {
+    private Reader reader;
+    private SqlSessionFactory factory;
+    public DBAccess(){
+        try {
+            reader = Resources.getResourceAsReader("com/configuration.xml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        factory = new SqlSessionFactoryBuilder().build(reader);
+    }
     public SqlSession getSqlSession() throws IOException{
-        Reader reader = Resources.getResourceAsReader("com/configuration.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
         return factory.openSession();
     }
 }

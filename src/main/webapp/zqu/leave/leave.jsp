@@ -77,17 +77,29 @@
             <form action="<%=request.getContextPath()%>/leave" method="post">
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="input-group"><span class="input-group-addon">姓名:</span> <input type="text" class="form-control" name="name">
+                        <div class="input-group"><span class="input-group-addon">学号:</span> <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   name="id">
+                        </div>
+                        <div class="input-group"><span class="input-group-addon">姓名:</span> <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   name="name">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <select class="form-control" name="department">
                             <option>计算机科学与软件学院、大数据学院</option>
+                            <option>经济与管理学院</option>
+                            <option>旅游与历史文化学院</option>
+                            <option>外国语学院</option>
+                            <option>文学院</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <select class="form-control" name="major">
-                            <option>16软件1班</option>
+                            <option>软件工程</option>
+                            <option>法学</option>
+                            <option>汉语言文学</option>
                         </select>
                     </div>
                 </div>
