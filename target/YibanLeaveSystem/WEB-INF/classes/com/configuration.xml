@@ -18,5 +18,6 @@
     <mappers>
         <mapper resource="com/yiban/config/Content.xml"/>
         <mapper resource="com/yiban/config/Token.xml"/>
+        <mapper resource="com/yiban/config/Class.xml"/>
     </mappers>
 </configuration>

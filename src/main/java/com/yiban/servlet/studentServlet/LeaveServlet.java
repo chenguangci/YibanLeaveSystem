@@ -1,4 +1,4 @@
-package com.yiban.servlet;
+package com.yiban.servlet.studentServlet;
 
 import com.yiban.service.FormHandle;
 

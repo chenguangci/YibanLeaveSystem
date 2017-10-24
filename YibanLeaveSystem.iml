@@ -37,5 +37,15 @@
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.42" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://D:/tomcat/apache-tomcat-9.0.0.M22/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://D:/tomcat/apache-tomcat-9.0.0.M22/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -13,6 +13,8 @@ public class LeaveContent {
     private String isAgree = "no";
     private String isBack = "no";
 
+
+
     public int getGrade() {
         return grade;
     }

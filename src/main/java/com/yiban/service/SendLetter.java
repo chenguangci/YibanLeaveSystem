@@ -38,7 +38,6 @@ class SendLetter {
      */
     private String sendLetter(String teacherId){
         String param="access_token="+accessToken+"&to_yb_uid="+teacherId+"&content="+CONTENT+"&template=user";
-        System.out.println(param);
         String url = "https://openapi.yiban.cn/msg/letter";
         String str = request.sendPost(url, param);
         System.out.println("送信时返回的json："+str);

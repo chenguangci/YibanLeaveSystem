@@ -84,12 +84,6 @@ public class SendRequest {
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
 //            建立实际连接
             connection.connect();
-//            获取相应的头字段
-            Map<String,List<String>> map = connection.getHeaderFields();
-//            遍历所有的响应头字段
-            for (String key : map.keySet()){
-                System.out.println(key + "--->" + map.get(key));
-            }
 //            读取服务器相应
             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
