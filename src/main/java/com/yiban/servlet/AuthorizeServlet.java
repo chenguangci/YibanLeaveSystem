@@ -43,13 +43,13 @@ public class AuthorizeServlet extends HttpServlet {
                 session.setAttribute("userid",userid);
                 //跳转到学生页面
                 session.setAttribute("userType",1);
-                request.getRequestDispatcher("/WEB-INF/zqu/student/student.jsp").forward(request,response);
+                request.getRequestDispatcher("/WEB-INF/zqu/student/student.html").forward(request,response);
             } else {
                 //存好用户userid
                 session.setAttribute("userid",userid);
                 //跳转到教师页面
                 session.setAttribute("userType",2);
-                request.getRequestDispatcher("WEB-INF/zqu/teacher/teacher.jsp").forward(request,response);
+                request.getRequestDispatcher("WEB-INF/zqu/teacher/teacher.html").forward(request,response);
             }
 
         }
