@@ -38,13 +38,12 @@ public class FormHandle {
         content = new LeaveContent();
         content.setStudentId(information[0]);
         content.setName(information[1]);
-        content.setDepartment(information[2]);
-        content.setMajor(information[3]);
-        content.setGrade(Integer.parseInt(information[4]));
-        content.setClassNo(Integer.parseInt(information[5]));
-        content.setBeginTime(information[6]);
-        content.setEndTime(information[7]);
-        content.setReason(information[8]);
+        content.setTelephone(information[2]);
+        content.setDepartment(information[3]);
+        content.setMajor(information[4]);
+        content.setBeginTime(information[5]);
+        content.setEndTime(information[6]);
+        content.setReason(information[7]);
         return getResult();
     }
 

@@ -54,60 +54,56 @@
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="23" parent="13" name="grade">
+    <column id="23" parent="13" name="begin_time">
       <Position>6</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>datetime|0</DataType>
     </column>
-    <column id="24" parent="13" name="class_no">
+    <column id="24" parent="13" name="end_time">
       <Position>7</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>datetime|0</DataType>
     </column>
-    <column id="25" parent="13" name="begin_time">
+    <column id="25" parent="13" name="reason">
       <Position>8</Position>
-      <DataType>datetime|0</DataType>
-    </column>
-    <column id="26" parent="13" name="end_time">
-      <Position>9</Position>
-      <DataType>datetime|0</DataType>
-    </column>
-    <column id="27" parent="13" name="reason">
-      <Position>10</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="28" parent="13" name="is_agree">
+    <column id="26" parent="13" name="is_agree">
+      <Position>9</Position>
+      <DataType>varchar(5)|0</DataType>
+      <DefaultExpression>&apos;no&apos;</DefaultExpression>
+    </column>
+    <column id="27" parent="13" name="is_back">
+      <Position>10</Position>
+      <DataType>varchar(5)|0</DataType>
+      <DefaultExpression>&apos;no&apos;</DefaultExpression>
+    </column>
+    <column id="28" parent="13" name="telephone">
       <Position>11</Position>
-      <DataType>varchar(5)|0</DataType>
-      <DefaultExpression>&apos;no&apos;</DefaultExpression>
+      <DataType>varchar(12)|0</DataType>
     </column>
-    <column id="29" parent="13" name="is_back">
-      <Position>12</Position>
-      <DataType>varchar(5)|0</DataType>
-      <DefaultExpression>&apos;no&apos;</DefaultExpression>
-    </column>
-    <key id="30" parent="13" name="PRIMARY">
+    <key id="29" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="14" name="id">
+    <column id="30" parent="14" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="32" parent="14" name="token_type">
+    <column id="31" parent="14" name="token_type">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
     </column>
-    <column id="33" parent="14" name="token">
+    <column id="32" parent="14" name="token">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="34" parent="14" name="add_time">
+    <column id="33" parent="14" name="add_time">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <key id="35" parent="14" name="PRIMARY">
+    <key id="34" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

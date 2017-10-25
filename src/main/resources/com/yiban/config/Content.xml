@@ -5,10 +5,9 @@
     <resultMap id="leaveContent" type="com.yiban.bean.LeaveContent">
         <result column="student_id" property="studentId"/>
         <result column="student_name" property="name"/>
+        <result column="telephone" property="telephone"/>
         <result column="department" property="department"/>
         <result column="major" property="major"/>
-        <result column="grade" property="grade"/>
-        <result column="class_no" property="classNo"/>
         <result column="begin_time" property="beginTime"/>
         <result column="end_time" property="endTime"/>
         <result column="reason" property="reason"/>
@@ -18,17 +17,17 @@
 
     <insert id="addContent">
         INSERT INTO content VALUES
-            (0,#{studentId},#{name},#{department},#{major},#{grade},#{classNo},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{reason},'wait',#{isBack})
+            (0,#{studentId},#{name},#{telephone},#{department},#{major},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{reason},'wait',#{isBack})
     </insert>
 
     <select id="selectLeaves" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.department,a.major,a.class_no,a.begin_time,a.end_time,a.reason,a.is_agree,a.is_back
+        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree,a.is_back
         FROM content a,class b WHERE a.is_agree='wait' AND LEFT(a.student_id,10) = b.id AND b.teacher_id = #{id}
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectAll" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.department,a.major,a.class_no,a.begin_time,a.end_time,a.reason,a.is_agree,a.is_back
+        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree,a.is_back
         FROM content a,class b WHERE LEFT(a.student_id,10) = b.id AND b.teacher_id = #{id}
         ORDER BY a.begin_time DESC
     </select>

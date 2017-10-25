@@ -3,10 +3,9 @@ package com.yiban.bean;
 public class LeaveContent {
     private String studentId;
     private String name;
+    private String telephone;
     private String department;
     private String major;
-    private int grade;
-    private int classNo;
     private String beginTime;
     private String endTime;
     private String reason;
@@ -14,21 +13,12 @@ public class LeaveContent {
     private String isBack = "no";
 
 
-
-    public int getGrade() {
-        return grade;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-    public int getClassNo() {
-        return classNo;
-    }
-
-    public void setClassNo(int classNo) {
-        this.classNo = classNo;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getIsAgree() {
