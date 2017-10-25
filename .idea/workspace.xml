@@ -7,47 +7,94 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="075d157a-333e-47c7-9142-e527956d3d86" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/zqu/action/SickLeave.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/zqu/action/successful.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/zqu/begin.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/zqu/leave/leave.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/zqu/leave/successful.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/zqu/begin.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/bean/LeaveContent.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/bean/LeaveContent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/dao/ContentDao.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/dao/ContentDao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/layer/default/icon-ext.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/layer/default/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/layer/default/loading-0.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/layer/default/loading-1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/layer/default/loading-2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/font/iconfont.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/font/iconfont.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/font/iconfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/picture/bg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/picture/touxiang.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem.war" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/student.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/teacher/teacher.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/layer.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/layui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/layui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/layui.mobile.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/code.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/laydate/default/laydate.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/css/modules/layer/default/layer.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/font/iconfont.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery-1.11.1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/jquery.validate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/carousel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/code.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/element.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/flow.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/laydate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/layedit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/layer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/laypage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/laytpl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/mobile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/table.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/tree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/upload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/layer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/layui.all.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/layui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/resources/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/resources/css/layer.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/resources/css/layui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/resources/css/style.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/bean/ClassBean.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/check.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/leave/successful.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/test.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/bean/ClassBean.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/zqu/begin.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/zqu/check.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/zqu/leave/successful.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/test.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/yiban/bean/ClassBean.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/dao/SearchDao.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/dao/SearchDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/mapper/ContentMapper.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/mapper/ContentMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/FormHandle.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/FormHandle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/IdentityHandle.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/IdentityHandle.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/SendLetter.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/SendLetter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/SendRequest.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/service/SendRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/servlet/AuthorizeServlet.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/servlet/AuthorizeServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/bean/LeaveContent.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/bean/LeaveContent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/dao/ContentDao.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/dao/ContentDao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/servlet/studentServlet/LeaveServlet.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/servlet/studentServlet/LeaveServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/test/SendTest.class" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/test/SendTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/dao/SearchDao.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/dao/SearchDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/mapper/ContentMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/mapper/ContentMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/service/FormHandle.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/service/FormHandle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/service/IdentityHandle.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/service/IdentityHandle.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/service/SendLetter.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/service/SendLetter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/service/SendRequest.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/service/SendRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/servlet/AuthorizeServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/servlet/AuthorizeServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/servlet/studentServlet/LeaveServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/servlet/studentServlet/LeaveServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/test/SendTest.class" afterPath="$PROJECT_DIR$/target/classes/com/yiban/test/SendTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/3c84cd87-0475-4831-84bc-39d3dee159df.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/3c84cd87-0475-4831-84bc-39d3dee159df.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/YibanLeaveSystem.iml" afterPath="$PROJECT_DIR$/YibanLeaveSystem.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/bean/LeaveContent.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/bean/LeaveContent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/dao/ContentDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/dao/ContentDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/mapper/ContentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/mapper/ContentMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/service/FormHandle.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/service/FormHandle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/service/IdentityHandle.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/service/IdentityHandle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/service/SendRequest.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/service/SendRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/servlet/AuthorizeServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/servlet/AuthorizeServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/configuration.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/configuration.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/com/yiban/config/Content.xml" afterPath="$PROJECT_DIR$/src/main/resources/com/yiban/config/Content.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/config/Content.xml" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/classes/com/yiban/config/Content.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yiban/config/Content.xml" afterPath="$PROJECT_DIR$/target/classes/com/yiban/config/Content.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/servlet/LeaveServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/leave.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/leave.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/zqu/student/leave.jsp" afterPath="$PROJECT_DIR$/target/YibanLeaveSystem/WEB-INF/zqu/student/leave.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/begin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/index.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,99 +134,87 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="begin.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/begin.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LeaveServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+            <state relative-caret-position="-79">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthorizeServlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AuthorizeServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/AuthorizeServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-117">
-              <caret line="33" column="66" lean-forward="true" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="648">
+              <caret line="35" column="46" lean-forward="false" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IdentityHandle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/IdentityHandle.java">
+      <file leaf-file-name="student.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/student.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#574#590#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="307">
+              <caret line="190" column="7" lean-forward="true" selection-start-line="190" selection-start-column="7" selection-end-line="190" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Class.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/com/yiban/config/Class.xml">
+      <file leaf-file-name="leave.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/leave.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding>
-                <marker date="1508822771369" expanded="true" signature="288:333" ph="SELECT teach... class" />
-                <marker date="1508822771369" expanded="true" signature="416:461" ph="SELECT id FR... class" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchDao.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchDao.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+            <state relative-caret-position="-312">
+              <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/ClassMapper.java">
+      <file leaf-file-name="teacher.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/teacher/teacher.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="2016">
+              <caret line="84" column="14" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="successful.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/leave/successful.jsp">
+      <file leaf-file-name="SendLetter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="649">
+              <caret line="41" column="50" lean-forward="false" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1470#1486#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <file leaf-file-name="SendTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+            <state relative-caret-position="72">
+              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -207,16 +242,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/zqu/test.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SearchTeacher.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SendPost.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/bean/SearchTeacher.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchTeacherByStudentId.java" />
         <option value="$PROJECT_DIR$/src/main/resources/com/yiban/config/Conten.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/zqu/leave/leave.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/db/DBAccess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/test/DaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SendGet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/mapper/TokenMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/com/yiban/config/Token.xml" />
@@ -224,13 +255,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/dao/TokenDao.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zqu/leave/successful.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/LeaveServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/FormHandle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zqu/begin.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/zqu/leave/check.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SendRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/mapper/InstructorMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/dao/InstructorDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/bean/Instructor.java" />
@@ -244,17 +271,28 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectleavesServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectAllServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectLeavesServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zqu/student.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/zqu/check.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/begin.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/com/configuration.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/com/yiban/config/Class.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/mapper/ClassMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/test/DaoTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/begin.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/IdentityHandle.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/leave.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/teacher/begin.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/FormHandle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/test/TestServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/test.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SendRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/teacher/teacher.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/yiban/servlet/AuthorizeServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/student.jsp" />
       </list>
     </option>
   </component>
@@ -309,6 +347,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -359,16 +398,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="yiban" type="462c0819:PsiDirectoryNode" />
-              <item name="bean" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="yiban" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -379,51 +408,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="yiban" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="yiban" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="yiban" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="yiban" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="servlet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -432,13 +417,66 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="picture" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="zqu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="zqu" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YibanLeaveSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YibanLeaveSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="zqu" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -452,17 +490,19 @@
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\WEB-INF\lib" />
-      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp" />
-      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\resources" />
-      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\java" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\resources" />
       <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\WEB-INF" />
       <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\resources" />
       <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\zqu\student" />
       <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\zqu" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\resources\js" />
+      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\resources\css" />
+      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\resources\picture" />
+      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\WEB-INF\zqu\student" />
+      <recent name="E:\IDEA Project\YibanLeaveSystem\src\main\webapp\WEB-INF\zqu\teacher" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -478,43 +518,30 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.begin.jsp">
-    <configuration name="FormHandle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="DaoTest.a" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="com.yiban.service.*" />
+          <option name="PATTERN" value="com.yiban.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.yiban.service.FormHandle" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="YibanLeaveSystem" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="com.yiban.test" />
+      <option name="MAIN_CLASS_NAME" value="com.yiban.test.DaoTest" />
+      <option name="METHOD_NAME" value="a" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="YibanLeaveSystem" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
-    </configuration>
-    <configuration name="SendLetter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.yiban.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.yiban.service.SendLetter" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="YibanLeaveSystem" />
-      <envs />
+      <patterns />
     </configuration>
     <configuration name="SendTest.sendLetter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -695,17 +722,17 @@
         </option>
       </method>
     </configuration>
-    <configuration name="check.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M22" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/zqu/check.jsp" />
+    <configuration name="leave.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M22" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/WEB-INF/zqu/student/leave.jsp" />
       <deployment>
-        <artifact name="YibanLeaveSystem:war exploded">
+        <artifact name="YibanLeaveSystem:war">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="check_jsp_YibanLeaveSystem" />
+        <option name="BASE_DIRECTORY_NAME" value="leave_jsp_YibanLeaveSystem" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -730,24 +757,63 @@
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="YibanLeaveSystem:war exploded" />
+          <artifact name="YibanLeaveSystem:war" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="test.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M22" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/test.jsp" />
+      <deployment>
+        <artifact name="YibanLeaveSystem:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="test_jsp_YibanLeaveSystem_2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="YibanLeaveSystem:war" />
         </option>
       </method>
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.SendLetter" />
-      <item index="1" class="java.lang.String" itemvalue="Application.FormHandle" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SendTest.sendLetter" />
-      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.begin.jsp" />
-      <item index="4" class="java.lang.String" itemvalue="Tomcat Server.check.jsp" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.SendTest.sendLetter" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.begin.jsp" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DaoTest.a" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.leave.jsp" />
+      <item index="4" class="java.lang.String" itemvalue="Tomcat Server.test.jsp" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Tomcat Server.begin.jsp" />
-        <item index="1" class="java.lang.String" itemvalue="Tomcat Server.check.jsp" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.SendTest.sendLetter" />
-        <item index="3" class="java.lang.String" itemvalue="Application.FormHandle" />
-        <item index="4" class="java.lang.String" itemvalue="Application.SendLetter" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.SendTest.sendLetter" />
+        <item index="2" class="java.lang.String" itemvalue="Tomcat Server.test.jsp" />
+        <item index="3" class="java.lang.String" itemvalue="Tomcat Server.leave.jsp" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.DaoTest.a" />
       </list>
     </recent_temporary>
   </component>
@@ -762,44 +828,45 @@
       <option name="presentableId" value="Default" />
       <updated>1508571212665</updated>
       <workItem from="1508571214995" duration="58565000" />
-      <workItem from="1508804861414" duration="11159000" />
+      <workItem from="1508804861414" duration="28153000" />
+      <workItem from="1508919089984" duration="9944000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 20h 03m 36s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 15h 33m 04s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 20h 04m 54s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 15h 34m 41s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 20h 05m 32s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 15h 37m 50s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 20h 06m 00s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 16h 22m 15s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 20h 08m 42s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 16h 45m 58s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 21h 16m 54s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 16h 46m 48s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 21h 17m 20s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 17h 07m 29s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 21h 19m 02s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 18h 40m 47s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DaoTest_testContentDao - 2017.10.22 at 21h 19m 21s.xml">
-      <configuration name="DaoTest.testContentDao" configurationId="JUnit" />
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 18h 41m 38s.xml">
+      <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SendTest_sendLetter - 2017.10.23 at 21h 24m 02s.xml">
+    <history-entry file="SendTest_sendLetter - 2017.10.25 at 18h 49m 52s.xml">
       <configuration name="SendTest.sendLetter" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69724000" />
+    <option name="totallyTimeSpent" value="96662000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -815,26 +882,26 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41593885" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3569869" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21375267" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21588486" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1913646" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -848,76 +915,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/ContentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="31" column="66" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1075#1089#0" expanded="false" />
-            <element signature="e#1653#1667#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/LeaveHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/YBOpenApi.jar!/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/YBOpenApi.jar!/cn/yiban/util/HTTPSimple.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-960">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/YBOpenApi.jar!/cn/yiban/open/Authorize.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/YBOpenApi.jar!/cn/yiban/open/FrameUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1536">
-          <caret line="122" column="25" lean-forward="true" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/zqu/test.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/SearchTeacher.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/SendPost.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/SearchTeacher.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3c84cd87-0475-4831-84bc-39d3dee159df/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/db/DBAccess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -925,14 +922,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/test.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,31 +934,6 @@
             <element signature="imports" expanded="false" />
             <element signature="e#724#725#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/TokenDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/test/DaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -988,159 +952,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/SendRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="85" column="33" lean-forward="false" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/InstructorDao.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/TokenMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/InstructorMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/Class.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/LeaveContent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/ClassBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <element signature="e#238#239#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/ContentMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/ContentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="60" column="32" lean-forward="true" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1075#1089#0" expanded="false" />
-            <element signature="e#1653#1667#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectAllServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/LeaveHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#341#342#0" expanded="false" />
-            <element signature="e#391#392#0" expanded="false" />
-            <element signature="e#444#445#0" expanded="false" />
-            <element signature="e#491#492#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectLeavesServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="62" column="60" lean-forward="false" selection-start-line="62" selection-start-column="60" selection-end-line="62" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/zqu/student.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/leave.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="77" column="33" lean-forward="false" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/leave/successful.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/check.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/begin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/zqu/student.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/yiban/config/Token.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1153,14 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/configuration.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -1169,10 +990,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="970" column="31" lean-forward="false" selection-start-line="970" selection-start-column="31" selection-end-line="970" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Runtime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="103" column="29" lean-forward="false" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/test/DaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/leave/successful.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/bean/ClassBean.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/LeaveHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/IdentityHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/check.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/yiban/config/Content.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="360">
+          <caret line="15" column="52" lean-forward="false" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
           <folding>
             <marker date="1508812539223" expanded="true" signature="937:1132" ph="INSERT INTO content... " />
             <marker date="1508812539223" expanded="true" signature="1220:1488" ph="SELECT a.stu... content" />
@@ -1181,18 +1055,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/FormHandle.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/ClassMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/com/yiban/config/Class.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="96">
+          <caret line="4" column="72" lean-forward="true" selection-start-line="4" selection-start-column="72" selection-end-line="4" selection-end-column="72" />
           <folding>
             <marker date="1508822771369" expanded="true" signature="288:333" ph="SELECT teach... class" />
             <marker date="1508822771369" expanded="true" signature="416:461" ph="SELECT id FR... class" />
@@ -1200,40 +1073,213 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/ClassMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/TokenDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+        <state relative-caret-position="216">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/mapper/ContentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/ContentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/io/PrintStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="520" column="17" lean-forward="false" selection-start-line="520" selection-start-column="17" selection-end-line="520" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/jre/lib/rt.jar!/sun/net/www/MessageHeader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3112">
+          <caret line="345" column="0" lean-forward="true" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/net/URLConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="1080" column="18" lean-forward="true" selection-start-line="1080" selection-start-column="18" selection-end-line="1080" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/test/TestServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/FormHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectLeavesServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/teacherServlet/SelectAllServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/SendRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/studentServlet/LeaveServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/SendLetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="41" column="50" lean-forward="false" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1470#1486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/test/SendTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/teacher/begin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="62" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/layer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/layer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/teacher/teacher.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2016">
+          <caret line="84" column="14" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/lay/modules/code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/AuthorizeServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="35" column="46" lean-forward="false" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/leave.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="45" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/zqu/student/student.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="190" column="7" lean-forward="true" selection-start-line="190" selection-start-column="7" selection-end-line="190" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/dao/SearchDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+        <state relative-caret-position="-312">
+          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/service/IdentityHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#574#590#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yiban/servlet/AuthorizeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="33" column="66" lean-forward="true" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

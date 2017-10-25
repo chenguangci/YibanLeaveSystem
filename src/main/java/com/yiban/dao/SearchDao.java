@@ -10,19 +10,20 @@ import java.util.List;
 public class SearchDao {
     private DBAccess dbAccess = new DBAccess();
     public String searchTeacherByStudentId(String id){
-        SqlSession sqlSession = null;
-        String teacher = null;
-        try {
-            sqlSession = dbAccess.getSqlSession();
-            ClassMapper classMapper = sqlSession.getMapper(ClassMapper.class);
-            teacher = classMapper.searchTeacherByStudentId(id);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (sqlSession!=null)
-                sqlSession.close();
-        }
-        return teacher;
+//        SqlSession sqlSession = null;
+//        String teacher = null;
+//        try {
+//            sqlSession = dbAccess.getSqlSession();
+//            ClassMapper classMapper = sqlSession.getMapper(ClassMapper.class);
+//            teacher = classMapper.searchTeacherByStudentId(id);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (sqlSession!=null)
+//                sqlSession.close();
+//        }
+//        return teacher;
+        return "10849451";
     }
 
     /**

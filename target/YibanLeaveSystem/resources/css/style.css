@@ -1,0 +1,13 @@
+.layui-table thead tr th
+{
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.layui-table
+{
+	align-content: center;
+	
+	margin: 25px;
+	
+}

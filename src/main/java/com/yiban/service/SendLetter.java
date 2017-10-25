@@ -24,10 +24,10 @@ class SendLetter {
         String str = sendLetter(teacherId);
         if ("error".equals(str)){
             //重新获取授权，再次发送请求
-//            resetToken();
-//            str = sendLetter(teacherId);
-//            return "success".equals(str);
-            return false;
+            resetToken();
+            str = sendLetter(teacherId);
+            return "success".equals(str);
+//            return false;
         } else {
             return true;
         }
@@ -37,7 +37,7 @@ class SendLetter {
      * @return 返回json
      */
     private String sendLetter(String teacherId){
-        String param="access_token="+accessToken+"&to_yb_uid="+teacherId+"&content="+CONTENT+"&template=user";
+        String param="access_token="+accessToken+"&to_yb_uid="+teacherId+"&content="+CONTENT;
         String url = "https://openapi.yiban.cn/msg/letter";
         String str = request.sendPost(url, param);
         System.out.println("送信时返回的json："+str);
@@ -67,7 +67,7 @@ class SendLetter {
             String key = (String) iterator.next();
             map.put(key,jsonObject.getString(key));
         }
-        this.accessToken = map.get("access_token");
+        accessToken = map.get("access_token");
         //插入新的access_token
         Token token = new Token();
         token.setTokenType("resetToken");
@@ -77,7 +77,7 @@ class SendLetter {
     }
     /**
      * 需定期获取access_token
-     * @return
+     * 从数据库中取回最新的一条access_token，类型为resetToken
      */
     private void getAccessToken() {
         TokenDao tokenDao = new TokenDao();

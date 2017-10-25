@@ -30,18 +30,28 @@ public class AuthorizeServlet extends HttpServlet {
         } else {
             String text = authorize.querytoken(code,callbackUrl);
             System.out.println("请求授权后的text:"+text);
-//            session.setAttribute("test",test);
-//            String text = (String) session.getAttribute("text");
             IdentityHandle handle = new IdentityHandle();
             int id = handle.judge(text);
-            request.getRequestDispatcher("/WEB-INF/zqu/begin.jsp").forward(request,response);
-//            if (id<1){
-//                //跳转到授权失败页面
-//            }else if(id==1){
-//                //跳转到学生页面
-//            } else {
-//                //跳转到教师页面
-//            }
+            String userid = handle.getUserid();
+            System.out.println(id+" "+userid);
+            if (id<1){
+                //跳转到授权失败页面
+                System.out.println(id);
+                request.getRequestDispatcher("/WEB-INF/zqu/index.jsp").forward(request,response);
+            }else if(id==1){
+                //存好用户userid
+                session.setAttribute("userid",userid);
+                //跳转到学生页面
+                session.setAttribute("userType",1);
+                request.getRequestDispatcher("/WEB-INF/zqu/student/student.jsp").forward(request,response);
+            } else {
+                //存好用户userid
+                session.setAttribute("userid",userid);
+                //跳转到教师页面
+                session.setAttribute("userType",2);
+                request.getRequestDispatcher("WEB-INF/zqu/teacher/teacher.jsp").forward(request,response);
+            }
+
         }
     }
 

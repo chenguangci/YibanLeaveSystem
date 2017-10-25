@@ -15,9 +15,9 @@ public class FormHandle {
         return teacherId;
     }
 
-    public String getResult(){
+    private String getResult(){
         String teacherId = getTeacherId();
-        if (!"error".equals(teacherId)) {
+        if (teacherId.length()>1) {
             /*发送信件前先将数据加到数据库*/
             ContentDao contentDao = new ContentDao();
             if (!contentDao.addContent(content)){
@@ -29,14 +29,12 @@ public class FormHandle {
             } else {
                 return "发送信件失败，请联系易班工作人员";
             }
-
         } else {
             return "找不到您的班主任或辅导员，请检查您的学号";
         }
-
     }
 
-    public void setInformation(String[] information) {
+    public String setInformation(String[] information) {
         content = new LeaveContent();
         content.setStudentId(information[0]);
         content.setName(information[1]);
@@ -47,6 +45,7 @@ public class FormHandle {
         content.setBeginTime(information[6]);
         content.setEndTime(information[7]);
         content.setReason(information[8]);
+        return getResult();
     }
 
 }

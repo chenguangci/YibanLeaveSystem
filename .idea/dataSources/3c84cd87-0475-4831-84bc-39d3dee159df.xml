@@ -23,103 +23,91 @@
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="12" name="deparment">
+    <column id="16" parent="12" name="teacher_id">
       <Position>2</Position>
-      <DataType>varchar(50)|0</DataType>
-    </column>
-    <column id="17" parent="12" name="major">
-      <Position>3</Position>
-      <DataType>varchar(50)|0</DataType>
-    </column>
-    <column id="18" parent="12" name="grade">
-      <Position>4</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <column id="19" parent="12" name="teacher_id">
-      <Position>5</Position>
       <DataType>varchar(10)|0</DataType>
     </column>
-    <key id="20" parent="12" name="PRIMARY">
+    <key id="17" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="21" parent="13" name="id">
+    <column id="18" parent="13" name="id">
       <Position>1</Position>
       <DataType>int(8)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="22" parent="13" name="student_id">
+    <column id="19" parent="13" name="student_id">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
     </column>
-    <column id="23" parent="13" name="student_name">
+    <column id="20" parent="13" name="student_name">
       <Position>3</Position>
       <DataType>varchar(8)|0</DataType>
     </column>
-    <column id="24" parent="13" name="department">
+    <column id="21" parent="13" name="department">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="25" parent="13" name="major">
+    <column id="22" parent="13" name="major">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="26" parent="13" name="grade">
+    <column id="23" parent="13" name="grade">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="27" parent="13" name="class_no">
+    <column id="24" parent="13" name="class_no">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="28" parent="13" name="begin_time">
+    <column id="25" parent="13" name="begin_time">
       <Position>8</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="29" parent="13" name="end_time">
+    <column id="26" parent="13" name="end_time">
       <Position>9</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="30" parent="13" name="reason">
+    <column id="27" parent="13" name="reason">
       <Position>10</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="31" parent="13" name="is_agree">
+    <column id="28" parent="13" name="is_agree">
       <Position>11</Position>
       <DataType>varchar(5)|0</DataType>
       <DefaultExpression>&apos;no&apos;</DefaultExpression>
     </column>
-    <column id="32" parent="13" name="is_back">
+    <column id="29" parent="13" name="is_back">
       <Position>12</Position>
       <DataType>varchar(5)|0</DataType>
       <DefaultExpression>&apos;no&apos;</DefaultExpression>
     </column>
-    <key id="33" parent="13" name="PRIMARY">
+    <key id="30" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="34" parent="14" name="id">
+    <column id="31" parent="14" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="35" parent="14" name="token_type">
+    <column id="32" parent="14" name="token_type">
       <Position>2</Position>
       <DataType>varchar(15)|0</DataType>
     </column>
-    <column id="36" parent="14" name="token">
+    <column id="33" parent="14" name="token">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="37" parent="14" name="add_time">
+    <column id="34" parent="14" name="add_time">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <key id="38" parent="14" name="PRIMARY">
+    <key id="35" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

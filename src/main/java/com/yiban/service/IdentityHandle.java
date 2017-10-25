@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class IdentityHandle {
+    private String userid;
     /**
      * 判断授权用户身份
      * @param text 授权后返回的json
@@ -28,9 +29,10 @@ public class IdentityHandle {
         String id = map.get("userid");
         if (id!=null){
             //判断身份
+            userid = id;
             SearchDao searchDao = new SearchDao();
             List<String> teachers = searchDao.searchTeacher(id);
-            if (teachers==null){
+            if (teachers.size()==0){
                 return 1;
             } else {
                 return 2;
@@ -38,5 +40,8 @@ public class IdentityHandle {
         } else {
             return 0;
         }
+    }
+    public String getUserid(){
+        return userid;
     }
 }

@@ -74,7 +74,7 @@
         </div>
         <div class="index-form form container-fluid">
             <h3> 请假登记 </h3>
-            <form action="<%=request.getContextPath()%>/leave" method="post">
+            <form action="<%=request.getContextPath()%>/toLeave.action" method="post">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="input-group"><span class="input-group-addon">学号:</span> <input type="text"

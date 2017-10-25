@@ -18,6 +18,5 @@ public class SendTest {
         information[8] = "测试";
         FormHandle formHandle = new FormHandle();
         formHandle.setInformation(information);
-        formHandle.getResult();
     }
 }

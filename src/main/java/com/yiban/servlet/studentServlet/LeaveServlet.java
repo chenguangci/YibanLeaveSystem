@@ -11,6 +11,11 @@ import java.io.IOException;
 public class LeaveServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         String[] information = new String[9];
         information[0] = request.getParameter("id");
@@ -26,13 +31,8 @@ public class LeaveServlet extends HttpServlet {
          * 表单处理
          * */
         FormHandle handle = new FormHandle();
-        handle.setInformation(information);
-        System.out.println(handle.getResult());
-        request.getRequestDispatcher("/zqu/leave/successful.jsp").forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doGet(req, resp);
+        String result = handle.setInformation(information);
+        System.out.println(result);
+        //request.getRequestDispatcher("/WEB-INF/zqu/leave/successful.jsp").forward(request,response);
     }
 }
