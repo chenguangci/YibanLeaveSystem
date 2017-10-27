@@ -1,9 +1,13 @@
-package com.yiban.service;
+package com.yiban.service.student;
 
 import com.yiban.bean.LeaveContent;
 import com.yiban.dao.ContentDao;
 import com.yiban.dao.SearchDao;
+import com.yiban.service.handle.SendLetter;
 
+/**
+ * 处理学生页面传过来的表单信息
+ */
 public class FormHandle {
     private LeaveContent content;
 
@@ -21,7 +25,7 @@ public class FormHandle {
             /*发送信件前先将数据加到数据库*/
             ContentDao contentDao = new ContentDao();
             if (!contentDao.addContent(content)){
-                return "插入数据失败";
+                return "请检查您填写的信息是否有误";
             }
             SendLetter sendLetter = new SendLetter();
             if (sendLetter.send(teacherId)){
@@ -44,6 +48,7 @@ public class FormHandle {
         content.setBeginTime(information[5]);
         content.setEndTime(information[6]);
         content.setReason(information[7]);
+        content.setUserid(information[8]);
         return getResult();
     }
 

@@ -1,7 +1,7 @@
 package com.yiban.servlet;
 
 import cn.yiban.open.Authorize;
-import com.yiban.service.IdentityHandle;
+import com.yiban.service.handle.IdentityHandle;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +43,7 @@ public class AuthorizeServlet extends HttpServlet {
                 session.setAttribute("userid",userid);
                 //跳转到学生页面
                 session.setAttribute("userType",1);
-                request.getRequestDispatcher("/WEB-INF/zqu/student/student.html").forward(request,response);
+                request.getRequestDispatcher("/WEB-INF/zqu/student/test.jsp").forward(request,response);
             } else {
                 //存好用户userid
                 session.setAttribute("userid",userid);

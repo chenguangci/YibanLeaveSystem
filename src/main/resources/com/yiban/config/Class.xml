@@ -5,7 +5,7 @@
     <select id="searchTeacherByStudentId" resultType="java.lang.String">
         SELECT teacher_id FROM class WHERE id = #{id}
     </select>
-    <select id="searchTeacher" resultType="java.util.List">
+    <select id="searchTeacher" resultType="java.lang.String">
         SELECT id FROM class WHERE teacher_id = #{id}
     </select>
 </mapper>

@@ -77,20 +77,20 @@
 	
 	<div class="index-form form container-fluid" >
 		<h3> 请假登记 </h3>
-		<form id="test" action="#" method="post">
+		<form id="test" action="/toLeave.action" method="post">
 			<div class="row">
 				<div class="col-md-4"><div class="input-group"><span class="input-group-addon">学号:</span> <input name="id" type="text" class="form-control" placeholder="输入你的学号"></div></div>
 				<div class="col-md-4"><div class="input-group"><span class="input-group-addon">姓名:</span> <input name="name" type="text" class="form-control" placeholder="输入你的姓名"></div></div>
 				<div class="col-md-4"><div class="input-group"><span class="input-group-addon">手机号码:</span> <input name="telephone" type="text" class="form-control" id="phone" placeholder="输入手机号码" tip="请输入手机号码" ></div></div>
 			</div>
 			<div class="row">
-			<div class="col-md-6 "><select class="form-control"><option value="1">计算机科学与软件学院、大数据学院</option></select></div>	
-			<div class="col-md-6"><select class="form-control"><option>软件1班</option></select></div>
+			<div class="col-md-6 "><select name="department" class="form-control"><option value="1">计算机科学与软件学院、大数据学院</option></select></div>
+			<div class="col-md-6"><select name="major" class="form-control"><option>软件1班</option></select></div>
 			</div>
 			
 			<div class="row">
 				 
-					<div class="col-md-6 time"><p>请假时间</p><input type="date" name="startTime"></div>
+					<div class="col-md-6 time"><p>请假时间</p><input type="date" name="beginTime"></div>
 					<div class="col-md-6 time"><p>结束时间</p><input type="date" name="endTime"></div>
 			</div>
 			
@@ -114,78 +114,84 @@
 
 >
 <script type="text/javascript">
-	
-     jQuery.validator.addMethod("phone", function(value, element) {  
-    var length = value.length;  
-    var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;  
-    return this.optional(element) || (length == 11 && mobile.test(value));  
-   }, "输入正确的手机号码"); 
 
-     
-	$(function(){
-		
-		$("#test").validate({
-		debug:true,//调试模式，即使验证成功也不会跳转到目标页面
-		
-		rules:
-		{
-			name:
-			{
-				required:true
-				
-			},
-			id:
-			{
-				required:true,
-				number:true,
-				length:12
-			},
-			text1:
-			{
-				required:true,
-				minlength:5,
-				maxlength:100
-			},
-		tel:
-			{
-				required:true,
-				minlength:11,
-				phone:true
-				
-			}
-			
-		},
-		messages:{
-			name:
-			{
-				required:"请输入姓名"
-				
-			},
-			id:
-			{
-				required:"请输入正确的学号"
-				
-			},
-			
-			text1:
-			{
-				required:"请填写请假原因",
-				minlength:"最少不要低于5个字",
-				maxlength:"最多不要多于100个字"
-				
-			},
-			
-			tel:
-			{
-				phone:"请填写正确的手机号码"
-				
-			}
-			
-			
-		}
-		
-	});
-	});
+
+    jQuery.validator.addMethod("phone", function(value, element) {
+        var length = value.length;
+        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+        return this.optional(element) || (length == 11 && mobile.test(value));
+    }, "输入正确的手机号码");
+
+
+    $(function(){
+
+        $("#test").validate({
+            debug:true,//调试模式，即使验证成功也不会跳转到目标页面
+
+            rules:
+                {
+                    name:
+                        {
+                            required:true
+
+                        },
+                    id:
+                        {
+                            required:true,
+                            number:true,
+                            length:12
+                        },
+                    text1:
+                        {
+                            required:true,
+                            minlength:5,
+                            maxlength:100
+                        },
+                    tel:
+                        {
+                            required:true,
+                            minlength:11,
+                            phone:true
+
+                        }
+
+                },
+            messages:{
+                name:
+                    {
+                        required:"请输入姓名"
+
+
+                    },
+                id:
+                    {
+                        required:"请输入正确的学号"
+
+                    },
+
+                text1:
+                    {
+                        required:"请填写请假原因",
+                        minlength:"最少不要低于5个字",
+                        maxlength:"最多不要多于100个字"
+
+                    },
+
+                tel:
+                    {
+                        phone:"请填写正确的手机号码"
+
+                    }
+
+
+            }
+
+        });
+    });
+    if(!$("#test").form("validate"))
+    {
+        return;
+    }
 </script>
 </body>
 </html>

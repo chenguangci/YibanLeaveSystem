@@ -19,7 +19,8 @@ public class ContentDao {
             mapper.addContent(content);
             sqlSession.commit();
             return true;
-        } catch (IOException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         } finally {
             if (sqlSession!=null){
@@ -57,6 +58,23 @@ public class ContentDao {
             sqlSession = dbAccess.getSqlSession();
             ContentMapper contentMapper = sqlSession.getMapper(ContentMapper.class);
             contents = contentMapper.selectAll(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (sqlSession!=null){
+                sqlSession.close();
+            }
+        }
+        return contents;
+    }
+
+    public List<LeaveContent> myLeave(String myId){
+        SqlSession sqlSession = null;
+        List<LeaveContent> contents = new ArrayList<LeaveContent>();
+        try {
+            sqlSession = dbAccess.getSqlSession();
+            ContentMapper contentMapper = sqlSession.getMapper(ContentMapper.class);
+            contents = contentMapper.myLeaves(myId);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

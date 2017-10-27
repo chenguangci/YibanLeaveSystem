@@ -1,4 +1,4 @@
-package com.yiban.service;
+package com.yiban.service.handle;
 
 import java.io.*;
 import java.net.*;
@@ -32,7 +32,7 @@ public class SendRequest {
             connection.setRequestProperty("Connection", "keep-alive");
             //以输出流的形式提交给服务器
             OutputStream out = connection.getOutputStream();
-            out.write(param.getBytes());
+            out.write(param.getBytes("UTF-8"));
             //如果连接成功
             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;

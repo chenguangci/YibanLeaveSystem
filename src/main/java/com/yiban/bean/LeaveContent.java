@@ -10,8 +10,15 @@ public class LeaveContent {
     private String endTime;
     private String reason;
     private String isAgree = "no";
-    private String isBack = "no";
+    private String userid ;
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
     public String getTelephone() {
         return telephone;
@@ -27,14 +34,6 @@ public class LeaveContent {
 
     public void setIsAgree(String isAgree) {
         this.isAgree = isAgree;
-    }
-
-    public String getIsBack() {
-        return isBack;
-    }
-
-    public void setIsBack(String isBack) {
-        this.isBack = isBack;
     }
 
     public String getStudentId() {

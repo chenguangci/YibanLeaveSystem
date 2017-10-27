@@ -46,39 +46,38 @@
       <Position>3</Position>
       <DataType>varchar(8)|0</DataType>
     </column>
-    <column id="21" parent="13" name="department">
+    <column id="21" parent="13" name="telephone">
       <Position>4</Position>
-      <DataType>varchar(50)|0</DataType>
+      <DataType>varchar(12)|0</DataType>
     </column>
-    <column id="22" parent="13" name="major">
+    <column id="22" parent="13" name="department">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="23" parent="13" name="begin_time">
+    <column id="23" parent="13" name="major">
       <Position>6</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="24" parent="13" name="end_time">
+    <column id="24" parent="13" name="begin_time">
       <Position>7</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="25" parent="13" name="reason">
+    <column id="25" parent="13" name="end_time">
       <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="26" parent="13" name="reason">
+      <Position>9</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="26" parent="13" name="is_agree">
-      <Position>9</Position>
-      <DataType>varchar(5)|0</DataType>
-      <DefaultExpression>&apos;no&apos;</DefaultExpression>
-    </column>
-    <column id="27" parent="13" name="is_back">
+    <column id="27" parent="13" name="is_agree">
       <Position>10</Position>
       <DataType>varchar(5)|0</DataType>
       <DefaultExpression>&apos;no&apos;</DefaultExpression>
     </column>
-    <column id="28" parent="13" name="telephone">
+    <column id="28" parent="13" name="user_id">
       <Position>11</Position>
-      <DataType>varchar(12)|0</DataType>
+      <DataType>varchar(10)|0</DataType>
     </column>
     <key id="29" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

@@ -1,4 +1,4 @@
-package com.yiban.service;
+package com.yiban.service.teacher;
 
 import com.yiban.bean.LeaveContent;
 import com.yiban.dao.ContentDao;
@@ -16,6 +16,11 @@ public class LeaveHandle {
         return contentDao.selectLeaves(id);
     }
 
+    /**
+     * 查询所有请假人员
+     * @param id 教师的id
+     * @return 请假信息的集合
+     */
     public List<LeaveContent> selectAll(String id){
         return contentDao.selectAll(id);
     }

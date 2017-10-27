@@ -2,6 +2,7 @@ package com.yiban.dao;
 
 import com.yiban.db.DBAccess;
 import com.yiban.mapper.ClassMapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class SearchDao {
      * @param id 易班ID
      * @return 对应的专业班级ID
      */
-    public List<String> searchTeacher(String id){
+    public List<String> searchTeacher(@Param("id") String id){
         SqlSession sqlSession = null;
         List<String> teacher = null;
         try {
