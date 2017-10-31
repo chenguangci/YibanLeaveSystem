@@ -48,7 +48,6 @@ public class FormHandle {
         content.setBeginTime(information[5]);
         content.setEndTime(information[6]);
         content.setReason(information[7]);
-        content.setUserid(information[8]);
         return getResult();
     }
 

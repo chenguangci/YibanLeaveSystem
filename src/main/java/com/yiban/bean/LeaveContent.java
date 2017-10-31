@@ -10,30 +10,22 @@ public class LeaveContent {
     private String endTime;
     private String reason;
     private String isAgree = "no";
-    private String userid ;
+    private String code ;
 
-    public String getUserid() {
-        return userid;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getMajor() {
+        return major;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getIsAgree() {
-        return isAgree;
-    }
-
-    public void setIsAgree(String isAgree) {
-        this.isAgree = isAgree;
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public String getStudentId() {
@@ -52,20 +44,12 @@ public class LeaveContent {
         this.name = name;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getBeginTime() {
@@ -90,5 +74,21 @@ public class LeaveContent {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getIsAgree() {
+        return isAgree;
+    }
+
+    public void setIsAgree(String isAgree) {
+        this.isAgree = isAgree;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

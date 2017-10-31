@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yiban.mapper.ContentMapper">
+<mapper namespace="com.yiban.dao.mapper.ContentMapper">
     <resultMap id="leaveContent" type="com.yiban.bean.LeaveContent">
         <result column="student_id" property="studentId"/>
         <result column="student_name" property="name"/>
@@ -12,29 +12,32 @@
         <result column="end_time" property="endTime"/>
         <result column="reason" property="reason"/>
         <result column="is_agree" property="isAgree"/>
-        <result column="user_id" property="userid"/>
+        <result column="code" property="code"/>
     </resultMap>
 
     <insert id="addContent">
         INSERT INTO content VALUES
-            (0,#{studentId},#{name},#{userid},#{department},#{major},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{reason},#{isAgree},#{telephone})
+            (0,#{studentId},#{name},#{telephone},#{department},#{major},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{reason},#{isAgree},NULL )
     </insert>
 
     <select id="selectLeaves" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree
-        FROM content a,class b WHERE a.is_agree='wait' AND LEFT(a.student_id,10) = b.id AND b.teacher_id = #{id}
+        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree,a.code
+        FROM content a,class b
+        WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id AND a.is_agree = 'no'
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectAll" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree
-        FROM content a,class b WHERE LEFT(a.student_id,10) = b.id AND b.teacher_id = #{id}
+        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree,a.code
+        FROM content a,class b
+        WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="myLeaves" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree
-        FROM content a WHERE a.user_id = #{myId}
+        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.reason,a.is_agree,a.code
+        FROM content a WHERE a.student_id = #{myId}
         ORDER BY a.begin_time DESC
     </select>
+
 </mapper>

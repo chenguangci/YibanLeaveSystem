@@ -1,7 +1,7 @@
 package com.yiban.dao;
 
-import com.yiban.db.DBAccess;
-import com.yiban.mapper.ClassMapper;
+import com.yiban.dao.db.DBAccess;
+import com.yiban.dao.mapper.ClassMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 

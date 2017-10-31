@@ -1,4 +1,4 @@
-package com.yiban.mapper;
+package com.yiban.dao.mapper;
 
 import com.yiban.bean.Token;
 

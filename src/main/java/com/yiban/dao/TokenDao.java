@@ -1,8 +1,8 @@
 package com.yiban.dao;
 
 import com.yiban.bean.Token;
-import com.yiban.db.DBAccess;
-import com.yiban.mapper.TokenMapper;
+import com.yiban.dao.db.DBAccess;
+import com.yiban.dao.mapper.TokenMapper;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;

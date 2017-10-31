@@ -1,4 +1,4 @@
-package com.yiban.mapper;
+package com.yiban.dao.mapper;
 
 import com.yiban.bean.LeaveContent;
 
@@ -9,4 +9,5 @@ public interface ContentMapper {
     List<LeaveContent> selectLeaves(String id);
     List<LeaveContent> selectAll(String id);
     List<LeaveContent> myLeaves(String myId);
+    List<LeaveContent> todayLeaves(String id,String today);
 }

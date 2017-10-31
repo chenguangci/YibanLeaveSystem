@@ -1,8 +1,9 @@
 package com.yiban.dao;
 
 import com.yiban.bean.LeaveContent;
-import com.yiban.db.DBAccess;
-import com.yiban.mapper.ContentMapper;
+import com.yiban.dao.db.DBAccess;
+import com.yiban.dao.mapper.ContentMapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContentDao {
-    private DBAccess dbAccess = new DBAccess();
+    private static DBAccess dbAccess = new DBAccess();
     public boolean addContent(LeaveContent content){
         SqlSession sqlSession = null;
         try {
@@ -83,5 +84,23 @@ public class ContentDao {
             }
         }
         return contents;
+    }
+
+    public List<LeaveContent> todayLeaves(@Param("id") String id, @Param("today") String today){
+        SqlSession sqlSession = null;
+        List<LeaveContent> contents = new ArrayList<LeaveContent>();
+        try {
+            sqlSession = dbAccess.getSqlSession();
+            ContentMapper contentMapper = sqlSession.getMapper(ContentMapper.class);
+            contents = contentMapper.todayLeaves(id,today);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (sqlSession!=null){
+                sqlSession.close();
+            }
+        }
+        return contents;
+
     }
 }

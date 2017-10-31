@@ -1,4 +1,4 @@
-package com.yiban.db;
+package com.yiban.dao.db;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
