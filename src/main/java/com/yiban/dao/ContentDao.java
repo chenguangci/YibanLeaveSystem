@@ -52,6 +52,11 @@ public class ContentDao {
         return contents;
     }
 
+    /**
+     * 查询所有请假信息
+     * @param id id 辅导员或班主任的易班ID
+     * @return 辅导员对应班级的请假信息
+     */
     public List<LeaveContent> selectAll(String id){
         SqlSession sqlSession = null;
         List<LeaveContent> contents = new ArrayList<LeaveContent>();
@@ -69,6 +74,11 @@ public class ContentDao {
         return contents;
     }
 
+    /**
+     * 查看个人的请假信息
+     * @param myId 学号
+     * @return 请假信息
+     */
     public List<LeaveContent> myLeave(String myId){
         SqlSession sqlSession = null;
         List<LeaveContent> contents = new ArrayList<LeaveContent>();
@@ -101,6 +111,28 @@ public class ContentDao {
             }
         }
         return contents;
+    }
 
+    /**
+     * 根据请假类型查询（事假或病假）
+     * @param id 辅导员或班主任的易班id
+     * @param type 类型
+     * @return 相应的请假信息
+     */
+    public List<LeaveContent> selectByType(@Param("id") String id, @Param("type") String type){
+        SqlSession sqlSession = null;
+        List<LeaveContent> contents = new ArrayList<LeaveContent>();
+        try {
+            sqlSession = dbAccess.getSqlSession();
+            ContentMapper contentMapper = sqlSession.getMapper(ContentMapper.class);
+            contents = contentMapper.selectByType(id,type);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (sqlSession!=null){
+                sqlSession.close();
+            }
+        }
+        return contents;
     }
 }

@@ -15,5 +15,4 @@
         <servlet-name>authorize</servlet-name>
         <url-pattern>/Leave.action</url-pattern>
     </servlet-mapping>
-
 </web-app>

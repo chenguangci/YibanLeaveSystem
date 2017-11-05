@@ -20,7 +20,7 @@ public class LeaveHandle {
 
     /**
      * 查询所有请假人员
-     * @param id 教师的id
+     * @param id 班主任或者辅导员的ID
      * @return 请假信息的集合
      */
     public List<LeaveContent> selectAll(String id){
@@ -37,5 +37,15 @@ public class LeaveHandle {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String today = format.format(date);
         return contentDao.todayLeaves(id,today);
+    }
+
+    /**
+     * 根据请假类型查询（事假或病假）
+     * @param id 辅导员或班主任的易班id
+     * @param type 类型
+     * @return 相应的请假信息
+     */
+    public List<LeaveContent> selectByType(String id,String type){
+        return contentDao.selectByType(id,type);
     }
 }

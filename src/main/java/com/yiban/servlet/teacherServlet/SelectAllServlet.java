@@ -12,15 +12,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(value = "/selectAll.action")
 public class SelectAllServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (2 == (Integer) session.getAttribute("userType")){
+        Map<String,String> info = (Map<String, String>) request.getAttribute("info");
+        if (info!=null && info.get("yb_employid")!=null && !"".equals(info.get("yb_employid").trim())){
             LeaveHandle handle = new LeaveHandle();
-            List<LeaveContent> contents = handle.selectAll((String)session.getAttribute("userid"));
+            List<LeaveContent> contents = handle.selectAll(info.get("yb_userid"));
             /*
             * 转为json,返回给前端页面
             * */
@@ -30,8 +31,6 @@ public class SelectAllServlet extends HttpServlet {
             out.write(array.toString());
             out.flush();
             out.close();
-        } else {
-            request.getRequestDispatcher("/Leave.action").forward(request,response);
         }
     }
 }

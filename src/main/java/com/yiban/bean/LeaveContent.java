@@ -8,9 +8,18 @@ public class LeaveContent {
     private String major;
     private String beginTime;
     private String endTime;
+    private String type;
     private String reason;
     private String isAgree = "no";
     private String code ;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getDepartment() {
         return department;

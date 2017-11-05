@@ -10,4 +10,5 @@ public interface ContentMapper {
     List<LeaveContent> selectAll(String id);
     List<LeaveContent> myLeaves(String myId);
     List<LeaveContent> todayLeaves(String id,String today);
+    List<LeaveContent> selectByType(String id,String type);
 }

@@ -4,14 +4,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-  <servlet>
-    <servlet-name>toLeave</servlet-name>
-    <servlet-class>com.yiban.servlet.studentServlet.LeaveServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>toLeave</servlet-name>
-    <url-pattern>/toLeave.action</url-pattern>
-  </servlet-mapping>
 
     <!--授权后判断-->
   <servlet>
@@ -23,15 +15,4 @@
         <servlet-name>authorize</servlet-name>
         <url-pattern>/Leave.action</url-pattern>
     </servlet-mapping>
-
-
-  <servlet>
-    <servlet-name>SelectLeave</servlet-name>
-    <servlet-class>com.yiban.servlet.teacherServlet.SelectLeavesServlet</servlet-class>
-  </servlet>
-    <servlet-mapping>
-        <servlet-name>SelectLeave</servlet-name>
-        <url-pattern>/selectLeave.action</url-pattern>
-    </servlet-mapping>
-
 </web-app>
