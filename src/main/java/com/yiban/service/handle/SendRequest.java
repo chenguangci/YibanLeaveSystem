@@ -10,12 +10,17 @@ import java.util.Map;
  */
 public class SendRequest {
 
+    public enum TYPE {
+        POST,
+        GET
+    }
+
     /**
      * 向服务器发送消息post请求
      * @param param 请求参数
      * @return 返回服务器结果
      */
-    String sendPost(String url, String param) {
+    private String sendPost(String url, String param) {
         StringBuilder result = new StringBuilder();
         BufferedReader reader = null;
         try {
@@ -61,7 +66,7 @@ public class SendRequest {
      * @param param 请求参数
      * @return 返回一段json
      */
-    public String sendGet(String url, String param){
+    private String sendGet(String url, String param){
         StringBuilder result = new StringBuilder();
         BufferedReader reader = null;
         String realParam = url+"?"+param;
@@ -92,5 +97,12 @@ public class SendRequest {
             }
         }
         return result.toString();
+    }
+    public String sendRequest(String url, String param,SendRequest.TYPE type) {
+        switch (type) {
+            case POST: return sendPost(url, param);
+            case GET: return sendGet(url, param);
+            default: throw new IllegalArgumentException();
+        }
     }
 }

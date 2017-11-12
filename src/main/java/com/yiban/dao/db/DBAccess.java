@@ -11,7 +11,8 @@ import java.io.Reader;
 public class DBAccess {
     private Reader reader;
     private SqlSessionFactory factory;
-    public DBAccess(){
+    private static DBAccess dbAccess = new DBAccess();
+    private DBAccess(){
         try {
             reader = Resources.getResourceAsReader("com/configuration.xml");
         } catch (IOException e) {
@@ -21,5 +22,8 @@ public class DBAccess {
     }
     public SqlSession getSqlSession() throws IOException{
         return factory.openSession();
+    }
+    public static DBAccess getDbAccess(){
+        return dbAccess;
     }
 }

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class SearchDao {
-    private DBAccess dbAccess = new DBAccess();
+    private DBAccess dbAccess = DBAccess.getDbAccess();
     public String searchTeacherByStudentId(String id){
 //        SqlSession sqlSession = null;
 //        String teacher = null;

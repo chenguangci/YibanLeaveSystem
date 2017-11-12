@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContentDao {
-    private static DBAccess dbAccess = new DBAccess();
+    private static DBAccess dbAccess = DBAccess.getDbAccess();
     public boolean addContent(LeaveContent content){
         SqlSession sqlSession = null;
         try {

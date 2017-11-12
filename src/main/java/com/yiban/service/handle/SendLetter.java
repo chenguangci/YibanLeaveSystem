@@ -44,7 +44,7 @@ public class SendLetter {
 
         String param = "access_token=" + accessToken + "&to_yb_uid=" + teacherId + "&content=" + CONTENT + "&template=user";
         String url = "https://openapi.yiban.cn/msg/letter";
-        String str = request.sendPost(url, param);
+        String str = request.sendRequest(url, param, SendRequest.TYPE.POST);
         System.out.println("送信时返回的json：" + str);
         JSONObject object = JSONObject.fromObject(str);
         Iterator iterator = object.keys();
@@ -63,7 +63,7 @@ public class SendLetter {
     private void resetToken() {
         String param = "client_id=" + appKey + "&client_secret=" + appSecret + "&dev_uid=" + myId;
         String url = "https://openapi.yiban.cn/oauth/reset_token";
-        String json = request.sendPost(url, param);
+        String json = request.sendRequest(url, param, SendRequest.TYPE.POST);
         System.out.println("重置授权到返回的json：" + json);
         JSONObject jsonObject = JSONObject.fromObject(json);
         Iterator iterator = jsonObject.keys();

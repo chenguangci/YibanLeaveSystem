@@ -12,7 +12,7 @@ import java.util.Map;
 public class GetInfo {
     public Map<String,String> getMyInfo(String param){
         SendRequest request = new SendRequest();
-        String result = request.sendGet("https://openapi.yiban.cn/user/verify_me","access_token="+param);
+        String result = request.sendRequest("https://openapi.yiban.cn/user/verify_me","access_token="+param,SendRequest.TYPE.GET);
         System.out.println(result);
         JSONObject json = JSONObject.fromObject(result);
         Iterator iterator = json.keys();

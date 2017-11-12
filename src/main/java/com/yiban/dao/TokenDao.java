@@ -11,7 +11,7 @@ import java.io.IOException;
  * 获取access_token
  */
 public class TokenDao {
-    private DBAccess dbAccess = new DBAccess();
+    private DBAccess dbAccess = DBAccess.getDbAccess();
     public String selectToken(String type){
         SqlSession sqlSession = null;
         try {
