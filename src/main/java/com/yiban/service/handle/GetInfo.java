@@ -1,6 +1,7 @@
 package com.yiban.service.handle;
 
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,6 +10,7 @@ import java.util.Map;
 /**
  * 获取登陆者的学号姓名等重要信息
  */
+
 public class GetInfo {
     public Map<String,String> getMyInfo(String param){
         SendRequest request = new SendRequest();

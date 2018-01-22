@@ -1,8 +1,10 @@
 package com.yiban.service.handle;
 
 import com.yiban.bean.Token;
-import com.yiban.dao.TokenDao;
+import com.yiban.mapper.TokenMapper;
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,6 +13,7 @@ import java.util.Map;
 /**
  * 发送消息到指定用户
  */
+@Service
 public class SendLetter {
     private static final String appKey = "6e5022b516e51935";
     private static final String appSecret = "7eafe47e5c585ef1ad6b3e3bd3aff408";
@@ -18,6 +21,14 @@ public class SendLetter {
     private static final String CONTENT = "尊敬的老师，您有一学生申请请假，详情请登陆易班请假系统查看";
     private SendRequest request = new SendRequest();
     private String accessToken;
+    private TokenMapper tokenMapper;
+
+    @Autowired
+    public SendLetter(TokenMapper tokenMapper){
+        this.tokenMapper = tokenMapper;
+    }
+
+
     /**
      * 负责发送通知的方法
      * @param teacherId 指定的教师的易班ID
@@ -77,8 +88,7 @@ public class SendLetter {
         Token token = new Token();
         token.setTokenType("resetToken");
         token.setToken(this.accessToken);
-        TokenDao tokenDao = new TokenDao();
-        tokenDao.addToken(token);
+        tokenMapper.addToken(token);
     }
 
     /**
@@ -86,7 +96,6 @@ public class SendLetter {
      * 从数据库中取回最新的一条access_token，类型为resetToken
      */
     private void getAccessToken() {
-        TokenDao tokenDao = new TokenDao();
-        accessToken = tokenDao.selectToken("resetToken");
+        accessToken = tokenMapper.selectToken("resetToken");
     }
 }

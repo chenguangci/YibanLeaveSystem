@@ -1,14 +1,23 @@
 package com.yiban.service.handle;
 
-import com.yiban.dao.SearchDao;
-import net.sf.json.JSONObject;
+import com.yiban.bean.Student;
+import com.yiban.mapper.ClassMapper;
+import com.yiban.mapper.StudentMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
+@Service
 public class IdentityHandle {
+
+    private ClassMapper classMapper;
+    private StudentMapper studentMapper;
+    @Autowired
+    public IdentityHandle(ClassMapper classMapper, StudentMapper studentMapper){
+        this.classMapper = classMapper;
+        this.studentMapper = studentMapper;
+    }
 
     /**
      * 判断授权用户身份
@@ -20,13 +29,20 @@ public class IdentityHandle {
         if (id == null)
             return 0;
         //判断身份
-        SearchDao searchDao = new SearchDao();
-        List<String> teachers = searchDao.searchTeacher(id);
+        List<String> teachers = classMapper.searchTeacher(id);
         if (teachers.size() == 0) {
             return 1;
         } else {
             return 2;
         }
+    }
+
+    public Student select(String id){
+        return studentMapper.select(id);
+    }
+
+    public void insert(Student student) {
+        studentMapper.insert(student);
     }
 
 }

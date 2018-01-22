@@ -8,33 +8,19 @@ public class LeaveContent {
     private String major;
     private String beginTime;
     private String endTime;
-    private String type;
+    private Integer num;
     private String reason;
-    private String isAgree = "no";
-    private String code ;
+    private String agree = "no";
+    private boolean back = false;
+    private String path;
+    private String code;
 
-    public String getType() {
-        return type;
+    public String getPath() {
+        return path;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getStudentId() {
@@ -61,6 +47,22 @@ public class LeaveContent {
         this.telephone = telephone;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
     public String getBeginTime() {
         return beginTime;
     }
@@ -77,6 +79,14 @@ public class LeaveContent {
         this.endTime = endTime;
     }
 
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
     public String getReason() {
         return reason;
     }
@@ -85,12 +95,20 @@ public class LeaveContent {
         this.reason = reason;
     }
 
-    public String getIsAgree() {
-        return isAgree;
+    public String getAgree() {
+        return agree;
     }
 
-    public void setIsAgree(String isAgree) {
-        this.isAgree = isAgree;
+    public void setAgree(String agree) {
+        this.agree = agree;
+    }
+
+    public boolean isBack() {
+        return back;
+    }
+
+    public void setBack(boolean back) {
+        this.back = back;
     }
 
     public String getCode() {

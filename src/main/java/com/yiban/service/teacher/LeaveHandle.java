@@ -1,21 +1,28 @@
 package com.yiban.service.teacher;
 
 import com.yiban.bean.LeaveContent;
-import com.yiban.dao.ContentDao;
+import com.yiban.mapper.ContentMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class LeaveHandle {
-    private ContentDao contentDao = new ContentDao();
+    private ContentMapper contentMapper;
+    @Autowired
+    public LeaveHandle(ContentMapper contentMapper){
+        this.contentMapper = contentMapper;
+    }
     /**
      * 查询请假的学生信息
      * @param id 辅导员或班主任的易班ID
      * @return 请假详细信息
      */
     public List<LeaveContent> selectLeaves(String id){
-        return contentDao.selectLeaves(id);
+        return contentMapper.selectLeaves(id);
     }
 
     /**
@@ -24,7 +31,7 @@ public class LeaveHandle {
      * @return 请假信息的集合
      */
     public List<LeaveContent> selectAll(String id){
-        return contentDao.selectAll(id);
+        return contentMapper.selectAll(id);
     }
 
     /**
@@ -36,7 +43,7 @@ public class LeaveHandle {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String today = format.format(date);
-        return contentDao.todayLeaves(id,today);
+        return contentMapper.todayLeaves(id,today);
     }
 
     /**
@@ -46,6 +53,6 @@ public class LeaveHandle {
      * @return 相应的请假信息
      */
     public List<LeaveContent> selectByType(String id,String type){
-        return contentDao.selectByType(id,type);
+        return contentMapper.selectByType(id,type);
     }
 }

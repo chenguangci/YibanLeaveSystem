@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yiban.dao.mapper.ClassMapper">
+<mapper namespace="com.yiban.mapper.ClassMapper">
     <select id="searchTeacherByStudentId" resultType="java.lang.String">
         SELECT teacher_id FROM major WHERE major_id = #{id}
     </select>

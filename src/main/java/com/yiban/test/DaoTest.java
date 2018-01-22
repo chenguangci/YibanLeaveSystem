@@ -1,9 +1,8 @@
 package com.yiban.test;
 
 import com.yiban.bean.LeaveContent;
-import com.yiban.dao.ContentDao;
+import com.yiban.service.student.FormHandle;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.List;
 
 public class DaoTest {
     @Test
-    public String testContentDao(){
+    public void testContentDao(){
         LeaveContent content = new LeaveContent();
         content.setStudentId("201524133114");
         content.setName("陈光赐");
@@ -21,7 +20,7 @@ public class DaoTest {
         content.setBeginTime("2017-10-16");
         content.setEndTime("2017-10-17");
         content.setReason("有事回家");
-        content.setIsAgree("no");
+        content.setAgree("no");
         LeaveContent content1 = new LeaveContent();
         content1.setStudentId("201524133101");
         content1.setName("小明");
@@ -31,7 +30,7 @@ public class DaoTest {
         content1.setBeginTime("2017-10-20");
         content1.setEndTime("2017-10-21");
         content1.setReason("请病假");
-        content1.setIsAgree("yes");
+        content.setAgree("no");
         LeaveContent content2 = new LeaveContent();
         content2.setStudentId("201524133101");
         content2.setName("小明");
@@ -41,13 +40,13 @@ public class DaoTest {
         content2.setBeginTime("2017-10-26");
         content2.setEndTime("2017-10-28");
         content2.setReason("请病假");
-        content2.setIsAgree("wait");
+        content.setAgree("no");
         List<LeaveContent> contents = new ArrayList<LeaveContent>();
         contents.add(content);
         contents.add(content1);
         contents.add(content2);
         JSONArray object = JSONArray.fromObject(contents);
         System.out.println(object);
-        return object.toString();
+        System.out.println(object.toString());
     }
 }

@@ -1,21 +1,33 @@
 package com.yiban.service.student;
 
 import com.yiban.bean.LeaveContent;
-import com.yiban.dao.ContentDao;
-import com.yiban.dao.SearchDao;
+import com.yiban.mapper.ClassMapper;
+import com.yiban.mapper.ContentMapper;
 import com.yiban.service.handle.SendLetter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * 处理学生页面传过来的表单信息
  */
+@Service
 public class FormHandle {
     private LeaveContent content;
+    private final ContentMapper contentMapper;
+    private final ClassMapper classMapper;
+    private SendLetter sendLetter;
+
+    @Autowired
+    public FormHandle(ContentMapper contentMapper, ClassMapper classMapper, SendLetter sendLetter) {
+        this.contentMapper = contentMapper;
+        this.classMapper = classMapper;
+        this.sendLetter = sendLetter;
+    }
 
     private String getTeacherId() {
         String teacherId;
         String Id = content.getStudentId().substring(0,content.getStudentId().length()-2);
-        SearchDao search = new SearchDao();
-        teacherId = search.searchTeacherByStudentId(Id);
+        teacherId = classMapper.searchTeacherByStudentId(Id);
         return teacherId;
     }
 
@@ -23,11 +35,7 @@ public class FormHandle {
         String teacherId = getTeacherId();
         if (teacherId.length()>1) {
             /*发送信件前先将数据加到数据库*/
-            ContentDao contentDao = new ContentDao();
-            if (!contentDao.addContent(content)){
-                return "请检查您填写的信息是否有误";
-            }
-            SendLetter sendLetter = new SendLetter();
+            contentMapper.addContent(content);
             if (sendLetter.send(teacherId)){
                 return "发送成功";
             } else {
@@ -47,9 +55,8 @@ public class FormHandle {
         content.setMajor(information[4]);
         content.setBeginTime(information[5]);
         content.setEndTime(information[6]);
-        content.setType(information[7]);
+        content.setNum(Integer.parseInt(information[7]));
         content.setReason(information[8]);
         return getResult();
     }
-
 }
