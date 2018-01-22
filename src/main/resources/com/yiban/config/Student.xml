@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yiban.mapper.StudentMapper">
+    <resultMap id="student" type="com.yiban.bean.Student">
+        <id column="yiban_id" property="yibanId"/>
+        <result column="student_id" property="studentid"/>
+        <result column="student_name" property="name"/>
+        <result column="department" property="department"/>
+        <result column="major" property="classname"/>
+    </resultMap>
+    <select id="select" resultMap="student">
+        SELECT a.student_id,a.student_name,a.department,a.major FROM student a WHERE a.yiban_id = #{id}
+    </select>
+    <insert id="insert">
+        INSERT INTO student VALUES (#{yibanId},#{studentid},#{name},#{department},#{classname})
+    </insert>
+</mapper>

@@ -39,19 +39,9 @@ $RECYCLE.BIN/
 .AppleDB
 .AppleDesktop
 Network Trash Folder
-Temporary Items
 .apdisk
 .idea/workspace.xml
-/.idea
-src/main/java/com/yiban/bean/Student.java
-src/main/java/com/yiban/controller/
-src/main/java/com/yiban/mapper/StudentMapper.java
-src/main/resources/applicationContext.xml
-src/main/resources/com/yiban/config/Student.xml
-src/main/resources/jdbc.properties
-src/main/resources/yiban-servlet.xml
-src/main/webapp/WEB-INF/zqu/teacher/
-src/main/webapp/static/
+.idea/
 target/YibanLeaveSystem/WEB-INF/classes/applicationContext.xml
 target/YibanLeaveSystem/WEB-INF/classes/com/yiban/bean/Student.class
 target/YibanLeaveSystem/WEB-INF/classes/com/yiban/config/Student.xml
