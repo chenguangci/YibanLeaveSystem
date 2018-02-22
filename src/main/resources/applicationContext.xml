@@ -20,7 +20,7 @@
                 <value>classpath:com/yiban/**/*.xml</value>
             </array>
         </property>
-        <property name="typeAliasesPackage" value="com.yiban.bean"/>
+        <property name="typeAliasesPackage" value="com.yiban.entity"/>
     </bean>
     <!--自动扫描Mapper接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

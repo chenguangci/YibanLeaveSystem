@@ -1,9 +1,15 @@
 package com.yiban.service.student;
 
-import com.yiban.bean.LeaveContent;
+import com.yiban.entity.Information;
+import com.yiban.exception.ReSetTokenError;
+import com.yiban.exception.RequestInfoError;
+import com.yiban.exception.SendError;
+import com.yiban.exception.SystemRunTimeError;
 import com.yiban.mapper.ClassMapper;
 import com.yiban.mapper.ContentMapper;
 import com.yiban.service.handle.SendLetter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,51 +18,37 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class FormHandle {
-    private LeaveContent content;
-    private final ContentMapper contentMapper;
-    private final ClassMapper classMapper;
-    private SendLetter sendLetter;
 
     @Autowired
-    public FormHandle(ContentMapper contentMapper, ClassMapper classMapper, SendLetter sendLetter) {
-        this.contentMapper = contentMapper;
-        this.classMapper = classMapper;
-        this.sendLetter = sendLetter;
+    private ContentMapper contentMapper;
+    @Autowired
+    private ClassMapper classMapper;
+
+    private Logger logger = LoggerFactory.getLogger(FormHandle.class);
+
+    private SendLetter sendLetter = new SendLetter();
+
+    /**
+     * @return 获取该学生的班主任或者辅导员的id
+     */
+    private String getTeacherId(String studentId) {
+        return classMapper.searchTeacherByStudentId(studentId.substring(0,studentId.length()-2));
     }
 
-    private String getTeacherId() {
-        String teacherId;
-        String Id = content.getStudentId().substring(0,content.getStudentId().length()-2);
-        teacherId = classMapper.searchTeacherByStudentId(Id);
-        return teacherId;
-    }
-
-    private String getResult(){
-        String teacherId = getTeacherId();
-        if (teacherId.length()>1) {
-            /*发送信件前先将数据加到数据库*/
-            contentMapper.addContent(content);
-            if (sendLetter.send(teacherId)){
-                return "发送成功";
-            } else {
-                return "发送信件失败，请联系易班工作人员";
-            }
+    /**
+     * 获取表单信息，封装进information对象中，发送请求
+     * @param information 请假信息
+     */
+    public void setInfoAndSend(Information information)  throws SendError, RequestInfoError, ReSetTokenError, UnknownError, SystemRunTimeError {
+        //TODO 如何通过学号获取辅导员或班主任的易班ID
+        String teacherId = getTeacherId(information.getStudentId());
+        if (teacherId != null && !"".equals(teacherId)) {
+            //发送信件前先将数据加到数据库
+            contentMapper.addContent(information);
+            sendLetter.send(teacherId);
         } else {
-            return "找不到您的班主任或辅导员，请检查您的学号";
+            logger.error("找不到对应的教师id");
+            throw new UnknownError("找不到对应的教师id");
         }
-    }
-
-    public String setInformation(String[] information) {
-        content = new LeaveContent();
-        content.setStudentId(information[0]);
-        content.setName(information[1]);
-        content.setTelephone(information[2]);
-        content.setDepartment(information[3]);
-        content.setMajor(information[4]);
-        content.setBeginTime(information[5]);
-        content.setEndTime(information[6]);
-        content.setNum(Integer.parseInt(information[7]));
-        content.setReason(information[8]);
-        return getResult();
     }
 }

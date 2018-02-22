@@ -1,7 +1,12 @@
 package com.yiban.controller;
 
-import com.yiban.bean.LeaveContent;
-import com.yiban.bean.Student;
+import com.yiban.dto.Result;
+import com.yiban.entity.Information;
+import com.yiban.entity.Student;
+import com.yiban.exception.ReSetTokenError;
+import com.yiban.exception.RequestInfoError;
+import com.yiban.exception.SendError;
+import com.yiban.exception.SystemRunTimeError;
 import com.yiban.service.student.FormHandle;
 import com.yiban.service.student.GetMyLeave;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,47 +14,53 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-
+//TODO 封装返回结果
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-    private FormHandle formHandle;
-    private GetMyLeave myLeave;
-    //学生信息的数量
-    private static final int INFO_NUMBER = 9;
+
     @Autowired
-    public StudentController(FormHandle formHandle, GetMyLeave myLeave) {
-        this.formHandle = formHandle;
-        this.myLeave = myLeave;
-    }
+    private FormHandle formHandle;
+    @Autowired
+    private GetMyLeave myLeave;
 
     //获取个人的请假信息
     @RequestMapping(value = "/myInfo")
-    public ResponseEntity<List<LeaveContent>> myInfo(HttpSession session) {
+    @ResponseBody
+    public ResponseEntity<List<Information>> myInfo(HttpSession session) {
         //获取学号
         String id = (String) session.getAttribute("studentId");
-        return new ResponseEntity<List<LeaveContent>>(myLeave.getMyLeave(id), HttpStatus.OK);
+        return new ResponseEntity<>(myLeave.getMyLeave(id), HttpStatus.OK);
     }
 
+    //TODO 封装所有返回信息
     @RequestMapping(value = "/leave")
-    public String leave(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Student student = (Student)session.getAttribute("student");
-        String[] info = new String[INFO_NUMBER];
-        info[0] = student.getStudentid();
-        info[1] = student.getName();
-        info[2] = request.getParameter("telephone");
-        info[3] = student.getDepartment();
-        info[4] = student.getClassname();
-        info[5] = request.getParameter("begin_time");
-        info[6] = request.getParameter("end_time");
-        info[7] = request.getParameter("num");
-        info[8] = request.getParameter("reason");
-        formHandle.setInformation(info);
-        return null;
+    @ResponseBody
+    public Result leave(HttpServletRequest request) {
+        try {
+            HttpSession session = request.getSession();
+            Student student = (Student)session.getAttribute("student");
+            Information information = new Information();
+            information.setStudentId(student.getStudentId());
+            information.setBeginTime(request.getParameter("begin_time"));
+            information.setEndTime(request.getParameter("end_time"));
+            information.setNumber(Integer.parseInt(request.getParameter("num")));
+            information.setReason(request.getParameter("reason"));
+            information.setStudentId(student.getStudentId());
+            formHandle.setInfoAndSend(information);
+            return new Result(true, "发送成功，等待辅导员的回复");
+        } catch (SendError | RequestInfoError | ReSetTokenError e1) {
+            return new Result(false, "发送消息失败，请稍后重试");
+        } catch (UnknownError e2) {
+            return new Result(false, "找不到您的辅导员或者班主任，请联系管理员");
+        } catch (SystemRunTimeError e3) {
+            return new Result(false, "系统发生异常，请稍后重试");
+        }
+
     }
 }

@@ -1,6 +1,6 @@
 package com.yiban.service.handle;
 
-import com.yiban.bean.Student;
+import com.yiban.entity.Student;
 import com.yiban.mapper.ClassMapper;
 import com.yiban.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +11,11 @@ import java.util.List;
 @Service
 public class IdentityHandle {
 
-    private ClassMapper classMapper;
-    private StudentMapper studentMapper;
     @Autowired
-    public IdentityHandle(ClassMapper classMapper, StudentMapper studentMapper){
-        this.classMapper = classMapper;
-        this.studentMapper = studentMapper;
-    }
+    private ClassMapper classMapper;
+    @Autowired
+    private StudentMapper studentMapper;
+
 
     /**
      * 判断授权用户身份

@@ -1,6 +1,6 @@
 package com.yiban.service.student;
 
-import com.yiban.bean.LeaveContent;
+import com.yiban.entity.Information;
 import com.yiban.mapper.ContentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class GetMyLeave {
      * @param myId 登陆者的学号
      * @return 个人的请假信息
      */
-    public List<LeaveContent> getMyLeave(String myId){
+    public List<Information> getMyLeave(String myId){
         return contentMapper.myLeaves(myId);
     }
 }

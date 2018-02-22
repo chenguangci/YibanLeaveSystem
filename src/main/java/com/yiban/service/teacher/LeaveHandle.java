@@ -1,6 +1,6 @@
 package com.yiban.service.teacher;
 
-import com.yiban.bean.LeaveContent;
+import com.yiban.entity.Information;
 import com.yiban.mapper.ContentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class LeaveHandle {
      * @param id 辅导员或班主任的易班ID
      * @return 请假详细信息
      */
-    public List<LeaveContent> selectLeaves(String id){
+    public List<Information> selectLeaves(String id){
         return contentMapper.selectLeaves(id);
     }
 
@@ -30,7 +30,7 @@ public class LeaveHandle {
      * @param id 班主任或者辅导员的ID
      * @return 请假信息的集合
      */
-    public List<LeaveContent> selectAll(String id){
+    public List<Information> selectAll(String id){
         return contentMapper.selectAll(id);
     }
 
@@ -39,7 +39,7 @@ public class LeaveHandle {
      * @param id 班主任或者辅导员的ID
      * @return 当天处于请假状态的学生的请假详细信息
      */
-    public List<LeaveContent> todayLeaves(String id){
+    public List<Information> todayLeaves(String id){
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         String today = format.format(date);
@@ -52,7 +52,7 @@ public class LeaveHandle {
      * @param type 类型
      * @return 相应的请假信息
      */
-    public List<LeaveContent> selectByType(String id,String type){
+    public List<Information> selectByType(String id,String type){
         return contentMapper.selectByType(id,type);
     }
 }

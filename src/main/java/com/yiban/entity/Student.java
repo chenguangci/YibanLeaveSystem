@@ -1,11 +1,16 @@
-package com.yiban.bean;
+package com.yiban.entity;
 
 public class Student {
+    //易班ID
     private String yibanId;
-    private String studentid;
+    //学生学号
+    private String studentId;
+    //学生姓名
     private String name;
+    //学生院系信息
     private String department;
-    private String classname;
+    //学生班级信息
+    private String className;
 
     public String getYibanId() {
         return yibanId;
@@ -15,12 +20,12 @@ public class Student {
         this.yibanId = yibanId;
     }
 
-    public String getStudentid() {
-        return studentid;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setStudentid(String studentid) {
-        this.studentid = studentid;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {
@@ -39,11 +44,11 @@ public class Student {
         this.department = department;
     }
 
-    public String getClassname() {
-        return classname;
+    public String getClassName() {
+        return className;
     }
 
-    public void setClassname(String classname) {
-        this.classname = classname;
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

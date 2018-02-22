@@ -2,50 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiban.mapper.ContentMapper">
-    <resultMap id="leaveContent" type="com.yiban.bean.LeaveContent">
+    <resultMap id="information" type="com.yiban.entity.Information">
         <result column="student_id" property="studentId"/>
-        <result column="student_name" property="name"/>
-        <result column="telephone" property="telephone"/>
-        <result column="department" property="department"/>
-        <result column="major" property="major"/>
         <result column="begin_time" property="beginTime"/>
         <result column="end_time" property="endTime"/>
-        <result column="num" property="num"/>
+        <result column="number" property="number"/>
         <result column="reason" property="reason"/>
-        <result column="is_agree" property="isAgree"/>
-        <result column="is_back" property="back"/>
-        <result column="path" property="path"/>
+        <result column="phone" property="phone"/>
+        <result column="status" property="status"/>
+        <result column="file_path" property="filePath"/>
         <result column="code" property="code"/>
     </resultMap>
 
     <insert id="addContent">
-        INSERT INTO content VALUES
-            (0,#{studentId},#{name},#{telephone},#{department},#{major},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{num},#{reason},#{agree},#{back},#{path},#{code} )
+        INSERT INTO information VALUES
+            (0,#{studentId},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{number},#{reason},#{phone},#{status},#{filePath},#{code} )
     </insert>
 
     <select id="selectLeaves" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.num,a.reason,a.is_agree,a.is_back,a.path,a.code
-        FROM content a,class b
+        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
+        FROM information a,class b
         WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id AND a.is_agree = 'no'
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectAll" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.num,a.reason,a.is_agree,a.is_back,a.path,a.code
-        FROM content a,class b
+        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
+        FROM information a,class b
         WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="myLeaves" parameterType="java.lang.String">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.num,a.reason,a.is_agree,a.is_back,a.path,a.code
-        FROM content a WHERE a.student_id = #{myId}
+        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
+        FROM information a WHERE a.student_id = #{myId}
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectByType">
-        SELECT a.student_id,a.student_name,a.telephone,a.department,a.major,a.begin_time,a.end_time,a.num,a.reason,a.is_agree,a.is_back,a.path,a.code
-        FROM content a,class b WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id
+        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
+        FROM information a,class b WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id
         ORDER BY a.begin_time DESC
     </select>
 </mapper>
