@@ -1,6 +1,10 @@
 package com.yiban.entity;
 
-public class Information {
+import java.io.Serializable;
+
+public class Information implements Serializable {
+
+    private static final long serialVersionUID = 9193842223814904244L;
     //编号
     private long id;
     //易班id

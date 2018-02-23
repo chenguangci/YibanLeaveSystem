@@ -1,8 +1,11 @@
 package com.yiban.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Token {
+public class Token implements Serializable {
+
+    private static final long serialVersionUID = -3758581923769645921L;
     private int tokenType;
     private String token;
     private Date addTime;

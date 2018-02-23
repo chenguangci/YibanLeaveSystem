@@ -33,3 +33,10 @@ CREATE TABLE token(
   `token` VARCHAR(50),
   `add_time` DATETIME COMMENT '添加时间'
 )ENGINE = InnoDB CHARSET = utf8;
+
+# 班级表
+CREATE TABLE class(
+  class_id VARCHAR(12) NOT NULL ,
+  teacher_yiban_id VARCHAR(10),
+  PRIMARY KEY (class_id)
+)ENGINE = InnoDB CHARSET = utf8;

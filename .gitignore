@@ -40,7 +40,6 @@ $RECYCLE.BIN/
 .AppleDesktop
 Network Trash Folder
 .apdisk
-.idea/workspace.xml
 .idea/
 target/YibanLeaveSystem/WEB-INF/classes/applicationContext.xml
 target/YibanLeaveSystem/WEB-INF/classes/com/yiban/bean/Student.class
@@ -83,3 +82,4 @@ target/classes/configuration.xml
 target/classes/jdbc.properties
 target/classes/yiban-servlet.xml
 target/generated-sources/
+

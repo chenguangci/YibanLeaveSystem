@@ -1,6 +1,10 @@
 package com.yiban.entity;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
+
+    private static final long serialVersionUID = 3210359254553565346L;
     //易班ID
     private String yibanId;
     //学生学号

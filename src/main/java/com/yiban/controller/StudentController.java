@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,9 +40,9 @@ public class StudentController {
     }
 
     //TODO 封装所有返回信息
-    @RequestMapping(value = "/leave")
+    @RequestMapping(value = "/{yibanId}")
     @ResponseBody
-    public Result leave(HttpServletRequest request) {
+    public Result leave(HttpServletRequest request, @PathVariable(value = "yibanId")String yibanId) {
         try {
             HttpSession session = request.getSession();
             Student student = (Student)session.getAttribute("student");
