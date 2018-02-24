@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TokenMapper {
     Token selectToken(int type);
-    void addToken(Token token);
+    int addToken(Token token);
     int updateToken(Token token);
 }

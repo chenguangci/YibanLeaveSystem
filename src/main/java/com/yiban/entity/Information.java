@@ -24,6 +24,21 @@ public class Information implements Serializable {
     //验证码
     private String code;
 
+    @Override
+    public String toString() {
+        return "Information{" +
+                "id=" + id +
+                ", studentId='" + studentId + '\'' +
+                ", beginTime='" + beginTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", number=" + number +
+                ", reason='" + reason + '\'' +
+                ", status=" + status +
+                ", filePath='" + filePath + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
+
     public long getId() {
         return id;
     }

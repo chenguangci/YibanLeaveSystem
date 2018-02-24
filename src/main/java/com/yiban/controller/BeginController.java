@@ -72,7 +72,8 @@ public class BeginController {
         String yibanId = (String) session.getAttribute("yibanId");
         String accessToken = (String) session.getAttribute("accessToken");
         session.removeAttribute("accessToken");
-
+        //添加密匙
+        session.setAttribute("yiban_id_key",identityHandle.key(yibanId));
         try {
             /*
              * 根据id进行身份判断
@@ -91,8 +92,8 @@ public class BeginController {
              */
             if (student != null) {
                 modelAndView.addObject("student", student);
-                //TODO 对易班id进行加密
-                modelAndView.setViewName("redirect:student/"+yibanId);
+                //TODO 跳转到学生请假界面
+                modelAndView.setViewName("student/test");
                 return modelAndView;
             } else {
                 /*
@@ -101,6 +102,7 @@ public class BeginController {
                 GetInfo info = new GetInfo();
                 Map<String, String> myInfo = info.getMyInfo(accessToken);
                 if ("success".equals(myInfo.get("status"))) {
+
                     if (myInfo.get("yb_studentid") != null && !"".equals(myInfo.get("yb_studentid").trim())) {
                         //学生id不为空，跳转到学生页面，传值
                         student = new Student();
@@ -109,14 +111,14 @@ public class BeginController {
                         student.setName(myInfo.get("yb_realname"));
                         student.setDepartment(myInfo.get("yb_collegename"));
                         student.setClassName(myInfo.get("yb_classname"));
-                        //TODO 将信息存入数据库
-                        //identityHandle.insert(student);
+                        identityHandle.insert(student);
                         //session.setAttribute("student", student);
                         result = new Result(true, student);
                         //TODO 添加跳转地址
                         modelAndView.setViewName("student/test");
                         modelAndView.addObject("result", result);
                         return modelAndView;
+
                     } else if (myInfo.get("yb_employid") != null && !"".equals(myInfo.get("yb_employid").trim())) {
                         //教师工号不为空，跳转到教师页面
                         result = new Result(true, "教师");
@@ -129,7 +131,7 @@ public class BeginController {
                         return modelAndView;
                     } else {
                         //出现学号，工号均为空的情况，抛出异常，理论上是不会出现这种情况才对吧。。。
-                        throw new UnknownInfoError("无法判别身份");
+                        throw new UnknownInfoException("无法判别身份");
                     }
                 } else {
                     //提示完成校方认证
@@ -139,17 +141,17 @@ public class BeginController {
                     return modelAndView;
                 }
             }
-        } catch (SendError | RequestInfoError e1) {
+        } catch (SendException | RequestInfoException e1) {
             result = new Result(false, "获取信息发送错误，请稍后重试");
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址
             return modelAndView;
-        } catch (UnknownInfoError e2){
+        } catch (UnknownInfoException e2){
             result = new Result(false,"无法判别身份");
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址
             return modelAndView;
-        } catch (SystemRunTimeError e3) {
+        } catch (SystemRunTimeException e3) {
             result = new Result(false, "系统发生异常，请稍后重试");
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址

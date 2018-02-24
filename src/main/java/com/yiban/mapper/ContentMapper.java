@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface ContentMapper {
-    void addContent(Information content);
+    int addContent(Information content);
     List<Information> selectLeaves(String id);
     List<Information> selectAll(String id);
     List<Information> myLeaves(String myId);

@@ -13,6 +13,14 @@ public class ClassTable implements Serializable {
     //班级对应的班主任或者辅导员的易班ID
     private String teacherYibanId;
 
+    @Override
+    public String toString() {
+        return "ClassTable{" +
+                "classId='" + classId + '\'' +
+                ", teacherYibanId='" + teacherYibanId + '\'' +
+                '}';
+    }
+
     public String getClassId() {
         return classId;
     }

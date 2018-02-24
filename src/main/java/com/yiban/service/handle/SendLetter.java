@@ -2,10 +2,10 @@ package com.yiban.service.handle;
 
 import com.yiban.dto.YibanURL;
 import com.yiban.entity.Token;
-import com.yiban.exception.ReSetTokenError;
-import com.yiban.exception.SendError;
-import com.yiban.exception.RequestInfoError;
-import com.yiban.exception.SystemRunTimeError;
+import com.yiban.exception.ReSetTokenException;
+import com.yiban.exception.SendException;
+import com.yiban.exception.RequestInfoException;
+import com.yiban.exception.SystemRunTimeException;
 import com.yiban.mapper.TokenMapper;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -42,7 +42,7 @@ public class SendLetter {
      *
      * @param userId 指定的用户的易班ID
      */
-    public void send(String userId) throws SendError, RequestInfoError, ReSetTokenError, SystemRunTimeError {
+    public void send(String userId) throws SendException, RequestInfoException, ReSetTokenException, SystemRunTimeException {
         //获取token
         getAccessToken();
         //判断日期是否过时，如果过期则重置token
@@ -56,11 +56,11 @@ public class SendLetter {
     /**
      * 调用sendPost()发送请求
      * @param userId 制定用户的id
-     * @throws SendError
-     * @throws RequestInfoError
-     * @throws SystemRunTimeError
+     * @throws SendException
+     * @throws RequestInfoException
+     * @throws SystemRunTimeException
      */
-    private void sendLetter(String userId) throws SendError, RequestInfoError, SystemRunTimeError {
+    private void sendLetter(String userId) throws SendException, RequestInfoException, SystemRunTimeException {
         //拼接参数
         String param = "access_token=" + accessToken + "&to_yb_uid=" + userId + "&content=" + CONTENT + "&template=user";
         //发送信息
@@ -68,7 +68,7 @@ public class SendLetter {
         logger.debug("送信时返回的json：{}", str);
         //判断请求是否成功
         if (!str.contains("success")) {
-            throw new RequestInfoError("发送信息失败");
+            throw new RequestInfoException("发送信息失败");
         }
     }
 
@@ -76,7 +76,7 @@ public class SendLetter {
      * 重置授权,返回新的access_token
      * 将新的access_token存入数据库
      */
-    private void resetToken() throws SendError, ReSetTokenError, SystemRunTimeError {
+    private void resetToken() throws SendException, ReSetTokenException, SystemRunTimeException {
         //拼接参数
         String param = "client_id=" + appKey + "&client_secret=" + appSecret + "&dev_uid=" + myId;
         //发送请求
@@ -107,10 +107,10 @@ public class SendLetter {
             }
         } else if (map.get("status").equals("500")) {
             logger.error("成功返回，但token重置失败，失败原因：{}", json);
-            throw new ReSetTokenError("token重置失败");
+            throw new ReSetTokenException("token重置失败");
         } else {
             logger.error("重置token请求时发生错误，失败原因：{}", json);
-            throw new ReSetTokenError("请求重置token发生错误");
+            throw new ReSetTokenException("请求重置token发生错误");
         }
 
     }
@@ -120,7 +120,7 @@ public class SendLetter {
      * 从数据库中取回最新的一条access_token，类型为0
      * 理论上方法中的if判断不会发生，有也只是发生在第一次
      */
-    private void getAccessToken()  throws SendError, ReSetTokenError, SystemRunTimeError {
+    private void getAccessToken()  throws SendException, ReSetTokenException, SystemRunTimeException {
         this.accessToken = tokenMapper.selectToken(0);
         if (accessToken == null) {
             logger.error("获取的json为空");

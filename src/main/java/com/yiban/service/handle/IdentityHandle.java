@@ -3,10 +3,11 @@ package com.yiban.service.handle;
 import com.yiban.entity.Student;
 import com.yiban.mapper.ClassMapper;
 import com.yiban.mapper.StudentMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.util.DigestUtils;
 
 @Service
 public class IdentityHandle {
@@ -16,6 +17,9 @@ public class IdentityHandle {
     @Autowired
     private StudentMapper studentMapper;
 
+    private Logger logger = LoggerFactory.getLogger(IdentityHandle.class);
+
+    private static final String salt = "ZQUYiBanJiShuBu666666";
 
     /**
      * 判断授权用户身份
@@ -31,7 +35,14 @@ public class IdentityHandle {
     }
 
     public void insert(Student student) {
-        studentMapper.insert(student);
+        if (studentMapper.insert(student) == 0)
+            logger.error("添加学生信息出现失败，学生信息：{}",student.toString());
     }
 
+    public String key(String yibanId) {
+        String key = yibanId+'/'+salt;
+        String md5 = DigestUtils.md5DigestAsHex(key.getBytes());
+        logger.info("md5的值：{}", md5);
+        return md5;
+    }
 }

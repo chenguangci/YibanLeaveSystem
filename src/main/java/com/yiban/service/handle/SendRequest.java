@@ -1,7 +1,7 @@
 package com.yiban.service.handle;
 
-import com.yiban.exception.SendError;
-import com.yiban.exception.SystemRunTimeError;
+import com.yiban.exception.SendException;
+import com.yiban.exception.SystemRunTimeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,14 +51,14 @@ public class SendRequest {
                 result.append(line);
             }
         } catch (Exception e) {
-            throw new SendError("服务器请求发生异常");
+            throw new SendException("服务器请求发生异常");
         } finally {
             try {
                 if (reader != null)
                     reader.close();
             } catch (Exception e) {
                 logger.error("输入流关闭错误");
-                throw new SystemRunTimeError("系统未知异常");
+                throw new SystemRunTimeException("系统未知异常");
             }
         }
         return result.toString();
@@ -92,21 +92,21 @@ public class SendRequest {
                 result.append(line);
             }
         } catch (Exception e) {
-            throw new SendError("服务器请求发生异常");
+            throw new SendException("服务器请求发生异常");
         } finally {
             try {
                 if (reader != null)
                     reader.close();
             } catch (IOException e) {
                 logger.error("输入流关闭错误");
-                throw new SystemRunTimeError("系统未知异常");
+                throw new SystemRunTimeException("系统未知异常");
             }
         }
         return result.toString();
     }
 
 
-    public String sendRequest(String url, String param, SendRequest.TYPE type) throws IllegalArgumentException, SystemRunTimeError {
+    public String sendRequest(String url, String param, SendRequest.TYPE type) throws IllegalArgumentException, SystemRunTimeException {
         switch (type) {
             case POST:
                 return sendPost(url, param);

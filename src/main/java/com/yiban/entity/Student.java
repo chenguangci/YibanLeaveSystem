@@ -16,6 +16,17 @@ public class Student implements Serializable {
     //学生班级信息
     private String className;
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "yibanId='" + yibanId + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", name='" + name + '\'' +
+                ", department='" + department + '\'' +
+                ", className='" + className + '\'' +
+                '}';
+    }
+
     public String getYibanId() {
         return yibanId;
     }

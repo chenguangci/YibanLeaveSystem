@@ -1,10 +1,10 @@
 package com.yiban.service.student;
 
 import com.yiban.entity.Information;
-import com.yiban.exception.ReSetTokenError;
-import com.yiban.exception.RequestInfoError;
-import com.yiban.exception.SendError;
-import com.yiban.exception.SystemRunTimeError;
+import com.yiban.exception.ReSetTokenException;
+import com.yiban.exception.RequestInfoException;
+import com.yiban.exception.SendException;
+import com.yiban.exception.SystemRunTimeException;
 import com.yiban.mapper.ClassMapper;
 import com.yiban.mapper.ContentMapper;
 import com.yiban.service.handle.SendLetter;
@@ -39,7 +39,7 @@ public class FormHandle {
      * 获取表单信息，封装进information对象中，发送请求
      * @param information 请假信息
      */
-    public void setInfoAndSend(Information information)  throws SendError, RequestInfoError, ReSetTokenError, UnknownError, SystemRunTimeError {
+    public void setInfoAndSend(Information information)  throws SendException, RequestInfoException, ReSetTokenException, UnknownError, SystemRunTimeException {
         //TODO 如何通过学号获取辅导员或班主任的易班ID
         String teacherId = getTeacherId(information.getStudentId());
         if (teacherId != null && !"".equals(teacherId)) {

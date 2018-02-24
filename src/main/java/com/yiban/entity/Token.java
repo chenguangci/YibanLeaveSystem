@@ -10,6 +10,14 @@ public class Token implements Serializable {
     private String token;
     private Date addTime;
 
+    @Override
+    public String toString() {
+        return "Token{" +
+                "tokenType=" + tokenType +
+                ", token='" + token + '\'' +
+                ", addTime=" + addTime +
+                '}';
+    }
 
     public int getTokenType() {
         return tokenType;

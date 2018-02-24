@@ -21,6 +21,15 @@ public class Result<T>{
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "Result{" +
+                "success=" + success +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public boolean isSuccess() {
         return success;
     }
