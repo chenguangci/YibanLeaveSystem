@@ -11,7 +11,7 @@ ${result.data.studentId}<br>
 ${result.data.name}<br>
 ${result.data.department}<br>
 ${result.data.className}<br>
-${result.data.studentId}
+${result.data.yibanId}
 <form action="#" method="post">
     <input type="submit" value="我的请假信息">
 </form>

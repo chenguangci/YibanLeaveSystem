@@ -9,8 +9,8 @@
         <module name="YibanLeaveSystem" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="YibanLeaveSystem" target="1.6" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="YibanLeaveSystem" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

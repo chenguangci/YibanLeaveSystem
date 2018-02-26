@@ -3,10 +3,7 @@ package com.yiban.controller;
 import com.yiban.dto.Result;
 import com.yiban.entity.Information;
 import com.yiban.entity.Student;
-import com.yiban.exception.ReSetTokenException;
-import com.yiban.exception.RequestInfoException;
-import com.yiban.exception.SendException;
-import com.yiban.exception.SystemRunTimeException;
+import com.yiban.exception.*;
 import com.yiban.service.student.FormHandle;
 import com.yiban.service.student.GetMyLeave;
 import org.apache.commons.io.FileUtils;
@@ -23,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 @Controller
 @RequestMapping("/student")
@@ -46,25 +44,34 @@ public class StudentController {
 
     @RequestMapping(value = "/leave", method = RequestMethod.POST)
     @ResponseBody
-    public Result leave(@RequestParam(value = "file")MultipartFile file, Information information) {
+    public Result leave(@RequestParam(value = "file")MultipartFile file, @RequestParam(required = false) Information information) {
         try {
-            //文件处理
-            if (!file.isEmpty()) {
+            //文件以及请假信息
+            if (!file.isEmpty() && information != null) {
                 logger.info("上传的文件名：{}", file.getName());
                 try {
-                    //TODO 将文件保存到指定路径上
-                    FileUtils.copyInputStreamToFile(file.getInputStream(),new File("",""));
+                    String filePath = "/home/beiyi/MyFile/log/yiban_file" + String.valueOf(Calendar.YEAR) + (Calendar.MONTH + 1) + Calendar.DAY_OF_MONTH +file.getName();
+                    FileUtils.copyInputStreamToFile(file.getInputStream(),new File(filePath));
+                    information.setFilePath(filePath);
+                    /*
+                     * 重要功能，存储请假信息以及查找学生对应的辅导员并发送请假通知
+                     */
+                    formHandle.setInfoAndSend(information);
+                    return new Result(true, "发送成功，等待辅导员的回复");
                 } catch (IOException e) {
                     throw new SystemRunTimeException("文件上传异常");
                 }
+            } else {
+                throw new DataLossException("确少必要信息或文件");
             }
-            formHandle.setInfoAndSend(information);
-            return new Result(true, "发送成功，等待辅导员的回复");
+
         } catch (SendException | RequestInfoException | ReSetTokenException e1) {
             return new Result(false, "发送消息失败，请稍后重试");
-        } catch (UnknownError e2) {
+        } catch (DataLossException e2) {
+            return new Result(false, "确少必要信息或文件");
+        } catch (UnknownError e3) {
             return new Result(false, "找不到您的辅导员或者班主任，请联系管理员");
-        } catch (SystemRunTimeException e3) {
+        } catch (SystemRunTimeException e4) {
             return new Result(false, "系统发生异常，请稍后重试");
         }
 

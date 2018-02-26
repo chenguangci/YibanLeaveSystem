@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
-
+//TODO 通过切面进行身份判断，获取易班ID以及MD5值
 @Controller
 @RequestMapping(value = "/leave")
 public class BeginController {
@@ -46,13 +46,19 @@ public class BeginController {
             String url = authorize.forwardurl(callbackUrl, "test", Authorize.DISPLAY_TAG_T.WEB);
             return "redirect:" + url;
         } else {
-//          跳转到StudentController
             JSONObject object = JSONObject.fromObject(authorize.querytoken(code, callbackUrl));
-            String accessToken = object.getString("access_token");
-            String userId = object.getString("userid");
-            session.setAttribute("yibanId", userId);
-            session.setAttribute("accessToken", accessToken);
-            return "redirect:/leave/toLeave";
+            logger.info("授权后的toke：{}",object);
+            if (object.has("access_token")) {
+                String accessToken = object.getString("access_token");
+                String userId = object.getString("userid");
+                session.setAttribute("yiban_id", userId);
+                session.setAttribute("accessToken", accessToken);
+                //添加密匙
+                session.setAttribute("yiban_id_key",identityHandle.key(userId));
+                return "redirect:/leave/toLeave";
+            } else {
+                return "false";
+            }
         }
     }
 
@@ -62,18 +68,17 @@ public class BeginController {
      * @param session 获取session中的易班id和accessToken
      * @return 判断用户身份再跳转到相应页面
      */
-    @RequestMapping(value = "toLeave", method = RequestMethod.POST)
+    @RequestMapping(value = "/toLeave", method = RequestMethod.GET)
     public ModelAndView studentIndex(HttpSession session) {
         Result result = null;
         ModelAndView modelAndView = new ModelAndView();
         /*
          * 获取用户id和accessToken
          */
-        String yibanId = (String) session.getAttribute("yibanId");
+        String yibanId = (String) session.getAttribute("yiban_id");
         String accessToken = (String) session.getAttribute("accessToken");
         session.removeAttribute("accessToken");
-        //添加密匙
-        session.setAttribute("yiban_id_key",identityHandle.key(yibanId));
+
         try {
             /*
              * 根据id进行身份判断
@@ -91,7 +96,7 @@ public class BeginController {
              * 判断是否为学生，如果获取的信息不为空，直接跳转
              */
             if (student != null) {
-                modelAndView.addObject("student", student);
+                modelAndView.addObject("result", new Result(true, student));
                 //TODO 跳转到学生请假界面
                 modelAndView.setViewName("student/test");
                 return modelAndView;
@@ -111,27 +116,22 @@ public class BeginController {
                         student.setName(myInfo.get("yb_realname"));
                         student.setDepartment(myInfo.get("yb_collegename"));
                         student.setClassName(myInfo.get("yb_classname"));
+                        logger.info("学生信息：{}",student.toString());
                         identityHandle.insert(student);
-                        //session.setAttribute("student", student);
                         result = new Result(true, student);
-                        //TODO 添加跳转地址
-                        modelAndView.setViewName("student/test");
+                        modelAndView.setViewName("student/student");
                         modelAndView.addObject("result", result);
                         return modelAndView;
 
-                    } else if (myInfo.get("yb_employid") != null && !"".equals(myInfo.get("yb_employid").trim())) {
-                        //教师工号不为空，跳转到教师页面
+                    } else {
+                        //没有学号，默认是教师
                         result = new Result(true, "教师");
                         /*
-                         * TODO 添加跳转地址，同时对教师信息进行处理
-                         * 但是如果数据库中没有班级与教师的易班id对应的信息，那么跳转后的信息一样是无法处理的，
-                         * 需要找老师的账号进行测试
+                         * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
                          */
+                        modelAndView.setViewName("teacher/teacher");
                         modelAndView.addObject("result", result);
                         return modelAndView;
-                    } else {
-                        //出现学号，工号均为空的情况，抛出异常，理论上是不会出现这种情况才对吧。。。
-                        throw new UnknownInfoException("无法判别身份");
                     }
                 } else {
                     //提示完成校方认证
@@ -143,11 +143,6 @@ public class BeginController {
             }
         } catch (SendException | RequestInfoException e1) {
             result = new Result(false, "获取信息发送错误，请稍后重试");
-            modelAndView.addObject("result", result);
-            //TODO 添加跳转地址
-            return modelAndView;
-        } catch (UnknownInfoException e2){
-            result = new Result(false,"无法判别身份");
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址
             return modelAndView;

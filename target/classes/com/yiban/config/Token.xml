@@ -13,7 +13,7 @@
     </select>
 
     <insert id="addToken" parameterType="com.yiban.entity.Token">
-        INSERT INTO token VALUES
+        INSERT IGNORE INTO token VALUES
             (#{tokenType},#{token},#{addTime})
     </insert>
 

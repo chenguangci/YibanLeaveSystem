@@ -55,10 +55,11 @@ public class SendLetter {
 
     /**
      * 调用sendPost()发送请求
+     *
      * @param userId 制定用户的id
-     * @throws SendException
-     * @throws RequestInfoException
-     * @throws SystemRunTimeException
+     * @throws SendException          发送网络请求异常
+     * @throws RequestInfoException   获取返回值出现错误
+     * @throws SystemRunTimeException 系统发生异常
      */
     private void sendLetter(String userId) throws SendException, RequestInfoException, SystemRunTimeException {
         //拼接参数
@@ -120,7 +121,7 @@ public class SendLetter {
      * 从数据库中取回最新的一条access_token，类型为0
      * 理论上方法中的if判断不会发生，有也只是发生在第一次
      */
-    private void getAccessToken()  throws SendException, ReSetTokenException, SystemRunTimeException {
+    private void getAccessToken() throws SendException, ReSetTokenException, SystemRunTimeException {
         this.accessToken = tokenMapper.selectToken(0);
         if (accessToken == null) {
             logger.error("获取的json为空");

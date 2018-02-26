@@ -15,7 +15,7 @@
     </resultMap>
 
     <insert id="addContent">
-        INSERT INTO information VALUES
+        INSERT IGNORE INTO information VALUES
             (0,#{studentId},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{number},#{reason},#{phone},#{status},#{filePath},#{code} )
     </insert>
 

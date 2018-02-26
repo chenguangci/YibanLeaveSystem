@@ -13,6 +13,6 @@
         SELECT a.student_id,a.name,a.department,a.class_name FROM student a WHERE a.yiban_id = #{id}
     </select>
     <insert id="insert">
-        INSERT IGNORE INTO student VALUES (#{studentId},#{studentId},#{name},#{department},#{className})
+        INSERT IGNORE INTO student VALUES (#{studentId},#{name},#{department},#{className},#{yibanId})
     </insert>
 </mapper>

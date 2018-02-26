@@ -6,11 +6,12 @@
     <title>Title</title>
 </head>
 <body>
-${student.studentid}<br>
-${student.name}<br>
-${student.department}<br>
-${student.className}<br>
-${student.studentId}
+${result.success}<br>
+${result.data.studentId}<br>
+${result.data.name}<br>
+${result.data.department}<br>
+${result.data.className}<br>
+${result.data.studentId}
 <form action="#" method="post">
     <input type="submit" value="我的请假信息">
 </form>

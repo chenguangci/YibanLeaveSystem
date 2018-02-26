@@ -44,8 +44,12 @@ public class FormHandle {
         String teacherId = getTeacherId(information.getStudentId());
         if (teacherId != null && !"".equals(teacherId)) {
             //发送信件前先将数据加到数据库
-            contentMapper.addContent(information);
-            sendLetter.send(teacherId);
+            if (contentMapper.addContent(information) > 0)
+                sendLetter.send(teacherId);
+            else {
+                logger.error("添加请假信息发生错误，需要添加的请假信息为：{}",information.toString());
+                throw new SystemRunTimeException("系统发生异常，请稍后重试");
+            }
         } else {
             logger.error("找不到对应的教师id");
             throw new UnknownError("找不到对应的教师id");
