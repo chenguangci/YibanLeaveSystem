@@ -22,26 +22,26 @@
     <select id="selectLeaves" parameterType="java.lang.String">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
         FROM information a,class b
-        WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id AND a.is_agree = 'no'
+        WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id AND a.status = 0
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectAll" parameterType="java.lang.String">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
         FROM information a,class b
-        WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id
+        WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id
         ORDER BY a.begin_time DESC
     </select>
 
-    <select id="myLeaves" parameterType="java.lang.String">
-        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
+    <select id="myLeaves" resultMap="information" parameterType="java.lang.String">
+        SELECT a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
         FROM information a WHERE a.student_id = #{myId}
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectByType">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
-        FROM information a,class b WHERE b.teacher_id = #{id} AND LEFT(a.student_id,10) = b.id
+        FROM information a,class b WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id
         ORDER BY a.begin_time DESC
     </select>
 </mapper>

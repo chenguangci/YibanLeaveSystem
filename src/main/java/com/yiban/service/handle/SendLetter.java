@@ -8,6 +8,7 @@ import com.yiban.exception.RequestInfoException;
 import com.yiban.exception.SystemRunTimeException;
 import com.yiban.mapper.TokenMapper;
 import net.sf.json.JSONObject;
+import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,6 @@ public class SendLetter {
     private static final String appSecret = "7eafe47e5c585ef1ad6b3e3bd3aff408";
     private static final String myId = "10849451";
     //TODO 消息需要动态生成，再修改
-    //TODO 试试能不能通过硬编码给消息添加链接
     private static final String CONTENT = "尊敬的老师，您有一学生申请请假，详情请登陆易班请假系统查看";
 
     private SendRequest request = new SendRequest();
@@ -33,9 +33,12 @@ public class SendLetter {
 
     private Logger logger = LoggerFactory.getLogger(SendLetter.class);
 
-    @Autowired
-    private TokenMapper tokenMapper;
+    private final TokenMapper tokenMapper;
 
+    @Autowired
+    public SendLetter(TokenMapper tokenMapper) {
+        this.tokenMapper = tokenMapper;
+    }
 
     /**
      * 负责发送通知的方法
@@ -63,7 +66,7 @@ public class SendLetter {
      */
     private void sendLetter(String userId) throws SendException, RequestInfoException, SystemRunTimeException {
         //拼接参数
-        String param = "access_token=" + accessToken + "&to_yb_uid=" + userId + "&content=" + CONTENT + "&template=user";
+        String param = "access_token=" + accessToken.getToken() + "&to_yb_uid=" + userId + "&content=" + CONTENT + "&template=system";
         //发送信息
         String str = request.sendRequest(YibanURL.SendLetter, param, SendRequest.TYPE.POST);
         logger.debug("送信时返回的json：{}", str);
@@ -94,11 +97,11 @@ public class SendLetter {
         //如果重置授权成功
         if (map.get("status").equals("200")) {
             //插入新的access_token
-            Token token = new Token();
-            token.setTokenType(0);
-            token.setToken(map.get("access_token"));
-            token.setAddTime(new Date());
-            int insert = tokenMapper.updateToken(token);
+            accessToken = new Token();
+            accessToken.setTokenType(0);
+            accessToken.setToken(map.get("access_token"));
+            accessToken.setAddTime(new Date());
+            int insert = tokenMapper.insertToken(accessToken);
         /*
          * insert代表插入的结果，为0的时候说明插入失败，但不影响业务流程，
          * 这里以错误日志提示，如有出现插入失败，后期再做维修
@@ -122,11 +125,12 @@ public class SendLetter {
      * 理论上方法中的if判断不会发生，有也只是发生在第一次
      */
     private void getAccessToken() throws SendException, ReSetTokenException, SystemRunTimeException {
+        Assert.assertNotNull(tokenMapper);
         this.accessToken = tokenMapper.selectToken(0);
         if (accessToken == null) {
             logger.error("获取的json为空");
             resetToken();
-            this.accessToken = tokenMapper.selectToken(0);
+            //this.accessToken = tokenMapper.selectToken(0);
         }
     }
 

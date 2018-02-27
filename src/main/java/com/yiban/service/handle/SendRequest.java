@@ -34,8 +34,8 @@ public class SendRequest {
             HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
             //设置属性
             connection.setRequestMethod("POST");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(8000);
+            connection.setReadTimeout(8000);
             //输入输出流设为true
             connection.setDoInput(true);
             connection.setDoOutput(true);
@@ -51,6 +51,7 @@ public class SendRequest {
                 result.append(line);
             }
         } catch (Exception e) {
+            logger.error("异常信息：{}",e.getMessage());
             throw new SendException("服务器请求发生异常");
         } finally {
             try {
@@ -92,6 +93,7 @@ public class SendRequest {
                 result.append(line);
             }
         } catch (Exception e) {
+            logger.error("异常信息：{}",e.getMessage());
             throw new SendException("服务器请求发生异常");
         } finally {
             try {

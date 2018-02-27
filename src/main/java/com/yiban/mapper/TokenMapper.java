@@ -8,4 +8,5 @@ public interface TokenMapper {
     Token selectToken(int type);
     int addToken(Token token);
     int updateToken(Token token);
+    int insertToken(Token token);
 }

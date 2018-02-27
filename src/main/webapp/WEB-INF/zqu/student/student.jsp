@@ -63,7 +63,7 @@
                                     <br>
                                     <div class="col-md-6 ">
                                         <div class="input-group"><span class="input-group-addon"><i class="fa fa-phone">联系方式</i></span>
-                                            <input name="Mobile" type="text" class="form-control" id="Mobile"
+                                            <input name="phone" type="text" class="form-control" id="Mobile"
                                                    placeholder="请输入手机号码" tip="请输入手机号码"></div>
 
                                     </div>
@@ -86,7 +86,6 @@
                                                    name="set_order_time"/>
                                         </div>
                                     </div>
-
 
                                     <div class="col-md-4 "><span class="input-group-addon"><i class="fa fa-calendar">截止时间</i></span>
                                         <div class="input-group date form_datetime" data-link-field="end">

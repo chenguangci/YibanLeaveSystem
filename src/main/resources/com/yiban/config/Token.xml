@@ -12,8 +12,8 @@
         SELECT token_type, token, add_time FROM token WHERE token_type = #{tokenType} LIMIT 0,1
     </select>
 
-    <insert id="addToken" parameterType="com.yiban.entity.Token">
-        INSERT IGNORE INTO token VALUES
+    <insert id="insertToken" parameterType="com.yiban.entity.Token">
+        INSERT INTO token VALUES
             (#{tokenType},#{token},#{addTime})
     </insert>
 

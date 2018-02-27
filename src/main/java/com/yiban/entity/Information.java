@@ -17,6 +17,8 @@ public class Information implements Serializable {
     private int number;
     //请假原因
     private String reason;
+    //联系方式
+    private String phone;
     //状态
     private int status;
     //文件路径
@@ -33,6 +35,7 @@ public class Information implements Serializable {
                 ", endTime='" + endTime + '\'' +
                 ", number=" + number +
                 ", reason='" + reason + '\'' +
+                ", phone='" + phone + '\'' +
                 ", status=" + status +
                 ", filePath='" + filePath + '\'' +
                 ", code='" + code + '\'' +
@@ -109,5 +112,13 @@ public class Information implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

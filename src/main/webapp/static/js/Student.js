@@ -104,7 +104,7 @@ $(document).ready(function() {
 
   
 
-})
+});
 
 $("#Number").click(function(){
 	var reg = /^\s*|\s*$/g;

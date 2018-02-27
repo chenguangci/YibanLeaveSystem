@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 处理学生页面传过来的表单信息
@@ -24,9 +25,11 @@ public class FormHandle {
     @Autowired
     private ClassMapper classMapper;
 
+    @Autowired
+    private SendLetter sendLetter;
+
     private Logger logger = LoggerFactory.getLogger(FormHandle.class);
 
-    private SendLetter sendLetter = new SendLetter();
 
     /**
      * @return 获取该学生的班主任或者辅导员的id
@@ -39,9 +42,11 @@ public class FormHandle {
      * 获取表单信息，封装进information对象中，发送请求
      * @param information 请假信息
      */
+    @Transactional
     public void setInfoAndSend(Information information)  throws SendException, RequestInfoException, ReSetTokenException, UnknownError, SystemRunTimeException {
         //TODO 如何通过学号获取辅导员或班主任的易班ID
         String teacherId = getTeacherId(information.getStudentId());
+//        String teacherId = "10849451";
         if (teacherId != null && !"".equals(teacherId)) {
             //发送信件前先将数据加到数据库
             if (contentMapper.addContent(information) > 0)

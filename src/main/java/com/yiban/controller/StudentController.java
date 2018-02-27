@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+
 @Controller
 @RequestMapping("/student")
 public class StudentController {
@@ -34,24 +35,25 @@ public class StudentController {
     private Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     //获取个人的请假信息
-    @RequestMapping(value = "/{yibanId}/Info")
+    @RequestMapping(value = "/{studentId}/Info", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<List<Information>> myInfo(HttpSession session, @PathVariable(value = "yibanId")String yibanId) {
+    public List<Information> myInfo(HttpSession session, @PathVariable(value = "studentId") String studentId) {
         //获取学号
         String id = (String) session.getAttribute("studentId");
-        return new ResponseEntity<>(myLeave.getMyLeave(id), HttpStatus.OK);
+        System.out.println("学号：" + studentId);
+        return myLeave.getMyLeave(studentId);
     }
 
     @RequestMapping(value = "/leave", method = RequestMethod.POST)
     @ResponseBody
-    public Result leave(@RequestParam(value = "file")MultipartFile file, @RequestParam(required = false) Information information) {
+    public Result leave(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam(required = false) Information information) {
         try {
             //文件以及请假信息
             if (!file.isEmpty() && information != null) {
                 logger.info("上传的文件名：{}", file.getName());
                 try {
-                    String filePath = "/home/beiyi/MyFile/log/yiban_file" + String.valueOf(Calendar.YEAR) + (Calendar.MONTH + 1) + Calendar.DAY_OF_MONTH +file.getName();
-                    FileUtils.copyInputStreamToFile(file.getInputStream(),new File(filePath));
+                    String filePath = "/home/beiyi/MyFile/log/yiban_file" + String.valueOf(Calendar.YEAR) + (Calendar.MONTH + 1) + Calendar.DAY_OF_MONTH + file.getName();
+                    FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath));
                     information.setFilePath(filePath);
                     /*
                      * 重要功能，存储请假信息以及查找学生对应的辅导员并发送请假通知

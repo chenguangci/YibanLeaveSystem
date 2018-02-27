@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
-//TODO 通过切面进行身份判断，获取易班ID以及MD5值
 @Controller
 @RequestMapping(value = "/leave")
 public class BeginController {
@@ -97,8 +96,7 @@ public class BeginController {
              */
             if (student != null) {
                 modelAndView.addObject("result", new Result(true, student));
-                //TODO 跳转到学生请假界面
-                modelAndView.setViewName("student/test");
+                modelAndView.setViewName("student/student");
                 return modelAndView;
             } else {
                 /*
