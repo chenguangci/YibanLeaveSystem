@@ -1,6 +1,7 @@
 package com.yiban.controller;
 
 import cn.yiban.open.Authorize;
+import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
 import com.yiban.entity.Student;
 import com.yiban.exception.*;
@@ -85,9 +86,9 @@ public class BeginController {
              * 返回false，进行下一步学生身份判断
              */
             if (identityHandle.isTeacher(yibanId)) {
-                result = new Result(true, "教师");
+                result = new Result(Dictionary.SUCCESS);
                 modelAndView.addObject("result", result);
-                //TODO 添加跳转地址
+                modelAndView.setViewName("teacher/teacher");
                 return modelAndView;
             }
             Student student = identityHandle.select(yibanId);
@@ -95,7 +96,7 @@ public class BeginController {
              * 判断是否为学生，如果获取的信息不为空，直接跳转
              */
             if (student != null) {
-                modelAndView.addObject("result", new Result(true, student));
+                modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
                 modelAndView.setViewName("student/student");
                 return modelAndView;
             } else {
@@ -116,14 +117,14 @@ public class BeginController {
                         student.setClassName(myInfo.get("yb_classname"));
                         logger.info("学生信息：{}",student.toString());
                         identityHandle.insert(student);
-                        result = new Result(true, student);
+                        result = new Result(Dictionary.SUCCESS, student);
                         modelAndView.setViewName("student/student");
                         modelAndView.addObject("result", result);
                         return modelAndView;
 
                     } else {
                         //没有学号，默认是教师
-                        result = new Result(true, "教师");
+                        result = new Result(Dictionary.SUCCESS, "教师");
                         /*
                          * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
                          */
@@ -133,19 +134,19 @@ public class BeginController {
                     }
                 } else {
                     //提示完成校方认证
-                    result = new Result(false, "未完成校方认证");
+                    result = new Result(Dictionary.AUTHENTICATION);
                     //TODO 添加跳转地址
                     modelAndView.addObject("result", result);
                     return modelAndView;
                 }
             }
         } catch (SendException | RequestInfoException e1) {
-            result = new Result(false, "获取信息发送错误，请稍后重试");
+            result = new Result(Dictionary.SEND_FAIL);
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址
             return modelAndView;
         } catch (SystemRunTimeException e3) {
-            result = new Result(false, "系统发生异常，请稍后重试");
+            result = new Result(Dictionary.SYSTEM_ERROR);
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址
             return modelAndView;

@@ -1,19 +1,15 @@
 package com.yiban.controller;
 
-import com.yiban.entity.Information;
+import com.yiban.dto.Dictionary;
+import com.yiban.dto.Result;
 import com.yiban.service.teacher.LeaveHandle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/teacher")
@@ -21,9 +17,15 @@ public class TeacherController {
     @Autowired
     private LeaveHandle leaveHandle;
 
-    @RequestMapping(value = "/{yibanId}")
+    @RequestMapping(value = "/info")
     @ResponseBody
-    public ResponseEntity<List<Information>> teacher(@PathVariable(value = "yibanId") String yibanId) {
-        return new ResponseEntity<>(leaveHandle.selectAll(yibanId), HttpStatus.OK);
+    public Result teacher(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String yibanId = (String) session.getAttribute("yiban_id");
+        //因为有拦截器，所以获取的易班账号不会为空，这里谨慎一步
+        if (yibanId != null && !"".equals(yibanId))
+            return new Result(Dictionary.SUCCESS, leaveHandle.selectAll(yibanId));
+        else
+            return new Result(Dictionary.UNKNOWN_INFO);
     }
 }

@@ -11,13 +11,14 @@ public class Result<T>{
     //数据对象
     private T data;
 
-    public Result(boolean success, String msg) {
-        this.success = success;
-        this.msg = msg;
+    public Result(Dictionary dictionary) {
+        this.success = dictionary.isSuccess();
+        this.msg = dictionary.getStateInfo();
     }
 
-    public Result(boolean success, T data) {
-        this.success = success;
+    public Result(Dictionary dictionary, T data) {
+        this.success = dictionary.isSuccess();
+        this.msg = dictionary.getStateInfo();
         this.data = data;
     }
 

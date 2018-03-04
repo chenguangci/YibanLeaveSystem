@@ -2,13 +2,18 @@
 $(function () {
    $.ajax({
    	type:"post",
-   	url:"",
+   	url:"/teacher/info",
    	async:false,
    	dataType:'json',
    	success:function(data)
    	{
-   		layer.load(0, {shade: false});
-   		$("#teacherTable").bootstrapTable('load',data);
+   		if (data.success) {
+            layer.load(0, {shade: false});
+            $("#teacherTable").bootstrapTable('load',data.data);
+        } else {
+            layer.msg(data.msg,{icon:2});
+        }
+
    	},
    	error:function()
    	{

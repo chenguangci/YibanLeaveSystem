@@ -15,7 +15,7 @@
 	    <link rel="stylesheet" href="${path}/static/js/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.css"/>
         <link href="${path}/static/js/bootstrap_above/x-editable-develop/dist/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
 		<!--[if IE 7]>
-		  <link rel="stylesheet" href="${path}/static/source/teacher/assets/css/font-awesome-ie7.min.css" />
+		  <link rel="stylesheet" href="/static/source/teacher/assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
 
 		<!-- page specific plugin styles -->

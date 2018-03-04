@@ -1,5 +1,6 @@
 package com.yiban.controller;
 
+import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
 import com.yiban.entity.Information;
 import com.yiban.entity.Student;
@@ -59,22 +60,24 @@ public class StudentController {
                      * 重要功能，存储请假信息以及查找学生对应的辅导员并发送请假通知
                      */
                     formHandle.setInfoAndSend(information);
-                    return new Result(true, "发送成功，等待辅导员的回复");
+                    return new Result(Dictionary.SUCCESS, "发送成功，等待辅导员的回复");
                 } catch (IOException e) {
+                    logger.error("异常信息：{}", e.getMessage());
                     throw new SystemRunTimeException("文件上传异常");
                 }
             } else {
+                logger.error("确少必要信息或文件");
                 throw new DataLossException("确少必要信息或文件");
             }
 
         } catch (SendException | RequestInfoException | ReSetTokenException e1) {
-            return new Result(false, "发送消息失败，请稍后重试");
+            return new Result(Dictionary.SEND_FAIL);
         } catch (DataLossException e2) {
-            return new Result(false, "确少必要信息或文件");
+            return new Result(Dictionary.DATA_LOSS);
         } catch (UnknownError e3) {
-            return new Result(false, "找不到您的辅导员或者班主任，请联系管理员");
+            return new Result(Dictionary.FIND_TEACHER_FAIL);
         } catch (SystemRunTimeException e4) {
-            return new Result(false, "系统发生异常，请稍后重试");
+            return new Result(Dictionary.SYSTEM_ERROR);
         }
 
     }
