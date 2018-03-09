@@ -44,7 +44,6 @@ public class FormHandle {
      */
     @Transactional
     public void setInfoAndSend(Information information)  throws SendException, RequestInfoException, ReSetTokenException, UnknownError, SystemRunTimeException {
-        //TODO 如何通过学号获取辅导员或班主任的易班ID
         String teacherId = getTeacherId(information.getStudentId());
 //        String teacherId = "10849451";
         if (teacherId != null && !"".equals(teacherId)) {

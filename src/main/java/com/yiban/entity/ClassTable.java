@@ -12,12 +12,15 @@ public class ClassTable implements Serializable {
     private String classId;
     //班级对应的班主任或者辅导员的易班ID
     private String teacherYibanId;
+    //班级班长的ID
+    private String monitor;
 
     @Override
     public String toString() {
         return "ClassTable{" +
                 "classId='" + classId + '\'' +
                 ", teacherYibanId='" + teacherYibanId + '\'' +
+                ", monitor='" + monitor + '\'' +
                 '}';
     }
 
@@ -35,5 +38,13 @@ public class ClassTable implements Serializable {
 
     public void setTeacherYibanId(String teacherYibanId) {
         this.teacherYibanId = teacherYibanId;
+    }
+
+    public String getMonitor() {
+        return monitor;
+    }
+
+    public void setMonitor(String monitor) {
+        this.monitor = monitor;
     }
 }

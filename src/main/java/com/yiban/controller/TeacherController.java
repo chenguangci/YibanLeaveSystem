@@ -2,7 +2,7 @@ package com.yiban.controller;
 
 import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
-import com.yiban.service.teacher.LeaveHandle;
+import com.yiban.service.teacher.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/teacher")
 public class TeacherController {
     @Autowired
-    private LeaveHandle leaveHandle;
+    private LeaveService leaveHandle;
 
     @RequestMapping(value = "/info")
     @ResponseBody
@@ -27,5 +27,13 @@ public class TeacherController {
             return new Result(Dictionary.SUCCESS, leaveHandle.selectAll(yibanId));
         else
             return new Result(Dictionary.UNKNOWN_INFO);
+    }
+
+    /**
+     * 处理请假操作
+     */
+    public Result handle() {
+
+        return null;
     }
 }

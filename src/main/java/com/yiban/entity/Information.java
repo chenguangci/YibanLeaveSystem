@@ -19,7 +19,7 @@ public class Information implements Serializable {
     private String reason;
     //联系方式
     private String phone;
-    //状态
+    //请假状态：（-1：拒绝，0：待审核，1：已同意未销假，2：已销假）
     private int status;
     //文件路径
     private String filePath;

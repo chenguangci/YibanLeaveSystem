@@ -25,8 +25,7 @@ public class SendLetter {
     private static final String appKey = "6e5022b516e51935";
     private static final String appSecret = "7eafe47e5c585ef1ad6b3e3bd3aff408";
     private static final String myId = "10849451";
-    //TODO 消息需要动态生成，再修改
-    private static final String CONTENT = "尊敬的老师，您有一学生申请请假，详情请登陆易班请假系统查看";
+    private String content = "尊敬的老师，您有一学生申请请假，详情请登陆易班请假系统查看";
 
     private SendRequest request = new SendRequest();
     private Token accessToken = null;
@@ -55,6 +54,16 @@ public class SendLetter {
         sendLetter(userId);
     }
 
+    /**
+     *
+     * @param userId 指定用户的易班ID
+     * @param content 消息内容
+     */
+    public void send(String userId, String content) throws SendException, RequestInfoException, ReSetTokenException, SystemRunTimeException {
+        this.content = content;
+        send(userId);
+    }
+
 
     /**
      * 调用sendPost()发送请求
@@ -66,7 +75,7 @@ public class SendLetter {
      */
     private void sendLetter(String userId) throws SendException, RequestInfoException, SystemRunTimeException {
         //拼接参数
-        String param = "access_token=" + accessToken.getToken() + "&to_yb_uid=" + userId + "&content=" + CONTENT + "&template=system";
+        String param = "access_token=" + accessToken.getToken() + "&to_yb_uid=" + userId + "&content=" + content + "&template=system";
         //发送信息
         String str = request.sendRequest(YibanURL.SendLetter, param, SendRequest.TYPE.POST);
         logger.debug("送信时返回的json：{}", str);

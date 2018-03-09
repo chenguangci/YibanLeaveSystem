@@ -14,10 +14,30 @@
         <result column="code" property="code"/>
     </resultMap>
 
+    <!--添加请假信息-->
     <insert id="addContent">
         INSERT IGNORE INTO information VALUES
             (0,#{studentId},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{number},#{reason},#{phone},#{status},#{filePath},#{code} )
     </insert>
+    <!--更新请假信息-->
+    <update id="updateLeave">
+        UPDATE information SET status = #{status}, code = #{code} WHERE id = #{id}
+    </update>
+
+    <update id="updateLeaveWithoutCode">
+        UPDATE information SET status = #{status} WHERE id = #{id}
+    </update>
+
+    <!--查找请假人的易班id-->
+    <select id="selectYibanId" resultType="String">
+        SELECT s.yiban_id FROM student s
+        WHERE s.student_id = (SELECT a.student_id FROM information a WHERE a.id = #{id})
+    </select>
+    <!--查找班长的易班id-->
+    <select id="selectMonitor" resultType="String">
+        SELECT c.monitor FROM class c
+        WHERE c.class_id =  LEFT((SELECT a.student_id FROM information a WHERE a.id = #{id}),10)
+    </select>
 
     <select id="selectLeaves" parameterType="java.lang.String">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
