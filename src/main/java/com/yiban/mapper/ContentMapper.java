@@ -20,6 +20,7 @@ public interface ContentMapper {
      * 不同意请假的情况下更新操作
      */
     int updateLeaveWithoutCode(@Param("id")long id, @Param("status")int status);
+
     /*
      * 根据请假信息的id查找请假人的易班id
      */

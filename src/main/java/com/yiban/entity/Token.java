@@ -9,6 +9,8 @@ public class Token implements Serializable {
     private int tokenType;
     private String token;
     private Date addTime;
+    //token距离到期的秒数
+    private long expireIn;
 
     @Override
     public String toString() {
@@ -16,6 +18,7 @@ public class Token implements Serializable {
                 "tokenType=" + tokenType +
                 ", token='" + token + '\'' +
                 ", addTime=" + addTime +
+                ", expireIn=" + expireIn +
                 '}';
     }
 
@@ -41,5 +44,13 @@ public class Token implements Serializable {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public long getExpireIn() {
+        return expireIn;
+    }
+
+    public void setExpireIn(long expireIn) {
+        this.expireIn = expireIn;
     }
 }

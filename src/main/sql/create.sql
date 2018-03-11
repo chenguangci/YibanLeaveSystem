@@ -31,7 +31,8 @@ CREATE TABLE information(
 CREATE TABLE token(
   `token_type` TINYINT NOT NULL COMMENT 'token类型（0：开发者请求的token，1：用户请求的token）',
   `token` VARCHAR(50),
-  `add_time` DATETIME COMMENT '添加时间'
+  `add_time` DATETIME COMMENT '添加时间',
+  `expire_in` INT(8) DEFAULT 0
 )ENGINE = InnoDB CHARSET = utf8;
 
 # 班级表

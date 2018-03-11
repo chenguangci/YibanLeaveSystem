@@ -39,14 +39,14 @@
         WHERE c.class_id =  LEFT((SELECT a.student_id FROM information a WHERE a.id = #{id}),10)
     </select>
 
-    <select id="selectLeaves" parameterType="java.lang.String">
+    <select id="selectLeaves" parameterType="java.lang.String" resultMap="information">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
         FROM information a,class b
         WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id AND a.status = 0
         ORDER BY a.begin_time DESC
     </select>
 
-    <select id="selectAll" parameterType="java.lang.String">
+    <select id="selectAll" parameterType="java.lang.String" resultMap="information">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
         FROM information a,class b
         WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id
@@ -59,7 +59,7 @@
         ORDER BY a.begin_time DESC
     </select>
 
-    <select id="selectByType">
+    <select id="selectByType" resultMap="information">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
         FROM information a,class b WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id
         ORDER BY a.begin_time DESC

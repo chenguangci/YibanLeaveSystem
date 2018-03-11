@@ -6,18 +6,19 @@
         <result column="token_type" property="tokenType"/>
         <result column="token" property="token"/>
         <result column="add_time" property="addTime"/>
+        <result column="expire_in" property="expireIn"/>
     </resultMap>
 
     <select id="selectToken" resultMap="token">
-        SELECT token_type, token, add_time FROM token WHERE token_type = #{tokenType} LIMIT 0,1
+        SELECT token_type, token, add_time, expire_in FROM token WHERE token_type = #{tokenType} LIMIT 0,1
     </select>
 
     <insert id="insertToken" parameterType="com.yiban.entity.Token">
         INSERT INTO token VALUES
-            (#{tokenType},#{token},#{addTime})
+            (#{tokenType},#{token},#{addTime},#{expireIn})
     </insert>
 
     <update id="updateToken">
-        UPDATE token SET token = #{token}, add_time = #{addTime} WHERE token_type = 0
+        UPDATE token SET token = #{token}, add_time = #{addTime}, expire_in = #{expireIn} WHERE token_type = 0
     </update>
 </mapper>
