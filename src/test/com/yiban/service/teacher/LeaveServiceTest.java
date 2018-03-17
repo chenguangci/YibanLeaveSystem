@@ -1,14 +1,13 @@
 package com.yiban.service.teacher;
 
+import com.yiban.dto.Result;
 import com.yiban.entity.Information;
 import org.junit.Test;
-import com.yiban.dto.Result;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.Iterator;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -70,6 +69,8 @@ public class LeaveServiceTest {
 //        Result result = leaveService.updateLeave(1002, -1);
         //同意销假
 //        Result result = leaveService.updateLeave(1002, 2);
+        //等待，一般不会出现
+//        Result result = leaveService.updateLeave(1002, 0);
         System.out.println(result.toString());
     }
 

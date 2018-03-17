@@ -12,7 +12,10 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -48,9 +51,9 @@ public class SendLetter {
         //获取token
         getAccessToken();
         //判断日期是否过时，如果过期则重置token
-        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
-            resetToken();
-        }
+//        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
+//            resetToken();
+//        }
         sendLetter(userId);
     }
 
@@ -88,6 +91,7 @@ public class SendLetter {
      * 重置授权,返回新的access_token
      * 将新的access_token存入数据库
      */
+    @Scheduled(cron = "0 31 17 ? * *")
     private void resetToken() throws SendException, ReSetTokenException, SystemRunTimeException {
         //拼接参数
         String param = "client_id=" + appKey + "&client_secret=" + appSecret + "&dev_uid=" + myId;

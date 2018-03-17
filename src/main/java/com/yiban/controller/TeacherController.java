@@ -32,8 +32,9 @@ public class TeacherController {
     /**
      * 处理请假操作
      */
+    @RequestMapping(value = "/handle")
     public Result handle() {
-
-        return null;
+        //TODO 如何获取需要的请假id以及请假操作
+        return leaveHandle.updateLeave(1,1);
     }
 }
