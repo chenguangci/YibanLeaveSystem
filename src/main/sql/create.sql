@@ -22,7 +22,7 @@ CREATE TABLE information(
   `reason` TEXT COMMENT '请假原因',
   `phone` VARCHAR(12),
   `status` TINYINT COMMENT '请假状态：（-1：拒绝，0：待审核，1：已同意未销假，2：已销假）',
-  `file_path` VARCHAR(40) COMMENT '文件路径',
+  `file_path` VARCHAR(60) COMMENT '文件路径',
   `code` VARCHAR(10) COMMENT '验证码',
   PRIMARY KEY (id)
 )ENGINE = InnoDB AUTO_INCREMENT=1000 CHARSET = utf8;
@@ -45,3 +45,6 @@ CREATE TABLE class(
 
 # 添加索引
 ALTER TABLE information ADD KEY (student_id);
+# 添加外键约束
+ALTER TABLE information ADD CONSTRAINT fk_student_id FOREIGN KEY (student_id)
+  REFERENCES student(student_id)

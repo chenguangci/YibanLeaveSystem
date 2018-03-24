@@ -26,7 +26,7 @@ public class LeaveServiceTest {
      */
     @Test
     public void selectLeaves() throws Exception {
-        List<Information> list = leaveService.selectLeaves("10086");
+        List<Information> list = leaveService.selectLeaves("10849451");
         for (Information information : list) {
             System.out.println(information.toString());
         }

@@ -28,6 +28,8 @@ public class BeginController {
     private static final String appKey = "6e5022b516e51935";
     private static final String appSecret = "7eafe47e5c585ef1ad6b3e3bd3aff408";
     private static final String callbackUrl = "http://localhost:8080/leave/index";
+    //装载数据
+    private Student student;
 
     @Autowired
     private IdentityHandle identityHandle;
@@ -99,7 +101,9 @@ public class BeginController {
                 session.setAttribute("student_id",student.getStudentId());
                 //添加加密信息
                 session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
-                modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
+                //数据放在student中，用于前端的异步获取
+                this.student = student;
+                //modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
                 modelAndView.setViewName("student/student");
                 return modelAndView;
             } else {
@@ -119,13 +123,15 @@ public class BeginController {
                         student.setClassName(myInfo.get("yb_classname"));
                         logger.info("学生信息：{}",student.toString());
                         identityHandle.insert(student);
-                        result = new Result(Dictionary.SUCCESS, student);
+                        //result = new Result(Dictionary.SUCCESS, student);
                         //添加学号到session中
                         session.setAttribute("student_id",student.getStudentId());
                         //添加加密信息
                         session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
                         modelAndView.setViewName("student/student");
-                        modelAndView.addObject("result", result);
+                        //数据放在student中，用于前端的异步获取
+                        this.student = student;
+                        //modelAndView.addObject("result", result);
                         return modelAndView;
                     } else {
                         //没有学号，默认是教师
@@ -152,5 +158,17 @@ public class BeginController {
             //TODO 添加跳转地址
             return modelAndView;
         }
+    }
+
+    /**
+     *
+     * @return 返回学号，姓名，学院以及专业班级等信息
+     */
+    @RequestMapping(value = "/info")
+    public Result info() {
+        if (this.student != null && !"".equals(this.student.getStudentId()))
+            return new Result(Dictionary.SUCCESS,student);
+        else
+            return new Result(Dictionary.DATA_LOSS);
     }
 }

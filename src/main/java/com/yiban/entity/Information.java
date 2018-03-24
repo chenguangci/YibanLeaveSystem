@@ -7,7 +7,7 @@ public class Information implements Serializable {
     private static final long serialVersionUID = 9193842223814904244L;
     //编号
     private long id;
-    //易班id
+    //学号id
     private String studentId;
     //请假开始时间
     private String beginTime;
@@ -25,6 +25,8 @@ public class Information implements Serializable {
     private String filePath;
     //验证码
     private String code;
+    //学生实体
+    private Student student;
 
     @Override
     public String toString() {
@@ -39,6 +41,7 @@ public class Information implements Serializable {
                 ", status=" + status +
                 ", filePath='" + filePath + '\'' +
                 ", code='" + code + '\'' +
+                ", student='" + student.toString() + '\'' +
                 '}';
     }
 
@@ -120,5 +123,13 @@ public class Information implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

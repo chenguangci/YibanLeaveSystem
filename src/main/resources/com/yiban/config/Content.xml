@@ -12,6 +12,8 @@
         <result column="status" property="status"/>
         <result column="file_path" property="filePath"/>
         <result column="code" property="code"/>
+        <association property="student" columnPrefix="student_"
+                     resultMap="com.yiban.mapper.StudentMapper.student"/>
     </resultMap>
 
     <!--添加请假信息-->
@@ -40,16 +42,22 @@
     </select>
 
     <select id="selectLeaves" parameterType="java.lang.String" resultMap="information">
-        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
-        FROM information a,class b
-        WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id AND a.status = 0
+        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code,
+            s.student_id student_student_id, s.name student_name, s.department student_department, s.class_name student_class_name
+        FROM information a
+            LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
+            LEFT JOIN student s ON a.student_id = s.student_id
+            WHERE b.teacher_yiban_id = #{id} AND a.status = 0
         ORDER BY a.begin_time DESC
     </select>
 
     <select id="selectAll" parameterType="java.lang.String" resultMap="information">
-        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
-        FROM information a,class b
-        WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id
+        SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code,
+            s.student_id student_student_id, s.name student_name, s.department student_department, s.class_name student_class_name
+        FROM information a
+            LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
+            LEFT JOIN student s ON a.student_id = s.student_id
+        WHERE b.teacher_yiban_id = #{id}
         ORDER BY a.begin_time DESC
     </select>
 
@@ -61,7 +69,8 @@
 
     <select id="selectByType" resultMap="information">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
-        FROM information a,class b WHERE b.teacher_yiban_id = #{id} AND LEFT(a.student_id,10) = b.class_id
+        FROM information a
+        LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id AND b.teacher_yiban_id = #{id}
         ORDER BY a.begin_time DESC
     </select>
 </mapper>
