@@ -146,4 +146,4 @@ $('.form_datetime').datetimepicker({
 				format: 'yyyy-mm-dd hh:ii:ss',
 				pickerPosition: 'bottom-left',
 				showMeridian: 1
-			})
+			});

@@ -4,7 +4,6 @@ import cn.yiban.open.Authorize;
 import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
 import com.yiban.entity.Student;
-import com.yiban.exception.*;
 import com.yiban.service.handle.GetInfo;
 import com.yiban.service.handle.IdentityHandle;
 import net.sf.json.JSONObject;
@@ -78,14 +77,14 @@ public class BeginController {
         String yibanId = (String) session.getAttribute("yiban_id");
         String accessToken = (String) session.getAttribute("accessToken");
         session.removeAttribute("accessToken");
-
         try {
             /*
              * 根据id进行身份判断
              * 如果identityHandle.isTeacher方法返回true，说明用户是教师，跳转到教师页面
              * 返回false，进行下一步学生身份判断
              */
-            if (identityHandle.isTeacher(yibanId)) {
+            if (false) {
+            //if (identityHandle.isTeacher(yibanId)) {
                 result = new Result(Dictionary.SUCCESS);
                 modelAndView.addObject("result", result);
                 modelAndView.setViewName("teacher/teacher");
@@ -96,6 +95,10 @@ public class BeginController {
              * 判断是否为学生，如果获取的信息不为空，直接跳转
              */
             if (student != null) {
+                //添加学号到session中
+                session.setAttribute("student_id",student.getStudentId());
+                //添加加密信息
+                session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
                 modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
                 modelAndView.setViewName("student/student");
                 return modelAndView;
@@ -106,7 +109,6 @@ public class BeginController {
                 GetInfo info = new GetInfo();
                 Map<String, String> myInfo = info.getMyInfo(accessToken);
                 if ("success".equals(myInfo.get("status"))) {
-
                     if (myInfo.get("yb_studentid") != null && !"".equals(myInfo.get("yb_studentid").trim())) {
                         //学生id不为空，跳转到学生页面，传值
                         student = new Student();
@@ -118,10 +120,13 @@ public class BeginController {
                         logger.info("学生信息：{}",student.toString());
                         identityHandle.insert(student);
                         result = new Result(Dictionary.SUCCESS, student);
+                        //添加学号到session中
+                        session.setAttribute("student_id",student.getStudentId());
+                        //添加加密信息
+                        session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
                         modelAndView.setViewName("student/student");
                         modelAndView.addObject("result", result);
                         return modelAndView;
-
                     } else {
                         //没有学号，默认是教师
                         result = new Result(Dictionary.SUCCESS, "教师");
@@ -140,12 +145,8 @@ public class BeginController {
                     return modelAndView;
                 }
             }
-        } catch (SendException | RequestInfoException e1) {
-            result = new Result(Dictionary.SEND_FAIL);
-            modelAndView.addObject("result", result);
-            //TODO 添加跳转地址
-            return modelAndView;
-        } catch (SystemRunTimeException e3) {
+        } catch (Exception e3) {
+            logger.error("跳转到对应的请假界面时发生异常，异常信息：{}",e3.getMessage());
             result = new Result(Dictionary.SYSTEM_ERROR);
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址

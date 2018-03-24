@@ -121,7 +121,7 @@
 							<ul class="submenu">
 								
 								<li>
-									<a href="jqgrid.jsp">
+									<a href="/teacher/index">
 										<i class="icon-file"></i>
 									请假情况
 									</a>

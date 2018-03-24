@@ -5,7 +5,7 @@ $("body").on('click','#btn',function(event){
 		layer.msg("填写有误，请重新填写");
 		else
 		{
-			$.post('url',{
+			$.post('/student/leave',{
 				"Mobile":$("#Mobile").val(),
 				"Starttime":$("#begin1").val(),
 				"Endtime":$("#end1").val(),

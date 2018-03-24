@@ -4,22 +4,22 @@
 <c:set value="${pageContext.request.contextPath}" var="path"/>
 <html>
 <head>
-    <link rel="stylesheet" href="${path}/static/source/student/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="${path}/static/source/student/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
-    <link rel="stylesheet" href="${path}/static/source/student/datatime/bootstrap-datetimepicker.min.css"/>
-    <link rel="stylesheet" href="${path}/static/source/student/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/static/source/student/bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/source/student/bootstrapvalidator-master/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="/static/source/student/datatime/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="/static/source/student/font-awesome/css/font-awesome.css"/>
     <script type="text/javascript"
-            src="${path}/static/source/student/bootstrapvalidator-master/vendor/jquery/jquery-1.10.2.min.js"></script>
+            src="/static/source/student/bootstrapvalidator-master/vendor/jquery/jquery-1.10.2.min.js"></script>
     <script type="text/javascript"
-            src="${path}/static/source/student/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
+            src="/static/source/student/bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript"
-            src="${path}/static/source/student/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
-    <script type="text/javascript" src="${path}/static/source/student/datatime/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="${path}/static/source/student/datatime/bootstrap-datetimepicker.zh-CN.js"></script>
-    <link rel="stylesheet" href="${path}/static/css/demo.css"/>
-    <link rel="stylesheet" href="${path}/static/css/gsdk-bootstrap-wizard.css"/>
-    <link rel="stylesheet" href="${path}/static/css/style.css"/>
-    <script src="${path}/static/js/Submit.js"></script>
+            src="/static/source/student/bootstrapvalidator-master/dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/static/source/student/datatime/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/static/source/student/datatime/bootstrap-datetimepicker.zh-CN.js"></script>
+    <link rel="stylesheet" href="/static/css/demo.css"/>
+    <link rel="stylesheet" href="/static/css/gsdk-bootstrap-wizard.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <script type="text/javascript" src="/static/js/Submit.js"></script>
 
 
     <!--End Framework-->
@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<div class="image-container set-full-height" style="background-image: url('${path}/static/images/bg1.png')">
+<div class="image-container set-full-height" style="background-image: url('/static/images/bg1.png')">
     <section>
         <div class="container">
 
@@ -41,8 +41,7 @@
                 <div class="index-body animated" id="index">
                     <div class="wizard-container">
                         <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                            <form id="test" class="form-signin required-validate" action="" method="post"
-                                  onsubmit="return validateCallback(this)">
+                            <form id="test" class="form-signin required-validate" action="/student/leave" method="post" enctype="multipart/form-data">
                                 <div class="wizard-header">
                                     <h3>
                                         肇院 <b>请假系统</b><br>
@@ -51,15 +50,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <h4>
-                                        学号：${result.data.studentId}&nbsp;&nbsp;&nbsp;&nbsp;姓名：${result.data.name}<br>
-                                        院系：${result.data.department}&nbsp;&nbsp;&nbsp;&nbsp;班级：${result.data.className}<br>
+
                                     </h4>
-                                    <%--<div class="col-md-6">--%>
-                                        <%--<div class="input-group"><span class="input-group-addon"><i class="fa fa-user">姓名</i></span>--%>
-                                            <%--<input name="Name" type="text" class="form-control " id="Name"--%>
-                                                   <%--placeholder="请输入你的姓名">--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
                                     <br>
                                     <div class="col-md-6 ">
                                         <div class="input-group"><span class="input-group-addon"><i class="fa fa-phone">联系方式</i></span>
@@ -79,7 +71,7 @@
                                     <div class="col-md-4"><span class="input-group-addon"><i
                                             class="fa fa-calendar">开始时间</i></span>
                                         <div class="input-group date form_datetime" data-link-field="begin">
-                                            <input class="form-control" id="begin1" type="text"
+                                            <input class="form-control" id="begin1" type="text" name="beginTime"
                                                    value="2017-10-16 15:00:00">
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                             <input type="hidden" id="begin" value="2017-10-17 15:00:00"
@@ -89,24 +81,24 @@
 
                                     <div class="col-md-4 "><span class="input-group-addon"><i class="fa fa-calendar">截止时间</i></span>
                                         <div class="input-group date form_datetime" data-link-field="end">
-                                            <input class="form-control" id="end1" type="text"
+                                            <input class="form-control" id="end1" type="text" name="endTime"
                                                    value="2017-10-17 15:00:00">
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4"><span class="input-group-addon"><i
-                                            class="fa fa-clock-o">请假节数</i></span><input type="text" name="Number"
+                                            class="fa fa-clock-o">请假节数</i></span><input type="text" name="number"
                                                                                         id="Number"
                                                                                         class="form-control"/></div>
                                     <!-- <div class="col-md-2">共<input type="text" name="number">节</div> -->
                                 </div>
                                 <div class="form-group row">
                                     <label for="reason"><i class="fa fa-edit">请假理由</i></label>
-                                    <textarea class="form-control" row="8" name="Reason" id="Reason"></textarea></div>
+                                    <textarea class="form-control" row="8" name="reason" id="Reason"></textarea></div>
                                 <div class="form-group row ">
                                     &nbsp;&nbsp;&nbsp;&nbsp;<label for="Inputfile"><i
                                         class="fa fa-upload">上传请假证明</i></label>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="File" name="File">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<input type="file" id="File" name="file">
 
                                 </div>
                                 <div class="row">
@@ -117,8 +109,6 @@
                                                 class="fa fa-check">提交申请</i></button>
                                     </div>
                                 </div>
-
-
                             </form>
 
                         </div>
@@ -134,10 +124,9 @@
     </section>
 </div>
 
-<script src="${path}/static/js/Bind.js"></script>
-<script src="${path}/static/js/Student.js"></script>
-<script type="text/javascript" src="${path}/static/source/layer/layer.js"></script>
-<script src="${path}/static/source/layer/extend/layer.ext.js"></script>
+<script type="text/javascript" src="/static/js/Student.js"></script>
+<script type="text/javascript" src="/static/source/layer/layer.js"></script>
+<script type="text/javascript" src="/static/source/layer/extend/layer.ext.js"></script>
 
 
 </body>

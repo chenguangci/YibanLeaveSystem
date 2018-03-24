@@ -111,7 +111,7 @@
 				
 
 						<li class="active open">
-							<a href="jqgrid.jsp" class="dropdown-toggle">
+							<%--<a href="/teacher/index" class="dropdown-toggle">--%>
 								<i class="icon-list"></i>
 								<span class="menu-text">请假系统 </span>
 
@@ -121,7 +121,7 @@
 							<ul class="submenu">
 								
 								<li>
-									<a href="jqgrid.jsp">
+									<a href="/teacher/index">
 										<i class="icon-file"></i>
 									请假情况
 									</a>

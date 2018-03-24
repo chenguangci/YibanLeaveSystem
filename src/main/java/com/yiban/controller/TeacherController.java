@@ -37,4 +37,12 @@ public class TeacherController {
         //TODO 如何获取需要的请假id以及请假操作
         return leaveHandle.updateLeave(1,1);
     }
+
+    /**
+     * 路径跳转
+     */
+    @RequestMapping("/index")
+    public String index() {
+        return "/teacher/jqgrid";
+    }
 }
