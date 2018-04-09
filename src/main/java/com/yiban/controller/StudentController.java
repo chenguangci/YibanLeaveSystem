@@ -48,6 +48,14 @@ public class StudentController {
     @ResponseBody
     public Result leave(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request) {
         try {
+            Object var = request.getParameter("information");
+            Map<String,String[]> map = request.getParameterMap();
+            for(Map.Entry<String,String[]> entry:map.entrySet()){
+                String[] strings = entry.getValue();
+                for(String str:strings){
+                    System.out.print(str);
+                }
+            }
             Information information = new Information();
             /*
              * 原本前段已经有非空校验了，但为了安全起见还是在后台加一次校验
@@ -57,6 +65,7 @@ public class StudentController {
              */
             HttpSession session = request.getSession();
             String studentId = (String) session.getAttribute("student_id");
+            System.out.println(studentId);
 //            String studentId = request.getParameter("studentId");
             String phone = request.getParameter("phone");
             String beginTime = request.getParameter("beginTime");

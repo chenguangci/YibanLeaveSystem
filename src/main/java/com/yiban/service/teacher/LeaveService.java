@@ -72,8 +72,8 @@ public class LeaveService {
      * @param id 班主任或者辅导员的ID
      * @return 请假信息的集合
      */
-    public List<Information> selectAll(String id) {
-        return contentMapper.selectAll(id);
+    public List<Information> selectAll(String id, int limit, int page) {
+        return contentMapper.selectAll(id, limit, page);
     }
 
     /**
@@ -98,5 +98,12 @@ public class LeaveService {
      */
     public List<Information> selectByType(String id, String type) {
         return contentMapper.selectByType(id, type);
+    }
+
+    /**
+     * 页数查找
+     */
+    public int totalNumber(String yibanId){
+        return contentMapper.totalNumber(yibanId);
     }
 }

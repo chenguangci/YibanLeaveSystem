@@ -28,6 +28,10 @@ public class Information implements Serializable {
     //学生实体
     private Student student;
 
+    public Information(){
+        super();
+    }
+
     @Override
     public String toString() {
         return "Information{" +

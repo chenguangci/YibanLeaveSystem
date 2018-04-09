@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiban.mapper.ContentMapper">
     <resultMap id="information" type="com.yiban.entity.Information">
+        <result column="id" property="id"/>
         <result column="student_id" property="studentId"/>
         <result column="begin_time" property="beginTime"/>
         <result column="end_time" property="endTime"/>
@@ -51,7 +52,7 @@
         ORDER BY a.begin_time DESC
     </select>
 
-    <select id="selectAll" parameterType="java.lang.String" resultMap="information">
+    <select id="selectAll" resultMap="information">
         SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code,
             s.student_id student_student_id, s.name student_name, s.department student_department, s.class_name student_class_name
         FROM information a
@@ -59,6 +60,7 @@
             LEFT JOIN student s ON a.student_id = s.student_id
         WHERE b.teacher_yiban_id = #{id}
         ORDER BY a.begin_time DESC
+        LIMIT #{limit},#{page}
     </select>
 
     <select id="myLeaves" resultMap="information" parameterType="java.lang.String">
@@ -72,5 +74,12 @@
         FROM information a
         LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id AND b.teacher_yiban_id = #{id}
         ORDER BY a.begin_time DESC
+    </select>
+
+    <!--查找请假条数-->
+    <select id="totalNumber" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(a.id) FROM information a
+        LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
+        WHERE b.teacher_yiban_id = #{id}
     </select>
 </mapper>

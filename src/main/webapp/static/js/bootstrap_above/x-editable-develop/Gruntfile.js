@@ -153,7 +153,7 @@ module.exports = function(grunt) {
  ['bs3', 'bootstrap', 'jqueryui', 'plain'].forEach(function(f){
      ['popup', 'inline'].forEach(function(c){
          ['1.7.2', '1.8.3', '1.9.1', '1.10.2', '2.0.3'].forEach(function(jqver) {
-             qunit_testover.push('http://localhost:8000/test/teacher.jsp?f='+f+'&c='+c+'&jquery='+jqver+module); 
+             qunit_testover.push('http://localhost:8000/test/teacher.html?f='+f+'&c='+c+'&jquery='+jqver+module); 
          });
      });
  });    
@@ -186,32 +186,32 @@ module.exports = function(grunt) {
       bootstrap2: {
           options: {
             urls: [
-                  'http://localhost:8000/test/teacher.jsp?f=bootstrap&c=popup'+module,
-                  'http://localhost:8000/test/teacher.jsp?f=bootstrap&c=inline'+module
+                  'http://localhost:8000/test/teacher.html?f=bootstrap&c=popup'+module,
+                  'http://localhost:8000/test/teacher.html?f=bootstrap&c=inline'+module
                  ]
           }
       },
       bootstrap3: {
           options: {
             urls: [
-                  'http://localhost:8000/test/teacher.jsp?f=bs3&c=popup'+module,
-                  'http://localhost:8000/test/teacher.jsp?f=bs3&c=inline'+module
+                  'http://localhost:8000/test/teacher.html?f=bs3&c=popup'+module,
+                  'http://localhost:8000/test/teacher.html?f=bs3&c=inline'+module
                  ]
           }
       },
       jqueryui: {
           options: {
             urls:[
-                  'http://localhost:8000/test/teacher.jsp?f=jqueryui&c=popup'+module,
-                  'http://localhost:8000/test/teacher.jsp?f=jqueryui&c=inline'+module
+                  'http://localhost:8000/test/teacher.html?f=jqueryui&c=popup'+module,
+                  'http://localhost:8000/test/teacher.html?f=jqueryui&c=inline'+module
                  ]
           }
       },
       plain: {
           options: {
             urls:[
-                  'http://localhost:8000/test/teacher.jsp?f=plain&c=popup'+module,
-                  'http://localhost:8000/test/teacher.jsp?f=plain&c=inline'+module
+                  'http://localhost:8000/test/teacher.html?f=plain&c=popup'+module,
+                  'http://localhost:8000/test/teacher.html?f=plain&c=inline'+module
              ]
           }
       },

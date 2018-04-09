@@ -25,10 +25,14 @@ public interface ContentMapper {
      * 根据请假信息的id查找请假人的易班id
      */
     String selectYibanId(long id);
+    /*
+     * 页数查询
+     */
+    int totalNumber(String id);
 
     String selectMonitor(long id);
     List<Information> selectLeaves(String id);
-    List<Information> selectAll(String id);
+    List<Information> selectAll(@Param("id") String id, @Param("limit") int limit, @Param("page") int page);
     List<Information> myLeaves(String myId);
     List<Information> todayLeaves(@Param("id") String id, @Param("today") String today);
     List<Information> selectByType(@Param("id") String id, @Param("type") String type);

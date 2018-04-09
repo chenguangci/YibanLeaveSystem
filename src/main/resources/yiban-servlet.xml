@@ -13,12 +13,38 @@
     <mvc:default-servlet-handler/>
     <!--<mvc:resources mapping="/static/**" location="/static/"/>-->
     <context:component-scan base-package="com.yiban.controller"/>
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:viewClass="org.springframework.web.servlet.view.JstlView"
-          p:prefix="/WEB-INF/zqu/"
-          p:suffix=".jsp"/>
+    <!--freeMarker视图配置-->
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">3600</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+            </props>
+        </property>
+        <property name="templateLoaderPath" value="/WEB-INF/zqu/"/>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape" />
+            </map>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+          p:viewClass="org.springframework.web.servlet.view.freemarker.FreeMarkerView"
+          p:contentType="text/html;charset=utf-8"
+          p:exposeRequestAttributes="true"
+          p:exposeSessionAttributes="true"
+          p:suffix=".html"
+          p:order="0"/>
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
           p:messageConverters-ref="messageConverters"/>
+
     <!--信息处理-->
     <util:list id="messageConverters">
         <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
@@ -41,7 +67,7 @@
         <!--文件最大为5MB-->
         <property name="maxUploadSize" value="5242880"/>
         <property name="defaultEncoding" value="UTF-8"/>
-        <property name="resolveLazily" value="true"/>
+        <property name="resolveLazily" value="false"/>
         <property name="uploadTempDir" value="file:file"/>
     </bean>
 </beans>

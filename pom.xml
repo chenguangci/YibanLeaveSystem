@@ -79,7 +79,17 @@
           <artifactId>spring-test</artifactId>
           <version>${spring.version}</version>
       </dependency>
-
+      <!--freemarker依赖-->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context-support</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.freemarker</groupId>
+          <artifactId>freemarker</artifactId>
+          <version>2.3.28</version>
+      </dependency>
       <!--json依赖-->
       <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>

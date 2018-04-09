@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     @RequestMapping(value = "/student")
     public String studentTest() {
-        return "/WEB-INF/zqu/student/student.jsp";
+        return "/student/index";
     }
 }

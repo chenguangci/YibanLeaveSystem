@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -70,7 +71,7 @@ public class BeginController {
      * @return 判断用户身份再跳转到相应页面
      */
     @RequestMapping(value = "/toLeave", method = RequestMethod.GET)
-    public ModelAndView studentIndex(HttpSession session) {
+    public ModelAndView studentIndex(HttpSession session, Model model) {
         Result result = null;
         ModelAndView modelAndView = new ModelAndView();
         /*
@@ -85,11 +86,11 @@ public class BeginController {
              * 如果identityHandle.isTeacher方法返回true，说明用户是教师，跳转到教师页面
              * 返回false，进行下一步学生身份判断
              */
-            if (false) {
-            //if (identityHandle.isTeacher(yibanId)) {
+//            if (true) {
+            if (identityHandle.isTeacher(yibanId)) {
                 result = new Result(Dictionary.SUCCESS);
                 modelAndView.addObject("result", result);
-                modelAndView.setViewName("teacher/teacher");
+                modelAndView.setViewName("/teacher/jqgrid");
                 return modelAndView;
             }
             Student student = identityHandle.select(yibanId);
@@ -102,9 +103,9 @@ public class BeginController {
                 //添加加密信息
                 session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
                 //数据放在student中，用于前端的异步获取
-                this.student = student;
-                //modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
-                modelAndView.setViewName("student/student");
+                //this.student = student;
+                modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
+                modelAndView.setViewName("/student/index");
                 return modelAndView;
             } else {
                 /*
@@ -123,15 +124,15 @@ public class BeginController {
                         student.setClassName(myInfo.get("yb_classname"));
                         logger.info("学生信息：{}",student.toString());
                         identityHandle.insert(student);
-                        //result = new Result(Dictionary.SUCCESS, student);
+                        result = new Result(Dictionary.SUCCESS, student);
                         //添加学号到session中
                         session.setAttribute("student_id",student.getStudentId());
                         //添加加密信息
                         session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
-                        modelAndView.setViewName("student/student");
+                        modelAndView.setViewName("/student/index");
                         //数据放在student中，用于前端的异步获取
-                        this.student = student;
-                        //modelAndView.addObject("result", result);
+                        //this.student = student;
+                        modelAndView.addObject("result", result);
                         return modelAndView;
                     } else {
                         //没有学号，默认是教师
@@ -139,7 +140,7 @@ public class BeginController {
                         /*
                          * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
                          */
-                        modelAndView.setViewName("teacher/teacher");
+                        modelAndView.setViewName("/teacher/jqgrid");
                         modelAndView.addObject("result", result);
                         return modelAndView;
                     }
