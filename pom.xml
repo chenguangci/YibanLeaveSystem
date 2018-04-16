@@ -183,6 +183,6 @@
 		</plugins>
 	</build>
 	<properties>
-		<spring.version>4.2.6.RELEASE</spring.version>
+		<spring.version>4.3.10.RELEASE</spring.version>
 	</properties>
 </project>

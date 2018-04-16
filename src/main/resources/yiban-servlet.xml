@@ -9,7 +9,8 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
-	<!-- <mvc:resources location="/" mapping="/**"/> -->
+
+           <!-- 静态资源映射 -->
 <!--    <mvc:resources mapping="../static/**" location="../static/"/>  
  -->
 
@@ -48,17 +49,7 @@
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
 		p:messageConverters-ref="messageConverters" /> 
 
- <!-- <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
-        配置hander adapater 
-        <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
-        配置渲染器     
-   
-      <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/zqu/"/>
-        <property name="suffix" value=".html"/>
-    </bean> 
- -->
+
 	<!--信息处理 -->
 
   <util:list id="messageConverters">
