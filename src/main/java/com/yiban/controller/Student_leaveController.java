@@ -111,13 +111,7 @@ public class Student_leaveController {
 
 	 
 
-    /**
-     *获取请假信息
-    * @Title: leave
-    * @Description: TODO(这里用一句话描述这个方法的作用)  
-      @Return:Result
-      2018年4月16日下午5:20:32
-     */
+
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
 	@ResponseBody
 	public Result leave(Information information,
