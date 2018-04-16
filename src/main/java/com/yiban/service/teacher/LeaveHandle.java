@@ -82,6 +82,7 @@ public class LeaveHandle {
      * @param id 请假信息的id
      * @return 操作结果
      */
+    @Transactional
     public Result waiting(long id) {
         if (contentMapper.updateLeaveWithoutCode(id, 0) > 0)
             return new Result(Dictionary.SUCCESS);

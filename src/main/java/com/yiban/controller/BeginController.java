@@ -1,17 +1,21 @@
 package com.yiban.controller;
 
 import cn.yiban.open.Authorize;
+
 import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
 import com.yiban.entity.Student;
 import com.yiban.service.handle.GetInfo;
 import com.yiban.service.handle.IdentityHandle;
+
 import net.sf.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +24,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.Map;
 @Controller
@@ -37,6 +42,10 @@ public class BeginController {
 
     private Logger logger = LoggerFactory.getLogger(BeginController.class);
 
+
+    
+    
+    
     @RequestMapping(value = "/index")
     public String index(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //授权验证

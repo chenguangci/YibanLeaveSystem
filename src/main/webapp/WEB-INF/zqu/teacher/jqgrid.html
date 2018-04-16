@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 	<head>
 		<meta charset="utf-8" />
 		<title>肇庆学院请假系统教师版</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<link rel="shortcut icon" href="/static/images/favicon.ico">
-		<link href="/static/source/teacher/assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/static/source/teacher/assets/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="/static/js/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.css" />
+		<link rel="shortcut icon" href="/YibanLeaveSystem/static/images/favicon.ico">
+		<link href="/YibanLeaveSystem/static/css/teacher/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/YibanLeaveSystem/static/css/teacher/font-awesome.min.css" />
+		<link rel="stylesheet" href="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.css" />
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
-		<link rel="stylesheet" href="/static/source/teacher/assets/css/ace.min.css" />
-		<link rel="stylesheet" href="/static/source/teacher/assets/css/ace-rtl.min.css" />
-		<link rel="stylesheet" href="/static/source/teacher/assets/css/ace-skins.min.css" />
-		<script src="/static/source/teacher/assets/js/ace-extra.min.js"></script>
+		<link rel="stylesheet" href="/YibanLeaveSystem/static/css/teacher/ace.min.css" />
+		<link rel="stylesheet" href="/YibanLeaveSystem/static/css/teacher/ace-rtl.min.css" />
+		<link rel="stylesheet" href="/YibanLeaveSystem/static/css/teacher/ace-skins.min.css" />
+		
 
 	</head>
 
 	<body>
+		
+
 		<div class="navbar navbar-default" id="navbar">
 			<script type="text/javascript">
 				try { ace.settings.check('navbar', 'fixed') } catch(e) {}
@@ -99,10 +100,10 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-12 col-lg-12 ">
 								<div class="" style="margin: 20px;">
-									<a href="#" id="delete" class="btn btn-sm btn-primary icon-trash icon-blue">删除</a>
-									&nbsp;&nbsp;&nbsp;
-									<a href="#" id="print" class="btn btn-sm btn-success icon-print icon-blue">打印</a>
+									
+									<a  id="printExcel" class="btn btn-sm btn-success icon-print icon-blue">导出Excel</a>
 								</div>
+									<span id="dataBox" style="display:none" >${teacherYibanId}</span>
 								<table class="table-responsive" id="teacherTable">
 								</table>
 
@@ -121,17 +122,19 @@
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								<h4 class="modal-title" id="myModalLabel">修改信息</h4>
 							</div>
+							
 							<form class="form-horizontal">
 								<div class="modal-body">
+								<input type="text" id="Iid" name="Iid" style="display:none"/>
 									<div class="form-group row">
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-bookmark"></i>学号</span>
-												<input type="text" class="form-control" name="studentId" id="studentId" disabled/>
+												<input type="text" class="form-control" name="studentId"  id="studentId" disabled/>
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-user"></i>姓名</span>
-												<input type="text" class="form-control" name="name" id="name" disabled />
+												<input type="text" class="form-control" name="name" id="name"  disabled />
 											</div>
 										</div>
 
@@ -140,7 +143,7 @@
 									<div class="form-group row">
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-building"></i>院系</span>
-												<input type="text" class="form-control" name="department" id="department" disabled/>
+												<input type="text" class="form-control" name="department" id="department"  disabled/>
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-6">
@@ -154,7 +157,7 @@
 									<div class="form-group row">
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-calendar"></i>开始日期</span>
-												<input type="text" class="form-control" name="beginTime" id="beginTime" disabled/>
+												<input type="text" class="form-control" name="beginTime" id="beginTime"  disabled/>
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-6">
@@ -222,14 +225,16 @@
 									<div class="form-group row">
 										<label for="Reason" class="form-control-label">请假理由</label>
 
-										<textarea class="form-control" rows="3" name="reason" id="reason" disabled=""></textarea>
+										<textarea class="form-control" rows="3" name="reason" id="reason" disabled="" ></textarea>
 									</div>
 
 									<br>
 									<div class="form-group row">
 										<label for="File" class="form-control-label">请假证明</label>
 										<br>
-										<a href="#" title="请单击下载" id="filePath"><i class="icon-download"></i>请假证明文件</a>
+									
+										<a  id="down" title="请单击下载" ><i class="icon-download"></i>下载请假证明</a>
+										
 									</div>
 								</div>
 
@@ -237,7 +242,7 @@
 								<div class="modal-footer">
 
 									<button type="button" class="btn btn-default" data-dismiss="modal"><i class="icon-remove"></i>关闭</button>
-									<button type="button" class="btn btn-primary" id="submit">	<i class="icon-ok"></i> 提交</button>
+									<button type="button" class="btn btn-primary" id="submitEdit">	<i class="icon-ok"></i> 提交</button>
 								</div>
 							</form>
 						</div>
@@ -260,21 +265,21 @@
         	bootstrap-table-zh-CN.js为表格汉化的文件
         	FileSaver.min.js等是关联引用文件
         -->
-		<script type="text/javascript" src="/static/js/bootstrap_above/jquery-1.9.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/static/js/bootstrap_above/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/static/js/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.js"></script>
-		<script type="text/javascript" src="/static/js/bootstrap_above/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/ace-extra.min.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
 
-		<script type="text/javascript" src="/static/source/layer/layer.js"></script>
-		<script type="text/javascript" src="/static/source/layer/extend/layer.ext.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/layer/layer.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/layer/extend/layer.ext.js"></script>
 
+         
+		<script type="text/javascript" src="/YibanLeaveSystem/static/script/table.js"></script>
 
-		<script type="text/javascript" src="/static/js/table.js"></script>
-
-		<script type="text/javascript" src="/static/source/teacher/assets/js/ace-elements.min.js"></script>
-		<script type="text/javascript" src="/static/source/teacher/assets/js/ace.min.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/ace-elements.min.js"></script>
+		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher//ace.min.js"></script>
 
 
 	</body>
-
 </html>

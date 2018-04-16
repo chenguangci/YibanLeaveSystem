@@ -2,6 +2,7 @@ package com.yiban.dto;
 
 import com.yiban.entity.Information;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,13 +13,13 @@ public class Data {
     private String message;
     private int total;
     private int page;
-    private List<Information> row;
+    private List<Information> rows =new ArrayList<Information>();
 
     public Data(boolean success, int total, int page, List<Information> list) {
         this.success = success;
         this.total = total;
         this.page = page;
-        this.row = list;
+        this.rows = list;
     }
 
     public Data(Dictionary dictionary) {
@@ -58,11 +59,11 @@ public class Data {
         this.page = page;
     }
 
-    public List<Information> getList() {
-        return row;
+    public List<Information> getRows() {
+        return rows;
     }
 
-    public void setList(List<Information> list) {
-        this.row = list;
+    public void setRows(List<Information> list) {
+        this.rows = list;
     }
 }

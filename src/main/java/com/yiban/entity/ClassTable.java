@@ -14,8 +14,18 @@ public class ClassTable implements Serializable {
     private String teacherYibanId;
     //班级班长的ID
     private String monitor;
+    
 
-    @Override
+    public ClassTable(String classId, String teacherYibanId, String monitor) {
+		super();
+		this.classId = classId;
+		this.teacherYibanId = teacherYibanId;
+		this.monitor = monitor;
+	}
+
+	
+
+	@Override
     public String toString() {
         return "ClassTable{" +
                 "classId='" + classId + '\'' +

@@ -96,7 +96,7 @@ public class StudentController {
                 Date date = new Date();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 String day = format.format(date);
-                String filePath = "/home/beiyi/MyFile/log/yiban_file/" + day + "/" + studentId + file.getOriginalFilename();
+                String filePath = "/home/beiyi/MyFile/log/yiban_file/" + day + "/" + information.getStudentId() + file.getOriginalFilename();
                 FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath));
                 information.setFilePath(filePath);
                 /*

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="../static/images/favicon.ico">
+<link rel="stylesheet" href="../static/css/student/bootstrap.css" />
+<link rel="stylesheet" href="../static/css/student/bootstrapValidator.css" />
+<link rel="stylesheet" href="../static/css/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="../static/css/student/demo.css" />
+<link rel="stylesheet" href="../static/css/student/gsdk-bootstrap-wizard.css" />
+<link rel="stylesheet" href="../static/css/student/style.css" />
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta name="viewport" content="width=device-width" />
+<meta charset="utf-8">
+<title>肇院请假系统</title>
+
+</head>
+<body>
+	<div class="image-container set-full-height"
+		style="background-image: url('../static/images/bg.png')">
+		<section>
+			<div class="container">
+
+				<div class="row">
+
+					<div class="index-body animated" id="index">
+						<div class="wizard-container">
+							<div class="card wizard-card" data-color="orange"
+								id="wizardProfile">
+								<div class="wizard-header">
+									<h3>
+										肇院 <b>请假系统</b> &nbsp;&nbsp;&nbsp;<small><a
+											href="record.html">查看请假记录</a></small><br>
+
+									</h3>
+								</div>
+
+								<form id="testForm" class="form-signin required-validate" 
+								 enctype="multipart/form-data" >
+
+									<div class="form-group row">
+										<div class="col-md-6">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-bookmark-o">学号</i></span> <input name="Name"
+													type="text" class="form-control " id="studentId"
+													v-model="studentId" disabled>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-user">名字</i></span>
+												<input name="Name" type="text" class="form-control "
+													id="Name" v-model="name" disabled>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+										<div class="col-md-6">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-building-o">学院</i></span> <input name="Name"
+													type="text" class="form-control " id="department"
+													v-model="department" disabled>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-tag">班级</i></span>
+												<input name="Name" type="text" class="form-control "
+													id="className" v-model="className" disabled>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+										<div class="col-md-6 ">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-phone">联系方式</i></span> <input name="Mobile"
+													type="text" class="form-control" id="Mobile"
+													placeholder="请输入手机号码" v-model="information.phone">
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-clock-o">请假节数</i></span><input type="text"
+													name="Number" id="Number" class="form-control"
+													placeholder="请输入请假节数" v-model="information.number" />
+											</div>
+										</div>
+
+									</div>
+
+									<div class="form-group row" style="margin-right:20px">
+										<div class="col-md-6 ">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-calendar-o">开始时间</i></span> <input name="begin1"
+													type="date" class="form-control" id="begin1"
+													v-model="information.beginTime">
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-calendar-o">截止时间</i></span><input type="date"
+													name="end1" id="end1" class="form-control"
+													v-model="information.endTime" />
+											</div>
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+										<label for="reason"><i class="fa fa-edit">请假理由</i></label>
+										<textarea class="form-control" row="8" name="Reason"
+											id="Reason" v-model="information.reason"
+											placeholder="请输入请假理由"></textarea>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-2 col-md-offset-10">
+											<button type="submit" class="btn btn-info" id="btn"
+												title="提交申请" @click="submitSignin">
+												<i class="fa fa-check">提交申请</i>
+											</button>
+										</div>
+									</div>
+								</form>
+
+                             <form  enctype="multipart/form-data" method="post">
+                              <div class="form-group row ">
+										&nbsp;&nbsp;&nbsp;&nbsp;<label for="Inputfile"><i
+											class="fa fa-upload">上传请假证明</i></label> &nbsp;&nbsp;&nbsp;&nbsp; <input
+											type="file" id="file" name="file" />
+
+									</div>
+									</form>
+									
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer" style="margin-bottom: 0px;">
+					<div class="foot-text">易班学生工作站</div>
+					<div class="foot-copyright">Copyright© 2017 ZQU E-Class</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script type="text/javascript" src="../static/js/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="../static/js/json2.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.form.js"></script>
+
+	<script type="text/javascript" src="../static/js/student/bootstrap.js"></script>
+	<script type="text/javascript" src="../static/js/layer/layer.js"></script>
+	<script type="text/javascript"
+		src="../static/js/layer/extend/layer.ext.js"></script>
+	<script type="text/javascript" src="../static/js/student/vue.min.js"></script>
+	<script type="text/javascript"
+		src="../static/js/student/bootstrapValidator.js"></script>
+	<script type="text/javascript"
+		src="../static/js/student/language/zh_CN.js"></script>
+	<script type="text/javascript"
+		src="../static/js/student/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="../static/script/Submit.js"></script>
+	<script type="text/javascript" src="../static/script/Student.js"></script>
+</body>
+</html>

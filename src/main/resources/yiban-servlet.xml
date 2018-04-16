@@ -1,73 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-    <mvc:annotation-driven/>
-    <mvc:default-servlet-handler/>
-    <!--<mvc:resources mapping="/static/**" location="/static/"/>-->
-    <context:component-scan base-package="com.yiban.controller"/>
-    <!--freeMarker视图配置-->
-    <bean id="freemarkerConfig"
-          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="freemarkerSettings">
-            <props>
-                <prop key="template_update_delay">3600</prop>
-                <prop key="locale">zh_CN</prop>
-                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-                <prop key="date_format">yyyy-MM-dd</prop>
-                <prop key="number_format">#.##</prop>
-            </props>
-        </property>
-        <property name="templateLoaderPath" value="/WEB-INF/zqu/"/>
-        <property name="freemarkerVariables">
-            <map>
-                <entry key="xml_escape" value-ref="fmXmlEscape" />
-            </map>
-        </property>
-        <property name="defaultEncoding" value="UTF-8"/>
-    </bean>
-    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<!-- <mvc:resources location="/" mapping="/**"/> -->
+<!--    <mvc:resources mapping="../static/**" location="../static/"/>  
+ -->
 
-    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
-          p:viewClass="org.springframework.web.servlet.view.freemarker.FreeMarkerView"
-          p:contentType="text/html;charset=utf-8"
-          p:exposeRequestAttributes="true"
-          p:exposeSessionAttributes="true"
-          p:suffix=".html"
-          p:order="0"/>
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
-          p:messageConverters-ref="messageConverters"/>
+	<context:component-scan base-package="com.yiban.controller" />
 
-    <!--信息处理-->
-    <util:list id="messageConverters">
-        <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
-        <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
-        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
-        <bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
-        <!--解析json-->
-        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-    </util:list>
 
-    <!--注册拦截器-->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="com.yiban.controller"/>
-            <bean class="com.yiban.controller.AllInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
-    <!--文件上传处理-->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!--文件最大为5MB-->
-        <property name="maxUploadSize" value="5242880"/>
-        <property name="defaultEncoding" value="UTF-8"/>
-        <property name="resolveLazily" value="false"/>
-        <property name="uploadTempDir" value="file:file"/>
-    </bean>
+ 
+	<!--freeMarker视图配置 -->
+	  <bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">3600</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="number_format">#.##</prop>
+			</props>
+		</property>
+		<property name="templateLoaderPath" value="/WEB-INF/zqu/" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="xml_escape" value-ref="fmXmlEscape" />
+			</map>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>  
+   <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />   
+
+  	<bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.freemarker.FreeMarkerView"
+		p:contentType="text/html;charset=utf-8" p:exposeRequestAttributes="true"
+		p:exposeSessionAttributes="true" p:suffix=".html" p:order="0" />   
+ 	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+		p:messageConverters-ref="messageConverters" /> 
+
+ <!-- <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+        配置hander adapater 
+        <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+        配置渲染器     
+   
+      <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/zqu/"/>
+        <property name="suffix" value=".html"/>
+    </bean> 
+ -->
+	<!--信息处理 -->
+
+  <util:list id="messageConverters">
+		<bean
+			class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+		<bean
+			class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+		<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+		<bean
+			class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter" />
+		<!-- 解析json -->
+		<bean
+			class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	</util:list> 
+    
+
+	<!--注册拦截器 -->
+	 <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="com.yiban.controller" />
+			<bean class="com.yiban.controller.AllInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors> 
+	<!--文件上传处理 -->
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 文件最大为5MB -->
+		<property name="maxUploadSize" value="5242880" />
+		<property name="defaultEncoding" value="UTF-8" />
+ 	    <property name="resolveLazily" value="false" />
+		<property name="uploadTempDir" value="file:file" /> 
+ 	
+ </bean> 
 </beans>

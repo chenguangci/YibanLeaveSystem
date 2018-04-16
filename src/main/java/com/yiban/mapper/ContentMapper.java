@@ -1,6 +1,7 @@
 package com.yiban.mapper;
 
 import com.yiban.entity.Information;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,18 @@ public interface ContentMapper {
      */
     int totalNumber(String id);
 
+    /**
+     * 
+            根据id查询filePath
+     */
+    public String selectFilePath(long id);
+    
+    /**
+     * 根据id查找Information
+   
+     */
+    Information selectInformation(long id);
+    
     String selectMonitor(long id);
     List<Information> selectLeaves(String id);
     List<Information> selectAll(@Param("id") String id, @Param("limit") int limit, @Param("page") int page);

@@ -31,8 +31,32 @@ public class Information implements Serializable {
     public Information(){
         super();
     }
+    
+  
 
-    @Override
+    public Information(long id, int status) 
+    {
+		super();
+		this.id = id;
+		this.status = status;
+	}
+
+
+
+	public Information(String studentId, String beginTime, String endTime,
+			int number, String reason, String phone) {
+		super();
+		this.studentId = studentId;
+		this.beginTime = beginTime;
+		this.endTime = endTime;
+		this.number = number;
+		this.reason = reason;
+		this.phone = phone;
+	}
+
+
+
+	/*@Override
     public String toString() {
         return "Information{" +
                 "id=" + id +
@@ -47,9 +71,20 @@ public class Information implements Serializable {
                 ", code='" + code + '\'' +
                 ", student='" + student.toString() + '\'' +
                 '}';
-    }
+    }*/
 
-    public long getId() {
+    @Override
+	public String toString() {
+		return "Information [id=" + id + ", studentId=" + studentId
+				+ ", beginTime=" + beginTime + ", endTime=" + endTime
+				+ ", number=" + number + ", reason=" + reason + ", phone="
+				+ phone + ", status=" + status + ", filePath=" + filePath
+				+ ", code=" + code + "]";
+	}
+
+
+
+	public long getId() {
         return id;
     }
 
