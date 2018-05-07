@@ -3,7 +3,7 @@ package com.yiban.controller;
 import com.yiban.dto.Data;
 import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
-import com.yiban.entity.Synchronize;
+import com.yiban.dto.Synchronize;
 import com.yiban.service.teacher.LeaveService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,8 +65,8 @@ public class TeacherController {
             return new Result(Dictionary.DATA_LOSS);
         }
         String yiBanId = (String) session.getAttribute("yiban_id");
-        Synchronize synchronize = new Synchronize(yiBanId,id, status);
-        return  synchronize.updateStatus();
+        Synchronize synchronize =new Synchronize(yiBanId,id,status);
+        return synchronize.updateStatus();
     }
 
     @RequestMapping("/downloadExcel")

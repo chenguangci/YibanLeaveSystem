@@ -42,6 +42,7 @@ public class LeaveHandle {
     public Result agreeLeave(long id, String yibanId) throws SendException, RequestInfoException, ReSetTokenException, SystemRunTimeException {
         String studentId = contentMapper.selectStudentId(id);
         //获取辅导员Id
+//        String teacherYibanId ="123";
         String teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
         //生成验证码,存入数据库
         String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
