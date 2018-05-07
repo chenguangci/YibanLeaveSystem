@@ -7,7 +7,7 @@ import com.yiban.exception.*;
 import com.yiban.service.student.FormHandle;
 import com.yiban.service.student.GetMyLeave;
 import org.apache.commons.io.FileUtils;
-import org.apache.http.HttpRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +40,10 @@ public class StudentController {
     public List<Information> myInfo(HttpSession session) {
         //获取学号
         String id = (String) session.getAttribute("student_id");
+
         logger.info("学号：{}",id);
         return myLeave.getMyLeave(id);
+
     }
 
     @RequestMapping(value = "/leave", method = RequestMethod.POST)
@@ -100,10 +102,10 @@ public class StudentController {
                 FileUtils.copyInputStreamToFile(file.getInputStream(), new File(filePath));
                 information.setFilePath(filePath);
                 /*
-                 * 重要功能，存储请假信息以及查找学生对应的辅导员并发送请假通知
+                 * 重要功能，存储请假信息以及查找学生对应的辅导员和班主任并发送请假通知
                  */
                 formHandle.setInfoAndSend(information);
-                return new Result(Dictionary.SUCCESS, "发送成功，等待辅导员的回复");
+                return new Result(Dictionary.SUCCESS, "发送成功，等待回复");
             } else {
                 logger.error("确少必要信息或文件");
                 throw new DataLossException("确少必要信息或文件");

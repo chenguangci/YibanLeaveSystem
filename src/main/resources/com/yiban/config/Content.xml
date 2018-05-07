@@ -2,44 +2,51 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiban.mapper.ContentMapper">
-	<resultMap id="information" type="com.yiban.entity.Information">
-		<result column="id" property="id" />
-		<result column="student_id" property="studentId" />
-		<result column="begin_time" property="beginTime" />
-		<result column="end_time" property="endTime" />
-		<result column="number" property="number" />
-		<result column="reason" property="reason" />
-		<result column="phone" property="phone" />
-		<result column="status" property="status" />
-		<result column="file_path" property="filePath" />
-		<result column="code" property="code" />
-		<association property="student" columnPrefix="student_"
-			resultMap="com.yiban.mapper.StudentMapper.student" />
-	</resultMap>
+    <resultMap id="information" type="com.yiban.entity.Information">
+        <result column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="begin_time" property="beginTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="number" property="number"/>
+        <result column="reason" property="reason"/>
+        <result column="phone" property="phone"/>
+        <result column="status" property="status"/>
+        <result column="file_path" property="filePath"/>
+        <result column="code" property="code"/>
+        <association property="student" columnPrefix="student_"
+                     resultMap="com.yiban.mapper.StudentMapper.student"/>
+    </resultMap>
 
-	<!--添加请假信息 -->
-	<insert id="addContent">
+    <!--添加请假信息 -->
+    <insert id="addContent">
 		INSERT IGNORE INTO information VALUES
 		(0,#{studentId},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{number},#{reason},#{phone},#{status},#{filePath},#{code}
 		)
 	</insert>
-	<!--更新请假信息 -->
-	<update id="updateLeave">
+    <!--更新请假信息 -->
+    <update id="updateLeave">
 		UPDATE information SET status = #{status}, code = #{code} WHERE id = #{id}
 	</update>
 
-	<update id="updateLeaveWithoutCode">
+    <update id="updateLeaveWithoutCode">
 		UPDATE information SET status = #{status} WHERE id = #{id}
 	</update>
 
-	<!--查找请假人的易班id -->
-	<select id="selectYibanId" resultType="String">
+    <!--查找请假人的易班id -->
+    <select id="selectYibanId" resultType="String">
 		SELECT s.yiban_id FROM student s
 		WHERE s.student_id = (SELECT a.student_id FROM information a WHERE a.id =
 		#{id})
 	</select>
-	<!--查找班长的易班id -->
-	<select id="selectMonitor" resultType="String">
+
+	<!--查找请假人的学号studentId-->
+	<select id="selectStudentId" resultType="String">
+		SELECT s.student_id FROM student s
+		WHERE s.student_id = (SELECT a.student_id FROM information a WHERE a.id =
+		#{id})
+	</select>
+    <!--查找班长的易班id -->
+    <select id="selectMonitor" resultType="String">
 		SELECT c.monitor FROM class c
 		WHERE c.class_id = LEFT((SELECT a.student_id FROM information a WHERE a.id
 		= #{id}),10)
@@ -50,24 +57,20 @@
     FROM information a
     WHERE a.id = #{id}
     </select>
-    
-	<select id="selectInformation" parameterType="long" resultMap="information">
+
+    <select id="selectInformation" parameterType="long" resultMap="information">
 		 SELECT a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code,
 		s.student_id student_student_id, s.name student_name, s.department
 		student_department, s.class_name student_class_name
-
         FROM information a
-
 		LEFT JOIN student s ON a.student_id = s.student_id
-
 		WHERE a.id= #{id}
-
 		ORDER BY a.begin_time DESC
 
 	</select>
 
-	<select id="selectLeaves" parameterType="java.lang.String"
-		resultMap="information">
+    <select id="selectLeaves" parameterType="java.lang.String"
+            resultMap="information">
 		SELECT
 		a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code,
 		s.student_id student_student_id, s.name student_name, s.department
@@ -75,11 +78,11 @@
 		FROM information a
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
 		LEFT JOIN student s ON a.student_id = s.student_id
-		WHERE b.teacher_yiban_id = #{id} AND a.status = 0
+		WHERE b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}  AND a.status = 0
 		ORDER BY a.begin_time DESC
 	</select>
 
-	<select id="selectAll" resultMap="information">
+    <select id="selectAll" resultMap="information">
 		SELECT
 		a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code,
 		s.student_id student_student_id, s.name student_name, s.department
@@ -87,32 +90,32 @@
 		FROM information a
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
 		LEFT JOIN student s ON a.student_id = s.student_id
-		WHERE b.teacher_yiban_id = #{id}
+		WHERE b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}
 		ORDER BY a.begin_time DESC
 		LIMIT #{limit},#{page}
 	</select>
 
-	<select id="myLeaves" resultMap="information" parameterType="java.lang.String">
+    <select id="myLeaves" resultMap="information" parameterType="java.lang.String">
 		SELECT
 		a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
 		FROM information a WHERE a.student_id = #{myId}
 		ORDER BY a.begin_time DESC
 	</select>
 
-	<select id="selectByType" resultMap="information">
+    <select id="selectByType" resultMap="information">
 		SELECT
 		a.id,a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
 		FROM information a
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id AND
-		b.teacher_yiban_id = #{id}
+		b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}
 		ORDER BY a.begin_time DESC
 	</select>
 
-	<!--查找请假条数 -->
-	<select id="totalNumber" parameterType="java.lang.String"
-		resultType="java.lang.Integer">
+    <!--查找请假条数 -->
+    <select id="totalNumber" parameterType="java.lang.String"
+            resultType="java.lang.Integer">
 		SELECT count(a.id) FROM information a
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
-		WHERE b.teacher_yiban_id = #{id}
+		WHERE b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}
 	</select>
 </mapper>

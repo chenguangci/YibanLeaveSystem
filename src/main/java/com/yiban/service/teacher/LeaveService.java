@@ -4,7 +4,6 @@ import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
 import com.yiban.dto.workbookFactory;
 import com.yiban.entity.Information;
-import com.yiban.entity.Student;
 import com.yiban.exception.ReSetTokenException;
 import com.yiban.exception.RequestInfoException;
 import com.yiban.exception.SendException;
@@ -23,8 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -77,20 +75,20 @@ public class LeaveService {
 	 *            请假状态更新
 	 * @return 更新结果
 	 */
-	public Result updateLeave(long id, int status) {
+	public Result updateLeave(long id, int status,String yibanId) {
 		if (status < -1 || status > 2) {
 			return new Result(Dictionary.ILLEGAL_OPERATION);
 		} else {
 			try {
 				if (status == -1) {
 					// 拒绝
-					return leaveHandle.disagree(id);
+					return leaveHandle.disagree(id,yibanId);
 				} else if (status == 0) {
 					// 待审核状态，初始状态
 					return leaveHandle.waiting(id);
 				} else if (status == 1) {
 					// 同意请假，发送信息给请假人再转发给班长
-					return leaveHandle.agreeLeave(id);
+					return leaveHandle.agreeLeave(id,yibanId);
 				} else {
 					// 销假操作
 					return leaveHandle.back(id);
@@ -148,18 +146,12 @@ public class LeaveService {
 		return contentMapper.totalNumber(yibanId);
 	}
 
-	public Boolean exportInformation (long[] array, String path)
-    {
+	public Boolean exportInformation (long[] array, String path) {
     	List<Information> informationList =new ArrayList<Information>();
-    	for (int i =0;i<array.length;i++)
-    	{
-    		Information  information =new Information();
-    	
-    		information=contentMapper.selectInformation(array[i]);
-    		
-    		System.out.println(information.toString());
-    		
-    		informationList.add(information);
+    	for (int i =0;i<array.length;i++) {
+    		//这里可能有问题
+    		System.out.println(contentMapper.selectInformation(array[i]));
+    		informationList.add(contentMapper.selectInformation(array[i]));
     	}
     	/*
 		 * 设置表头：对Excel每列取名(必须根据你取的数据编写)
@@ -180,111 +172,111 @@ public class LeaveService {
 		HSSFSheet sheet = workbook.createSheet("sheet1"); // 创建一个sheet
 		HSSFHeader header = sheet.getHeader();// 设置sheet的头
 		try {
-			/**
-			 * 根据是否取出数据，设置header信息
-			 * 
-			 */
-			if(informationList.size()<1)
-			{
-				header.setCenter("查无资料");
+		/**
+		 * 根据是否取出数据，设置header信息
+		 *
+		 */
+		if(informationList.size()<1)
+		{
+			header.setCenter("查无资料");
+		}
+		else {
+			header.setCenter("学生请假信息表");
+			row = sheet.createRow(0);
+			row.setHeight((short) 400);
+			for (int k = 0; k < cellNumber; k++) {
+				cell = row.createCell(k);// 创建第0行第k列
+				cell.setCellValue(tableHeader[k]);// 设置第0行第k列的值
+				sheet.setColumnWidth(k, 8000);// 设置列的宽度
+				font.setColor(HSSFFont.COLOR_NORMAL); // 设置单元格字体的颜色.
+				font.setFontHeight((short) 350); // 设置单元字体高度
+				style1.setFont(font);// 设置字体风格
+				cell.setCellStyle(style1);
 			}
-			else {
-				header.setCenter("学生请假信息表");
-				row = sheet.createRow(0);
-				row.setHeight((short) 400);
-				for (int k = 0; k < cellNumber; k++) {
-					cell = row.createCell(k);// 创建第0行第k列
-					cell.setCellValue(tableHeader[k]);// 设置第0行第k列的值
-					sheet.setColumnWidth(k, 8000);// 设置列的宽度
-					font.setColor(HSSFFont.COLOR_NORMAL); // 设置单元格字体的颜色.
-					font.setFontHeight((short) 350); // 设置单元字体高度
-					style1.setFont(font);// 设置字体风格
-					cell.setCellStyle(style1);
-				}
-				
-				int index=0;
-				 // 给excel填充数据这里需要编写
-				for (int i=0;i<informationList.size();i++)
-				{
-					Information information = new Information();
-					information =(Information) informationList.get(i);
-					row = sheet.createRow((short) (i + 1));// 创建第i+1行
-					row.setHeight((short) 400);// 设置行高					
-					cell=row.createCell(0);
-					cell.setCellValue(index++);
-					cell.setCellStyle(style);// 设置风格
-					if(information.getStudentId()!=null)
-					{
-						cell=row.createCell(1);
-						cell.setCellValue(information.getStudentId());
-						cell.setCellStyle(style);// 设置风格
 
-					}
-					if(information.getStudent().getName()!=null)
-					{
-						cell=row.createCell(2);
-						cell.setCellValue(information.getStudent().getName());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(information.getStudent().getDepartment()!=null)
-					{
-						cell =row.createCell(3);
-						cell.setCellValue(information.getStudent().getDepartment());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(information.getStudent().getClassName()!=null)
-					{
-						cell =row.createCell(4);
-						cell.setCellValue(information.getStudent().getClassName());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(information.getPhone()!=null)
-					{
-						cell =row.createCell(5);
-						cell.setCellValue(information.getPhone());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(information.getBeginTime()!=null)
-					{
-						cell =row.createCell(6);
-						cell.setCellValue(information.getBeginTime());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(information.getEndTime()!=null)
-					{
-						cell =row.createCell(7);
-						cell.setCellValue(information.getEndTime());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(String.valueOf(information.getNumber())!=null)
-					{
-						cell =row.createCell(8);
-						cell.setCellValue(information.getNumber());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(information.getReason()!=null)
-					{
-						cell =row.createCell(9);
-						cell.setCellValue(information.getReason());
-						cell.setCellStyle(style);// 设置风格
-					}
-					if(String.valueOf(information.getStatus())!=null)
-					{
-						cell =row.createCell(10);
-						cell.setCellStyle(style);
-		    			if(information.getStatus()==-1)
-		    				cell.setCellValue("拒批准");
-		    			else if (information.getStatus()==0)
-		    				cell.setCellValue("待审核");
-		    			else if (information.getStatus()==1)
-		    				cell.setCellValue("未销假");
-		    			else {
-		    				cell.setCellValue("已销假");
-						}
-					}
-					
-					
+			int index=0;
+			// 给excel填充数据
+			for (int i=0;i<informationList.size();i++)
+			{
+				Information information = new Information();
+				information =(Information) informationList.get(i);
+				row = sheet.createRow((short) (i + 1));// 创建第i+1行
+				row.setHeight((short) 400);// 设置行高
+				cell=row.createCell(0);
+				cell.setCellValue(index++);
+				cell.setCellStyle(style);// 设置风格
+				if(information.getStudentId()!=null)
+				{
+					cell=row.createCell(1);
+					cell.setCellValue(information.getStudentId());
+					cell.setCellStyle(style);// 设置风格
+
 				}
+				if(information.getStudent().getName()!=null)
+				{
+					cell=row.createCell(2);
+					cell.setCellValue(information.getStudent().getName());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getStudent().getDepartment()!=null)
+				{
+					cell =row.createCell(3);
+					cell.setCellValue(information.getStudent().getDepartment());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getStudent().getClassName()!=null)
+				{
+					cell =row.createCell(4);
+					cell.setCellValue(information.getStudent().getClassName());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getPhone()!=null)
+				{
+					cell =row.createCell(5);
+					cell.setCellValue(information.getPhone());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getBeginTime()!=null)
+				{
+					cell =row.createCell(6);
+					cell.setCellValue(information.getBeginTime());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getEndTime()!=null)
+				{
+					cell =row.createCell(7);
+					cell.setCellValue(information.getEndTime());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getNumber()>0)
+				{
+					cell =row.createCell(8);
+					cell.setCellValue(information.getNumber());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getReason()!=null)
+				{
+					cell =row.createCell(9);
+					cell.setCellValue(information.getReason());
+					cell.setCellStyle(style);// 设置风格
+				}
+				if(information.getStatus()<3 && information.getStatus()>-2)
+				{
+					cell =row.createCell(10);
+					cell.setCellStyle(style);
+					if(information.getStatus()==-1)
+						cell.setCellValue("拒批准");
+					else if (information.getStatus()==0)
+						cell.setCellValue("待审核");
+					else if (information.getStatus()==1)
+						cell.setCellValue("未销假");
+					else {
+						cell.setCellValue("已销假");
+					}
+				}
+
+
+			}
 
 
 				/*int index =0;
@@ -297,20 +289,20 @@ public class LeaveService {
 					Class informationClass=(Class) information.getClass();
 					 @SuppressWarnings("rawtypes")
 					Class studentClass =(Class) information.getStudent().getClass();
-				
-				         
+
+
 					Method[] infoMethod = informationClass.getMethods();
 					Method[] stuMethod = studentClass.getMethods();
-					 
+
 					row = sheet.createRow((short) (i + 1));// 创建第i+1行
 					row.setHeight((short) 400);// 设置行高
-				    cell=row.createCell(index++);			
+				    cell=row.createCell(index++);
 				    cell.setCellValue(i+1);
 				    cell.setCellStyle(style);
 				    for (int j=0;j<stuMethod.length;j++)
 				    {
                             Method m=stuMethod[j];
-				    	
+
 				    	if(m.getName().startsWith("get"))
 				    	{
 				    		if(m.getName()!="getYibanId")
@@ -324,7 +316,7 @@ public class LeaveService {
 				    for(int j =0;j<infoMethod.length;j++)
 				    {
 				    	Method m=infoMethod[j];
-				    	
+
 				    	if(m.getName().startsWith("get"))
 				    	{
 				    		if(m.getName()=="getStatus")
@@ -340,29 +332,29 @@ public class LeaveService {
 				    			else {
 				    				cell.setCellValue("已销假");
 								}
-				    				
-				    				
+
+
 				    		}
 				    		if(m.getName()!="getFilePath"&&m.getName()!="getStudentId" &&m.getName()!="getCode")
 				    		{
-				    			
+
 				    			cell=row.createCell(index++);
 				    			cell.setCellValue(m.invoke(information).toString());
 				    			cell.setCellStyle(style);
 				    		}
 				    	}
 				    }
-				  
-					
-					 
-					
-					
+
+
+
+
+
 				}*/
-					
-			}
-		} catch (SecurityException e) {  
+
+		}
+	} catch (SecurityException e) {
             e.printStackTrace();  
-        } catch (IllegalArgumentException e) {  
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();  
         }
 		// 创建一个HttpServletResponse对象
@@ -380,13 +372,12 @@ public class LeaveService {
 			try {
 				if (out != null) {
 					out.close();
-				}				
-				return true;
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		return false;
+		return true;
 		
     }
 }

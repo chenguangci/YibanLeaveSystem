@@ -9,7 +9,10 @@
     <select id="searchTeacherByStudentId" resultType="java.lang.String">
         SELECT teacher_yiban_id FROM class WHERE class_id = #{id}
     </select>
+    <select id="searchDeanByStudentId" resultType="java.lang.String">
+        SELECT Dean_yiban_id FROM class WHERE class_id = #{id}
+    </select>
     <select id="searchTeacher" resultType="java.lang.String">
-        SELECT class_id FROM class WHERE teacher_yiban_id = #{id}
+        SELECT class_id FROM class WHERE teacher_yiban_id =#{id} OR Dean_yiban_id= #{id}
     </select>
 </mapper>

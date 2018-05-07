@@ -27,6 +27,10 @@ public interface ContentMapper {
      */
     String selectYibanId(long id);
     /*
+     * 根据请假信息查找请假人的学生id
+     */
+    String selectStudentId(long id);
+    /*
      * 页数查询
      */
     int totalNumber(String id);

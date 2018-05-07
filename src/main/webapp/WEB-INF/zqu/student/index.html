@@ -1,207 +1,200 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon"
-	href="/YibanLeaveSystem/static/images/favicon.ico">
-<link rel="stylesheet"
-	href="/YibanLeaveSystem/static/css/student/bootstrap.css" />
-<link rel="stylesheet"
-	href="/YibanLeaveSystem/static/css/student/bootstrapValidator.css" />
-<link rel="stylesheet"
-	href="/YibanLeaveSystem/static/css/font-awesome/css/font-awesome.css" />
-<link rel="stylesheet"
-	href="/YibanLeaveSystem/static/css/student/demo.css" />
-<link rel="stylesheet"
-	href="/YibanLeaveSystem/static/css/student/gsdk-bootstrap-wizard.css" />
-<link rel="stylesheet"
-	href="/YibanLeaveSystem/static/css/student/style.css" />
-<meta
-	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
-	name='viewport' />
-<meta name="viewport" content="width=device-width" />
-<meta charset="utf-8">
-<title>肇院请假系统</title>
+    <link rel="shortcut icon"
+          href="/static/images/favicon.ico">
+    <link rel="stylesheet"
+          href="/static/css/student/bootstrap.css"/>
+    <link rel="stylesheet"
+          href="/static/css/student/bootstrapValidator.css"/>
+    <link rel="stylesheet"
+          href="/static/css/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet"
+          href="/static/css/student/demo.css"/>
+    <link rel="stylesheet"
+          href="/static/css/student/gsdk-bootstrap-wizard.css"/>
+    <link rel="stylesheet"
+          href="/static/css/student/style.css"/>
+    <meta
+            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+            name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charset="utf-8">
+    <title>肇院请假系统</title>
 
 </head>
 <body>
-	<div class="image-container set-full-height"
-		style="background-image: url('/YibanLeaveSystem/static/images/bg.png')">
-		<section>
-			<div class="container">
+<div class="image-container set-full-height"
+     style="background-image: url('/static/images/bg.png')">
+    <section>
+        <div class="container">
 
-				<div class="row">
+            <div class="row">
 
-					<div class="index-body animated" id="index">
+                <div class="index-body animated" id="index">
 
-						<div class="wizard-container">
-							<div class="card wizard-card" data-color="orange"
-								id="wizardProfile">
-								<div class="wizard-header">
-									<h3>
-										肇院 <b>请假系统</b><br>
-										<small><a href="javascript:viewRecord()">查看请假记录</a></small>
-									</h3>
-									<h6></h6>
-									
-								</div>
+                    <div class="wizard-container">
+                        <div class="card wizard-card" data-color="orange"
+                             id="wizardProfile">
+                            <div class="wizard-header">
+                                <h3>
+                                    肇院 <b>请假系统</b><br>
+                                    <small><a href="javascript:viewRecord()">查看请假记录</a></small>
+                                </h3>
+                                <h6></h6>
 
-								<form id="testForm" class="form-signin"
-									@submit.prevent="submit" enctype="multipart/form-data">
+                            </div>
+                            <form id="testForm" class="form-signin"
+                                  @submit.prevent="submit" enctype="multipart/form-data">
 
-									<div class="form-group row">
-										<div class="col-md-6">
-											<div class="input-group">
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-bookmark-o">学号</i>
+                                            </span><input name="Name" type="text" class="form-control " id="studentId"
+                                                          value="${result.student.studentId}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user">姓名</i></span>
+                                            <input name="Name" type="text" class="form-control "
+                                                   id="Name" value="${result.student.name}" disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-building-o">学院</i>
+                                                </span> <input name="Name" type="text" class="form-control "
+                                                               id="department"
+                                                               value="${result.student.department}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-tag">班级</i></span>
+                                            <input name="Name" type="text" class="form-control "
+                                                   id="className" value="${result.student.className}" disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 ">
+                                        <div class="input-group">
 												<span class="input-group-addon"><i
-													class="fa fa-bookmark-o">学号</i></span> <input name="Name"
-													type="text" class="form-control " id="studentId"
-													value="${result.data.studentId}" disabled>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="input-group">
-												<span class="input-group-addon"><i class="fa fa-user">姓名</i></span>
-												<input name="Name" type="text" class="form-control "
-													id="Name" value="${result.data.name}" disabled>
-											</div>
-										</div>
+                                                        class="fa fa-calendar-o">开始时间</i></span>
+                                            <input name="begin1" type="text" class="form-control" id="begin"
+                                                   placeholder="选择开始时间"/>
+                                        </div>
+                                    </div>
 
-									</div>
-
-									<div class="form-group row">
-										<div class="col-md-6">
-											<div class="input-group">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
 												<span class="input-group-addon"><i
-													class="fa fa-building-o">学院</i></span> <input name="Name"
-													type="text" class="form-control " id="department"
-													value="${result.data.department}" disabled>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="input-group">
-												<span class="input-group-addon"><i class="fa fa-tag">班级</i></span>
-												<input name="Name" type="text" class="form-control "
-													id="className" value="${result.data.className}" disabled>
-											</div>
-										</div>
+                                                        class="fa fa-calendar-o">截止时间</i></span>
+                                            <input type="text" name="end1" id="end" class="form-control"
+                                                   placeholder="选择截止时间"/>
+                                        </div>
+                                    </div>
 
-									</div>
+                                </div>
 
-                                     	<div class="form-group row">
-										<div class="col-md-6 ">
-											<div class="input-group">
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 ">
+                                        <div class="input-group">
 												<span class="input-group-addon"><i
-													class="fa fa-calendar-o">开始时间</i></span> <input name="begin1"
-													type="text" class="form-control" id="begin" placeholder="选择开始时间"
-													 />
-											</div>
-										</div>
+                                                        class="fa fa-phone">联系方式</i></span>
+                                            <input name="Mobile" type="text" class="form-control" id="Mobile"
+                                                   placeholder="请输入手机号码" v-model="information.phone">
+                                        </div>
+                                    </div>
 
-										<div class="col-md-6">
-											<div class="input-group">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
 												<span class="input-group-addon"><i
-													class="fa fa-calendar-o">截止时间</i></span><input type="text"
-													name="end1" id="end" class="form-control"  placeholder="选择截止时间"
-												    />
-											</div>
-										</div>
+                                                        class="fa fa-clock-o">请假节数</i></span>
+                                            <input type="text" name="Number" id="Number" class="form-control"
+                                                   placeholder="请输入请假节数" v-model="information.number"/>
+                                        </div>
+                                    </div>
 
-									</div>
-                                     
-                                    
-									<div class="form-group row">
-										<div class="col-md-6 ">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="fa fa-phone">联系方式</i></span> <input name="Mobile"
-													type="text" class="form-control" id="Mobile"
-													placeholder="请输入手机号码" v-model="information.phone">
-											</div>
-										</div>
-
-										<div class="col-md-6">
-											<div class="input-group">
-												<span class="input-group-addon"><i
-													class="fa fa-clock-o">请假节数</i></span><input type="text"
-													name="Number" id="Number" class="form-control"
-													placeholder="请输入请假节数" v-model="information.number" />
-											</div>
-										</div>
-
-									</div>
-									
-                                 
-								
-
-									<div class="form-group row">
-										<label for="reason"><i class="fa fa-edit">请假理由</i></label>
-										<textarea class="form-control" row="5" name="Reason"
-											id="Reason" v-model="information.reason"
-											placeholder="请输入请假理由"></textarea>
-									</div>
-
-                                     
-                                           
-									<div class="form-group row ">
-										&nbsp;&nbsp;&nbsp;&nbsp;<label for="Inputfile"><i
-											class="fa fa-upload">上传请假证明</i></label> &nbsp;&nbsp;&nbsp;&nbsp; <input
-											type="file" id="file" name="file" />
-
-									</div>
-
-									<div class="row">
-										<div class="col-md-2 col-md-offset-10">
-											<button type="button" class="btn btn-info" id="btn"
-												title="提交申请" @click="submitSignin">
-												<i class="fa fa-check">提交申请</i>
-											</button>
-										</div>
-									</div>
-								</form>
+                                </div>
 
 
+                                <div class="form-group row">
+                                    <label for="reason"><i class="fa fa-edit">请假理由</i></label>
+                                    <textarea class="form-control" row="5" name="Reason"
+                                              id="Reason" v-model="information.reason"
+                                              placeholder="请输入请假理由"></textarea>
+                                </div>
 
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="footer" style="margin-bottom: 0px;">
-					<div class="foot-text">易班学生工作站</div>
-					<div class="foot-copyright">Copyright© 2017 ZQU E-Class</div>
-				</div>
-			</div>
-		</section>
-	</div>
+                                <div class="form-group row ">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<label for="file"><i
+                                        class="fa fa-upload">上传请假证明</i></label> &nbsp;&nbsp;&nbsp;&nbsp; <input
+                                        type="file" id="file" name="file"/>
 
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/jquery-3.2.0.min.js"></script>
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/json2.js"></script>
-   
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/student/bootstrap.js"></script>
-   	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/laydate/laydate.js"></script>
+                                </div>
 
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/layer/layer.js"></script>
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/layer/extend/layer.ext.js"></script>
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/student/vue.min.js"></script>
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/student/bootstrapValidator.js"></script>
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/student/language/zh_CN.js"></script>
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/js/student/ajaxfileupload.js"></script>
- 
+                                <div class="row">
+                                    <div class="col-md-2 col-md-offset-10">
+                                        <button type="button" class="btn btn-info" id="btn"
+                                                title="提交申请" @click="submitSignin">
+                                            <i class="fa fa-check">提交申请</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
 
-	<script type="text/javascript"
-		src="/YibanLeaveSystem/static/script/Submit.js"></script>
 
-   <script>
-   
-   </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer" style="margin-bottom: 0px;">
+                <div class="foot-text">易班学生工作站</div>
+                <div class="foot-copyright">Copyright© 2017 ZQU E-Class</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript"
+        src="/static/js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript"
+        src="/static/js/json2.js"></script>
+
+<script type="text/javascript"
+        src="/static/js/student/bootstrap.js"></script>
+<script type="text/javascript"
+        src="/static/js/laydate/laydate.js"></script>
+
+<script type="text/javascript"
+        src="/static/js/layer/layer.js"></script>
+<script type="text/javascript"
+        src="/static/js/layer/extend/layer.ext.js"></script>
+<script type="text/javascript"
+        src="/static/js/student/vue.min.js"></script>
+<script type="text/javascript"
+        src="/static/js/student/bootstrapValidator.js"></script>
+<script type="text/javascript"
+        src="/static/js/student/language/zh_CN.js"></script>
+<script type="text/javascript"
+        src="/static/js/student/ajaxfileupload.js"></script>
+
+
+<script type="text/javascript"
+        src="/static/script/Submit.js"></script>
+
+<script>
+
+</script>
 </body>
 </html>
