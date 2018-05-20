@@ -6,16 +6,65 @@ import com.yiban.entity.Student;
 /**
  * 学生提交请假要求后的结果
  */
-public class Result{
+public class Result {
     //提交是否成功
     private boolean success;
     //错误信息
     private String msg;
+
+//    //数据对象
+//    private T data;
+//
+//
+//    public Result(Dictionary dictionary) {
+//        this.success=dictionary.isSuccess();
+//        this.msg=dictionary.getStateInfo();
+//    }
+//
+//    public Result(Dictionary dictionary, T data) {
+//        this.success=dictionary.isSuccess();
+//        this.msg=dictionary.getStateInfo();
+//        this.data = data;
+//    }
     //数据对象
     private Student student=null;
     private Information information=null;
     private String string=null;
 
+    public Result(Dictionary dictionary) {
+        this.success = dictionary.isSuccess();
+        this.msg = dictionary.getStateInfo();
+    }
+
+    public Result(Dictionary dictionary, Student student) {
+        this.success = dictionary.isSuccess();
+        this.msg = dictionary.getStateInfo();
+        this.student=student;
+
+    }
+
+    public Result(Dictionary dictionary, Information information) {
+        this.success = dictionary.isSuccess();
+        this.msg = dictionary.getStateInfo();
+        this.information=information;
+
+    }
+    public Result(Dictionary dictionary, String string) {
+        this.success = dictionary.isSuccess();
+        this.msg = dictionary.getStateInfo();
+        this.string=string;
+
+    }
+    @Override
+    public String toString() {
+        return "{" +
+                "\"success\":" + success +""+
+                ", \"msg\":\"" + msg +"\""+
+                ", \"string\":\"" + string +"\""+
+                ",\"student\":" + student+""+
+                ",\"information\":"+ information +""+
+                "}";
+    }
     public Student getStudent() {
         return student;
     }
@@ -40,41 +89,15 @@ public class Result{
         this.string = string;
     }
 
-    public Result(Dictionary dictionary) {
-        this.success = dictionary.isSuccess();
-        this.msg = dictionary.getStateInfo();
-    }
 
-    public Result(Dictionary dictionary, Student student) {
-        this.success = dictionary.isSuccess();
-        this.msg = dictionary.getStateInfo();
-        this.student=student;
-
-    }
-    public Result(Dictionary dictionary, Information information) {
-        this.success = dictionary.isSuccess();
-        this.msg = dictionary.getStateInfo();
-        this.information=information;
-
-    }
-    public Result(Dictionary dictionary, String string) {
-        this.success = dictionary.isSuccess();
-        this.msg = dictionary.getStateInfo();
-        this.string=string;
-
-    }
-    @Override
-    public String toString() {
-        return "Result{" +
-                "success=" + success +
-                ", msg='" + msg + '\'' +
-                ", string=" + string +
-                ",student=" + student+
-                ",information="+ information +
-                '}';
-    }
-
-
+//    @Override
+//    public String toString() {
+//                return "Result{" +
+//                "success=" + success +
+//                ", msg='" + msg + '\'' +
+//                ", data=" + data +
+//                '}';
+//    }
 
     public boolean isSuccess() {
         return success;
@@ -91,6 +114,5 @@ public class Result{
     public void setMsg(String msg) {
         this.msg = msg;
     }
-
 
 }

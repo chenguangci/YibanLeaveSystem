@@ -8,7 +8,8 @@ $(function () {
 
   $('#teacherTable').bootstrapTable({
     	method:'GET',
-        url:"/YibanLeaveSystem/Toteacher/list",
+	  //"/YibanLeaveSystem/Toteacher/list"
+        url:"/teacher/info",
         contentType:"application/json",
    	    dataType:"json",
         search:false,
@@ -171,12 +172,12 @@ var cleanTime = function(str)
 var beginTimeFormartter=function (value,row,index)
 {
    return cleanTime(value);	
-}
+};
 
 var endTimeFormartter=function (value,row,index)
 {
    return cleanTime(value);	
-}
+};
 
 window.operateEvents = {
 		
@@ -188,9 +189,10 @@ window.operateEvents = {
      	   $('#department').val(row.student.department);
      	   $('#className').val(row.student.className);
      	   $('#phone').val(row.phone);
+     	   $('#leaveNumber').val(row.number);
      	   $('#beginTime').val(cleanTime(row.beginTime));
      	   $('#endTime').val(cleanTime(row.endTime));
-     	   $('#number').val(row.number);
+
 		 
      	   var status=$.trim(row.status);
      	 
@@ -216,12 +218,13 @@ window.operateEvents = {
      		$('#Edit').modal('toggle'); 
 	}
 
-}
+};
 
-$("#submitEdit").click(function(){
+$('#submitEdit').click(function(){
 	var id=$("#Iid").val();
-	var status = $("input[name='Qing']").val();
-	console.log(id);
+	var status = $('input:radio[name="Qing"]:checked').val();
+	alert($("input[name='Qing']"));
+	console.log(status);
 	var information=
 	{
 		"id":id,
@@ -230,10 +233,11 @@ $("#submitEdit").click(function(){
 	
 	$.ajax({
 		type:"POST",
-		url:"/YibanLeaveSystem/Toteacher/handle",
+        // "/YibanLeaveSystem/Toteacher/handle"
+		url:"/teacher/handle",
 		data:JSON.stringify(information),
 		contentType:"application/json",
-		dataType:"json",		
+		dataType:"json",
 		success:function(data)
 		{
 			if(data.success==true)
@@ -251,9 +255,9 @@ $("#down").click(function(){
 	
 	var id=$("#Iid").val();
 	
-	$('#Edit').modal('hide'); 
-
-	window.location.href="/YibanLeaveSystem/Toteacher/download/"+id;
+	$('#Edit').modal('hide');
+    // "/YibanLeaveSystem/Toteacher/download/"+id;
+	window.location.href="/teacher/download/"+id;
 
    
 
@@ -276,7 +280,8 @@ $("#printExcel").click(function(){
 		}	
 		
 		/*window.location.href="/YibanLeaveSystem/Toteacher/downloadExcel?List="+List;*/
-		   var url="/YibanLeaveSystem/Toteacher/downloadExcel/";
+        // "/YibanLeaveSystem/Toteacher/downloadExcel/";
+		   var url="/teacher/downloadExcel";
 		   var form = $("<form></form>").attr("action", url).attr("method", "post");
 		   form.append($("<input></input>").attr("type", "hidden").attr("name", "List").attr("value", List));
 			form.appendTo('body').submit().remove();

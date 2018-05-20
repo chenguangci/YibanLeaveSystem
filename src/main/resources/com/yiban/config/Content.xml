@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0 //EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiban.mapper.ContentMapper">
+	<cache eviction="FIFO"
+		   flushInterval="60000"
+		   size="512"/>
     <resultMap id="information" type="com.yiban.entity.Information">
         <result column="id" property="id"/>
         <result column="student_id" property="studentId"/>
@@ -17,12 +20,20 @@
                      resultMap="com.yiban.mapper.StudentMapper.student"/>
     </resultMap>
 
+    <select id="selectStudentInformation" resultMap="information">
+		SELECT a.begin_time,a.end_time,a.reason FROM information a
+		WHERE a.id=#{id}
+	</select>
     <!--添加请假信息 -->
     <insert id="addContent">
 		INSERT IGNORE INTO information VALUES
 		(0,#{studentId},#{beginTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP},#{number},#{reason},#{phone},#{status},#{filePath},#{code}
 		)
 	</insert>
+    <!--更改状态之前先查询status的值-->
+    <select id="selectStudentPresentStatus" resultType="java.lang.Integer">
+		SELECT i.status FROM information i WHERE i.id = #{id}
+	</select>
     <!--更新请假信息 -->
     <update id="updateLeave">
 		UPDATE information SET status = #{status}, code = #{code} WHERE id = #{id}
@@ -39,8 +50,8 @@
 		#{id})
 	</select>
 
-	<!--查找请假人的学号studentId-->
-	<select id="selectStudentId" resultType="String">
+    <!--查找请假人的学号studentId-->
+    <select id="selectStudentId" resultType="String">
 		SELECT s.student_id FROM student s
 		WHERE s.student_id = (SELECT a.student_id FROM information a WHERE a.id =
 		#{id})

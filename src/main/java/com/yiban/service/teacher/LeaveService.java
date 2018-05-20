@@ -78,7 +78,9 @@ public class LeaveService {
 	public Result updateLeave(long id, int status,String yibanId) {
 		if (status < -1 || status > 2) {
 			return new Result(Dictionary.ILLEGAL_OPERATION);
-		} else {
+		} else if (contentMapper.selectStudentPresentStatus(id)!=0){
+			return new Result(Dictionary.REQUEST_STUDENT_STATUS);
+		}else {
 			try {
 				if (status == -1) {
 					// 拒绝

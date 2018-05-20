@@ -36,6 +36,14 @@ public interface ContentMapper {
     int totalNumber(String id);
 
     /**
+     * 查询学生的请假信息，此信息包括学习请假时间、原因
+     */
+    Information selectStudentInformation(long id );
+    /**
+     * 查询学生当前的Status
+     */
+    int selectStudentPresentStatus(long id);
+    /**
      * 
             根据id查询filePath
      */

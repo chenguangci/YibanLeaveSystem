@@ -20,7 +20,7 @@ public class Information implements Serializable {
     //联系方式
     private String phone;
     //请假状态：（-1：拒绝，0：待审核，1：已同意未销假，2：已销假）
-    private int status;
+    private Integer status=0;
     //文件路径
     private String filePath;
     //验证码
@@ -132,11 +132,11 @@ public class Information implements Serializable {
         this.reason = reason;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

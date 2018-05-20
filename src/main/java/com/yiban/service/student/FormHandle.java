@@ -54,7 +54,8 @@ public class FormHandle {
     public void setInfoAndSend(Information information) throws SendException, RequestInfoException, ReSetTokenException, UnknownError, SystemRunTimeException {
         String teacherId = getTeacherId(information.getStudentId());
         String deanId =getDeanId(information.getStudentId());
-        //String teacherId = "10849451";
+//        String teacherId = "10849451";
+//        String deanId="12020202";
         if ((teacherId != null && !"".equals(teacherId))&&(deanId != null && !"".equals(deanId))) {
             //发送信件前先将数据加到数据库
             if (contentMapper.addContent(information) > 0) {

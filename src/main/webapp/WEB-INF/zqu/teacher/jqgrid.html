@@ -66,15 +66,15 @@
 						</div>
 					</div>
 
-					<ul class="nav nav-list">
-						<li>
-							<a href="jqgrid.html">
-								<i class="icon-home"></i>
-								<span class="menu-text">请假情况</span>
-							</a>
-						</li>
+					<!--<ul class="nav nav-list">-->
+						<!--<li>-->
+							<!--<a href="jqgrid.html">-->
+								<!--<i class="icon-home"></i>-->
+								<!--<span class="menu-text">请假情况</span>-->
+							<!--</a>-->
+						<!--</li>-->
 
-					</ul>
+					<!--</ul>-->
 
 					<div class="sidebar-collapse" id="sidebar-collapse">
 						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
@@ -103,7 +103,8 @@
 									
 									<a  id="printExcel" class="btn btn-sm btn-success icon-print icon-blue">导出Excel</a>
 								</div>
-									<span id="dataBox" style="display:none" >${teacherYibanId}</span>
+									<!--此行不可删-->
+									<span id="dataBox" style="display:none" >${yiban_id}</span>
 								<table class="table-responsive" id="teacherTable">
 								</table>
 
@@ -139,7 +140,6 @@
 										</div>
 
 									</div>
-
 									<div class="form-group row">
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-building"></i>院系</span>
@@ -167,21 +167,19 @@
 										</div>
 
 									</div>
-
 									<div class="form-group row">
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-phone"></i>联系方式</span>
 												<input type="text" class="form-control" name="phone" id="phone" disabled/>
 											</div>
 										</div>
-
 										<div class="col-md-6 col-sm-6">
 											<div class="input-group"><span class="input-group-addon"><i class="icon-time"></i>请假节数</span>
-												<input type="text" class="form-control" name="number" id="number" disabled/>
+												<input type="text" class="form-control" name="number" id="leaveNumber" disabled/>
 											</div>
 										</div>
-
 									</div>
+
 									<label class="control-label bolder blue">请假状态</label>
 									<div class="form-group row">
 
@@ -191,14 +189,14 @@
 												<label>
 														<input type="radio" class="ace" name="Qing" id="Qing1"  value="0" />
 														<span class="lbl">待审核</span>
-													</label>
+												</label>
 											</div>
 
 											<div class="radio">
 												<label>
-														<input  type="radio" class="ace" name="Qing" id="Qing2" class="ace" value="-1"/>
+														<input  type="radio" class="ace" name="Qing" id="Qing2"  value="-1"/>
 														<span class="lbl">拒绝请假</span>
-													</label>
+												</label>
 											</div>
 
 										</div>
@@ -206,16 +204,16 @@
 
 											<div class="radio">
 												<label>
-														<input  type="radio" class="ace" name="Qing" id="Qing3"  class="ace" value="1" />
+														<input  type="radio" class="ace" name="Qing" id="Qing3"   value="1" />
 														<span class="lbl">已同意未销假</span>
-													</label>
+												</label>
 											</div>
 
 											<div class="radio">
 												<label>
 														<input  type="radio" class="ace" name="Qing" id="Qing4" value="2" />
 														<span class="lbl">已销假</span>
-													</label>
+												</label>
 											</div>
 
 										</div>
@@ -225,7 +223,7 @@
 									<div class="form-group row">
 										<label for="Reason" class="form-control-label">请假理由</label>
 
-										<textarea class="form-control" rows="3" name="reason" id="reason" disabled="" ></textarea>
+										<textarea class="form-control" rows="3" name="reason" id="reason" disabled></textarea>
 									</div>
 
 									<br>
@@ -265,20 +263,20 @@
         	bootstrap-table-zh-CN.js为表格汉化的文件
         	FileSaver.min.js等是关联引用文件
         -->
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/ace-extra.min.js"></script>
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.js"></script>
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="/static/js/teacher/ace-extra.min.js"></script>
+		<script type="text/javascript" src="/static/js/teacher/bootstrap_above/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/bootstrap-table.js"></script>
+		<script type="text/javascript" src="/static/js/teacher/bootstrap_above/bootstrap-table-develop/dist/locale/bootstrap-table-zh-CN.js"></script>
 
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/layer/layer.js"></script>
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/layer/extend/layer.ext.js"></script>
+		<script type="text/javascript" src="/static/js/layer/layer.js"></script>
+		<script type="text/javascript" src="/static/js/layer/extend/layer.ext.js"></script>
 
          
-		<script type="text/javascript" src="/YibanLeaveSystem/static/script/table.js"></script>
+		<script type="text/javascript" src="/static/script/table.js"></script>
 
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher/ace-elements.min.js"></script>
-		<script type="text/javascript" src="/YibanLeaveSystem/static/js/teacher//ace.min.js"></script>
+		<script type="text/javascript" src="/static/js/teacher/ace-elements.min.js"></script>
+		<script type="text/javascript" src="/static/js/teacher/ace.min.js"></script>
 
 
 	</body>

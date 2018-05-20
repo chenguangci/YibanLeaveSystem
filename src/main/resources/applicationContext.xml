@@ -32,10 +32,10 @@
     </bean>
 
     <!--开启事务-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transaction" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="transaction"/>
 
     <!--添加定时任务-->
     <task:scheduler id="myScheduler" pool-size="5"/>

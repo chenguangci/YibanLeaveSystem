@@ -39,7 +39,8 @@ jQuery.extend({
     }, addOtherRequestsToForm: function (form, data) {
         var originalElement = $('<input type="hidden" name="" value="">');
         for (var key in data) {
-            name = key;
+            //修改过，添加了var
+            var name = key;
             value = data[key];
             var cloneElement = originalElement.clone();
             cloneElement.attr({

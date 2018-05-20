@@ -9,21 +9,21 @@ var cleanTime = function(str)
 $(document).ready(function() {
 
 			$.ajax({
-				url : "/YibanLeaveSystem/Toleave/info/" + studentId,
+				///YibanLeaveSystem/Toleave/info/
+				url : "/student/info",
 				type : "GET",
 				contentType : "application/json",
 				dataType : "json",
 				success : function(data) {
 
 					var i = 0;
-					var status;
 					var tbody = "";
 					$.each(data, function(n, value) {
 						i++;
 						var trs = "";
 						trs += "<tr><td>" + i + "</td><td>" + cleanTime(value.beginTime)
 								+ "</td><td>" +cleanTime(value.endTime) + "</td><td>"
-								+ statusFormartter(value.status)
+								+ statusFormatter(value.status)
 								+ "</td><</tr>";
 						tbody += trs;
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 		});
 
-var statusFormartter = function(value) {
+var statusFormatter = function(value) {
 
 	if (value == 0)
 

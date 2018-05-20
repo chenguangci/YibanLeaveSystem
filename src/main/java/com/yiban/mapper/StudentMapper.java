@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface StudentMapper {
     Student select(String id);
     int insert(Student student);
+    Student selectStudentNameAndClassName(String studentId);
 }

@@ -15,6 +15,8 @@ public enum Dictionary {
     AUTHENTICATION(false,-8,"未完成校方认证"),
     ILLEGAL_OPERATION(false,-9,"非法操作"),
     FAIL_OPERATION(false,-10,"操作失败"),
+    REQUEST_STUDENT_STATUS(false,-11,"学生已由其他老师批示，详情请看请假系统"),
+    FILE_FALSE_UPDATE(false,-12,"文件太大，请重新上传文件"),
     ;
     //是否成功
     private boolean success;

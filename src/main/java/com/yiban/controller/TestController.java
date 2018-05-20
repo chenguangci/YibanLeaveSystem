@@ -30,4 +30,7 @@ public class TestController {
     public String teacherTest1(){ return "/teacher/jqgrid";}
     @RequestMapping("/teacher2")
     public String teacherTest2(){ return "/teacher/jqgrid1";}
+
+    @RequestMapping("/1")
+    public String studentRecord(){return "/student/record"; }
 }

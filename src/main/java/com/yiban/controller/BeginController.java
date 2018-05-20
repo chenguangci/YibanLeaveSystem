@@ -5,17 +5,18 @@ import cn.yiban.open.Authorize;
 import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
 import com.yiban.entity.Student;
+import com.yiban.entity.teacher;
 import com.yiban.service.handle.GetInfo;
 import com.yiban.service.handle.IdentityHandle;
 
 import net.sf.json.JSONObject;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,9 +44,6 @@ public class BeginController {
     private Logger logger = LoggerFactory.getLogger(BeginController.class);
 
 
-    
-    
-    
     @RequestMapping(value = "/index")
     public String index(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //授权验证
@@ -68,7 +66,7 @@ public class BeginController {
                 session.setAttribute("yiban_id_key",identityHandle.key(userId));
                 return "redirect:/leave/toLeave";
             } else {
-                return "false";
+                return "/false";
             }
         }
     }
@@ -102,18 +100,18 @@ public class BeginController {
                 modelAndView.setViewName("/teacher/jqgrid");
                 return modelAndView;
             }
-            Student student = identityHandle.select(yibanId);
+            Student stu = identityHandle.select(yibanId);
             /*
              * 判断是否为学生，如果获取的信息不为空，直接跳转
              */
-            if (student != null) {
+            if (stu != null) {
                 //添加学号到session中
-                session.setAttribute("student_id",student.getStudentId());
+                session.setAttribute("student_id",stu.getStudentId());
                 //添加加密信息
-                session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
+                session.setAttribute("student_id_key",identityHandle.key(stu.getStudentId()));
                 //数据放在student中，用于前端的异步获取
                 //this.student = student;
-                modelAndView.addObject("result", new Result(Dictionary.SUCCESS, student));
+                modelAndView.addObject("result", new Result(Dictionary.SUCCESS, stu));
                 modelAndView.setViewName("/student/index");
                 return modelAndView;
             } else {
@@ -131,33 +129,59 @@ public class BeginController {
                         student.setName(myInfo.get("yb_realname"));
                         student.setDepartment(myInfo.get("yb_collegename"));
                         student.setClassName(myInfo.get("yb_classname"));
+                        //判断 班级名称和学号是否存在
+                        String className =student.getClassName();
+                        String studentid=student.getStudentId();
                         logger.info("学生信息：{}",student.toString());
-                        identityHandle.insert(student);
-                        result = new Result(Dictionary.SUCCESS, student);
-                        //添加学号到session中
-                        session.setAttribute("student_id",student.getStudentId());
-                        //添加加密信息
-                        session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
-                        modelAndView.setViewName("/student/index");
-                        //数据放在student中，用于前端的异步获取
-                        //this.student = student;
-                        modelAndView.addObject("result", result);
-                        return modelAndView;
+                        if((className!=null&&!"".equals(className))&&(studentid!=null&&!"".equals(studentid))){
+                            identityHandle.insert(student);
+                            result = new Result(Dictionary.SUCCESS, student);
+                            //添加学号到session中
+                            session.setAttribute("student_id",student.getStudentId());
+                            //添加加密信息
+                            session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
+                            modelAndView.setViewName("/student/index");
+                            //数据放在student中，用于前端的异步获取
+                            //this.student = student;
+                            modelAndView.addObject("result", result);
+                            return modelAndView;
+                        }else {
+                            //提示完成校方认证
+                            result = new Result(Dictionary.AUTHENTICATION);
+                            //TODO 添加跳转地址
+                            modelAndView.addObject("result", result);
+                            modelAndView.setViewName("/false");
+                            return modelAndView;
+                        }
+
                     } else {
-                        //没有学号，默认是教师
-                        result = new Result(Dictionary.SUCCESS, "教师");
-                        /*
-                         * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
-                         */
-                        modelAndView.setViewName("/teacher/jqgrid");
-                        modelAndView.addObject("result", result);
-                        return modelAndView;
+                        teacher t =new teacher();
+                        t.setEmployid(myInfo.get("yb_employid"));
+                        String employId=t.getEmployid();
+                        if (employId!=null&&!"".equals(employId)) {
+                            //没有学号，默认是教师
+                            result = new Result(Dictionary.SUCCESS, "教师");
+                            /*
+                             * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
+                             */
+                            modelAndView.setViewName("/teacher/jqgrid");
+                            modelAndView.addObject("result", result);
+                            return modelAndView;
+                        }else {
+                            //提示完成校方认证
+                            result = new Result(Dictionary.AUTHENTICATION);
+                            //TODO 添加跳转地址
+                            modelAndView.addObject("result", result);
+                            modelAndView.setViewName("/false");
+                            return modelAndView;
+                        }
                     }
                 } else {
                     //提示完成校方认证
                     result = new Result(Dictionary.AUTHENTICATION);
                     //TODO 添加跳转地址
                     modelAndView.addObject("result", result);
+                    modelAndView.setViewName("/false");
                     return modelAndView;
                 }
             }
@@ -166,6 +190,7 @@ public class BeginController {
             result = new Result(Dictionary.SYSTEM_ERROR);
             modelAndView.addObject("result", result);
             //TODO 添加跳转地址
+            modelAndView.setViewName("/error");
             return modelAndView;
         }
     }

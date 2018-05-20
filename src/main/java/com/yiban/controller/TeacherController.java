@@ -3,7 +3,8 @@ package com.yiban.controller;
 import com.yiban.dto.Data;
 import com.yiban.dto.Dictionary;
 import com.yiban.dto.Result;
-import com.yiban.dto.Synchronize;
+import com.yiban.service.teacher.Synchronize;
+import com.yiban.entity.Information;
 import com.yiban.service.teacher.LeaveService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,10 @@ public class TeacherController {
 
     @Autowired
     private LeaveService leaveHandle;
+    @Autowired
+    private Synchronize synchronize;
 
-    @RequestMapping(value = "/info")
+    @RequestMapping(value = "/info",method =RequestMethod.GET)
     @ResponseBody
     public Data teacher(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber) {
         HttpSession session = request.getSession();
@@ -57,22 +60,35 @@ public class TeacherController {
     }
 
     /**
-     * 处理请假操作
+     * 审核请假情况
+     * @Title: handle
+     * @Description: TODO(这里用一句话描述这个方法的作用)
+     * @param @param information
+     * @param @return    设定文件
+     * @return Result    返回类型
+     * @throws
      */
-    @RequestMapping(value = "/handle")
-    public Result handle(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "status", required = false) Integer status,HttpSession session) {
-        if (id == null || status == null) {
+    @RequestMapping("/handle")
+    @ResponseBody
+    public Result handle(@RequestBody Information information,HttpSession session)
+    {
+
+        long  id =information.getId();
+
+        Integer status =information.getStatus();
+
+        if (Long.toString(id).equals("") ||status.toString().equals("")){
             return new Result(Dictionary.DATA_LOSS);
         }
         String yiBanId = (String) session.getAttribute("yiban_id");
-        Synchronize synchronize =new Synchronize(yiBanId,id,status);
-        return synchronize.updateStatus();
+
+        return synchronize.updateStatus(yiBanId,id,status);
     }
 
     @RequestMapping("/downloadExcel")
     public ResponseEntity <byte[]> downloadExcel(@RequestParam("List") long[] List, HttpServletRequest request) throws ServletException, IOException {
         //	long[] List={1,3,4,5,6,7,8};
-        String path = request.getRealPath("/temp/");
+        String path = request.getSession().getServletContext().getRealPath("/temp/");
 
         String filePath = "学生请假信息表" + System.currentTimeMillis() + ".xls";
 
@@ -80,7 +96,8 @@ public class TeacherController {
         File downFile = new File(path, filePath);
 
         if (!downFile.getParentFile().exists()) {
-            downFile.getParentFile().mkdirs();
+            boolean mk=downFile.getParentFile().mkdirs();
+            System.err.println("create:"+mk);
         }
 
         if (leaveHandle.exportInformation(List, path + File.separator + filePath)) {
@@ -101,9 +118,13 @@ public class TeacherController {
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
 
-            return new ResponseEntity <byte[]>(FileUtils.readFileToByteArray(file),
-                    headers, HttpStatus.CREATED);
-
+//            return new ResponseEntity <byte[]>(FileUtils.readFileToByteArray(file),
+//                    headers, HttpStatus.CREATED);
+            /**
+             * 解决IE不能下载文件问题
+             */
+            return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
+                    headers,HttpStatus.OK);
         }
         return null;
 
@@ -118,20 +139,20 @@ public class TeacherController {
 
         System.err.println(filePath);
 
-        String path = request.getRealPath("/upload/");
-
-
-        File downFile = new File(path, filePath);
+//        String path = request.getSession().getServletContext().getRealPath("/upload/");
+        //去掉path
+        File downFile = new File( filePath);
 
         if (!downFile.getParentFile().exists()) {
-            downFile.getParentFile().mkdirs();
+            boolean mk=downFile.getParentFile().mkdirs();
+            System.out.println("create:"+mk);
         }
 
 
         /*	  filePath ="/upload/"+filePath;*/
 
-
-        File file = new File(path + File.separator + filePath);
+        //去掉path
+        File file = new File( File.separator + filePath);
 
 
         HttpHeaders headers = new HttpHeaders();
@@ -148,9 +169,13 @@ public class TeacherController {
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
 
-        return new ResponseEntity <byte[]>(FileUtils.readFileToByteArray(file),
-                headers, HttpStatus.CREATED);
-
+//        return new ResponseEntity <byte[]>(FileUtils.readFileToByteArray(file),
+//                headers, HttpStatus.CREATED);
+        /**
+         * 解决IE不能正常下载文件
+         */
+        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
+                headers,HttpStatus.OK);
 
     }
 
