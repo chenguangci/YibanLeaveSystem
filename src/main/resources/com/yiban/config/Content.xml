@@ -21,7 +21,7 @@
     </resultMap>
 
     <select id="selectStudentInformation" resultMap="information">
-		SELECT a.begin_time,a.end_time,a.reason FROM information a
+		SELECT a.begin_time,a.end_time,a.reason,a.number FROM information a
 		WHERE a.id=#{id}
 	</select>
     <!--添加请假信息 -->

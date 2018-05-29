@@ -47,6 +47,16 @@ public class LeaveHandle {
     }
 
     /**
+     * 送信间要所要沉默的时间
+     */
+    private void Sleep(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
      *
      * @param id
      * @return 学生的请假信息，此信息包括学习请假时间、原因
@@ -80,13 +90,24 @@ public class LeaveHandle {
         String teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
         //生成验证码,存入数据库
         String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
-        if ((contentMapper.updateLeave(id, 1, getCode(id)) > 0) && (yibanId.equals(teacherYibanId))) {
+        if(deanYibanId.equals(teacherYibanId)&&yibanId.equals(teacherYibanId)&&(contentMapper.updateLeave(id, 1, getCode(id)) > 0)){
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n辅导员已同意你的请假，详情请登录肇庆学院请假系统查看");
+            Sleep();
             //转发信息给班长
             //TODO 具体发送给班长的请假信息还需要考虑
             sendLetter.send(contentMapper.selectMonitor(id), "\r\n辅导员向你发送了一条信息，你们班"+studentName+"同学已经请假成功" +
                     "\r\n请假时间："+begin_time+"-"+end_time+"\r\n请假节数："+number+"\r\n请假原因："+reason);
+            return new Result(Dictionary.SUCCESS);
+        }else if ((contentMapper.updateLeave(id, 1, getCode(id)) > 0) && (yibanId.equals(teacherYibanId))) {
+            //发送信息给请假人
+            sendLetter.send(contentMapper.selectYibanId(id), "\r\n辅导员已同意你的请假，详情请登录肇庆学院请假系统查看");
+            Sleep();
+            //转发信息给班长
+            //TODO 具体发送给班长的请假信息还需要考虑
+            sendLetter.send(contentMapper.selectMonitor(id), "\r\n辅导员向你发送了一条信息，你们班"+studentName+"同学已经请假成功" +
+                    "\r\n请假时间："+begin_time+"-"+end_time+"\r\n请假节数："+number+"\r\n请假原因："+reason);
+            Sleep();
             //发信息给班主任
             sendLetter.send(deanYibanId,"\r\n辅导员向您发送了一条信息,"+ClassName+"的"+studentName+"已批假，详情请通过肇庆学院请假系统查看");
 
@@ -94,10 +115,12 @@ public class LeaveHandle {
         } else if ((contentMapper.updateLeave(id, 1, getCode(id)) > 0) && (yibanId.equals(deanYibanId))) {
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n班主任已同意你的请假，详情请登录肇庆学院请假系统查看");
+            Sleep();
             //转发信息给班长
             //TODO 具体发送给班长的请假信息还需要考虑
             sendLetter.send(contentMapper.selectMonitor(id), "班主任向你发送了一条信息，你们班"+studentName+"同学已经请假成功" +
                     "\r\n请假时间："+begin_time+"-"+end_time+"\r\n请假节数："+number+"\r\n请假原因："+reason);
+            Sleep();
             //转发消息给辅导员
             sendLetter.send(teacherYibanId,"\r\n"+ClassName+"的班主任向你发送了一条消息，详情请看肇庆学院请假系统");
 
@@ -135,7 +158,11 @@ public class LeaveHandle {
         //生成验证码,存入数据库
         String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
         //更新数据库
-        if ((contentMapper.updateLeaveWithoutCode(id, -1) > 0) && yibanId.equals(teacherYibanId)) {
+        if (deanYibanId.equals(teacherYibanId)&&yibanId.equals(teacherYibanId)&&(contentMapper.updateLeaveWithoutCode(id, -1) > 0)){
+            //发送信息给请假人
+            sendLetter.send(contentMapper.selectYibanId(id), "\r\n抱歉，你的辅导员不同意你的请假，详情请登录肇院请假系统查看");
+            return new Result(Dictionary.SUCCESS);
+        }else if ((contentMapper.updateLeaveWithoutCode(id, -1) > 0) && yibanId.equals(teacherYibanId)) {
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n抱歉，你的辅导员不同意你的请假，详情请登录肇院请假系统查看");
             return new Result(Dictionary.SUCCESS);

@@ -8,6 +8,7 @@ import com.yiban.exception.ReSetTokenException;
 import com.yiban.exception.RequestInfoException;
 import com.yiban.exception.SendException;
 import com.yiban.exception.SystemRunTimeException;
+import com.yiban.mapper.ClassMapper;
 import com.yiban.mapper.ContentMapper;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -35,6 +36,8 @@ public class LeaveService {
 	private ContentMapper contentMapper;
 	@Autowired
 	private LeaveHandle leaveHandle;
+	@Autowired
+	private ClassMapper classMapper;
 
 	/**
 	 * 
@@ -76,9 +79,15 @@ public class LeaveService {
 	 * @return 更新结果
 	 */
 	public Result updateLeave(long id, int status,String yibanId) {
+		//学生id
+		String studentId = contentMapper.selectStudentId(id);
+		//获取教师id
+		String teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
+		String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
+
 		if (status < -1 || status > 2) {
 			return new Result(Dictionary.ILLEGAL_OPERATION);
-		} else if (contentMapper.selectStudentPresentStatus(id)!=0){
+		} else if (contentMapper.selectStudentPresentStatus(id)!=0&&!(yibanId.equals(teacherYibanId)&&yibanId.equals(deanYibanId))){
 			return new Result(Dictionary.REQUEST_STUDENT_STATUS);
 		}else {
 			try {

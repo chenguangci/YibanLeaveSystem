@@ -60,6 +60,11 @@ public class FormHandle {
             //发送信件前先将数据加到数据库
             if (contentMapper.addContent(information) > 0) {
                 sendLetter.send(teacherId);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 sendLetter.send(deanId);
             } else {
                 logger.error("添加请假信息发生错误，需要添加的请假信息为：{}", information.toString());

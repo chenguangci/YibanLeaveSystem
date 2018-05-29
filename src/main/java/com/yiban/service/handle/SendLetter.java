@@ -54,7 +54,9 @@ public class SendLetter {
 //        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
 //            resetToken();
 //        }
+
         sendLetter(userId);
+
     }
 
     /**
@@ -63,6 +65,7 @@ public class SendLetter {
      */
     public void send(String userId, String content) throws SendException, RequestInfoException, ReSetTokenException, SystemRunTimeException {
         this.content = content;
+
         send(userId);
     }
 
@@ -101,7 +104,7 @@ public class SendLetter {
         //解析json
         JSONObject jsonObject = JSONObject.fromObject(json);
         Iterator iterator = jsonObject.keys();
-        Map<String, String> map = new HashMap<String, String>();
+        Map <String, String> map = new HashMap <String, String>();
         while (iterator.hasNext()) {
             String key = (String) iterator.next();
             map.put(key, jsonObject.getString(key));
@@ -115,10 +118,10 @@ public class SendLetter {
             accessToken.setAddTime(new Date());
             accessToken.setExpireIn(Long.parseLong(map.get("expire_in")));
             int insert = tokenMapper.insertToken(accessToken);
-        /*
-         * insert代表插入的结果，为0的时候说明插入失败，但不影响业务流程，
-         * 这里以错误日志提示，如有出现插入失败，后期再做维修
-         */
+            /*
+             * insert代表插入的结果，为0的时候说明插入失败，但不影响业务流程，
+             * 这里以错误日志提示，如有出现插入失败，后期再做维修
+             */
             if (insert == 0) {
                 logger.error("重置的token更新失败");
             }
