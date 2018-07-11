@@ -36,34 +36,36 @@ public class LeaveHandle {
     private StudentMapper studentMapper;
 
     private Logger logger = LoggerFactory.getLogger(LeaveHandle.class);
+    private String teacherYibanId;
+    private String deanYibanId;
 
     /**
-     *
      * @param studentId
      * @return 学生班级名称和姓名
      */
-    private Student selectStudentNameAndClassName(String studentId){
-        return studentMapper.selectStudentNameAndClassName(studentId);
+    private Student selectStudentNameAndClass(String studentId) {
+        return studentMapper.selectStudentNameAndClass(studentId);
     }
 
     /**
      * 送信间要所要沉默的时间
      */
-    private void Sleep(){
+    private void Sleep() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
     /**
-     *
      * @param id
      * @return 学生的请假信息，此信息包括学习请假时间、原因
      */
-    private Information selectStudentInformation(long id){
+    private Information selectStudentInformation(long id) {
         return contentMapper.selectStudentInformation(id);
     }
+
     /**
      * 同意请假操作，发送信息给请假人再转发给班长,生成验证码，
      *
@@ -73,43 +75,64 @@ public class LeaveHandle {
     @Transactional
     public Result agreeLeave(long id, String yibanId) throws SendException, RequestInfoException, ReSetTokenException, SystemRunTimeException {
         String studentId = contentMapper.selectStudentId(id);
-        logger.info("studentId:{}",studentId);
-        //获取学生的姓名和班级名称
-        Student student=selectStudentNameAndClassName(studentId);
-        String studentName =student.getName();
-        String ClassName=student.getClassName();
-        //获取学生的请假信息，此信息包括学习请假时间、原因
-        Information information=selectStudentInformation(id);
-        String begin_time=information.getBeginTime();
-        String end_time=information.getEndTime();
-        String reason=information.getReason();
-        int number=information.getNumber();
+        logger.info("studentId:{}", studentId);
+        //获取学生的姓名和班级名称、判断学生是否有转班级
+        Student student = selectStudentNameAndClass(studentId);
+        String judgeIsHaveNewClassId = student.getJudgeIsNewClassId();
+
+
 
         //获取辅导员Id
 //        String teacherYibanId ="123";
-        String teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
-        //生成验证码,存入数据库
-        String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
-        if(deanYibanId.equals(teacherYibanId)&&yibanId.equals(teacherYibanId)&&(contentMapper.updateLeave(id, 1, getCode(id)) > 0)){
+        if (judgeIsHaveNewClassId == null) {
+            String teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
+            //生成验证码,存入数据库
+            String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
+            return sendAgreeLetterUtils(teacherYibanId,deanYibanId,id,yibanId);
+
+        }else {
+            String teacherYibanId= classMapper.searchTeacherByStudentId(judgeIsHaveNewClassId);;
+            String deanYibanId=classMapper.searchDeanByStudentId(judgeIsHaveNewClassId);;
+            logger.info("班主任和辅导员易班ID",deanYibanId,teacherYibanId);
+            return sendAgreeLetterUtils(teacherYibanId,deanYibanId,id,yibanId);
+        }
+
+    }
+
+    private Result sendAgreeLetterUtils(String teacherYibanId, String deanYibanId, long id,String yibanId) {
+        String studentId = contentMapper.selectStudentId(id);
+        logger.info("studentId:{}", studentId);
+        //获取学生的姓名和班级名称、判断学生是否有转班级
+        Student student = selectStudentNameAndClass(studentId);
+        String studentName = student.getName();
+        String ClassName = student.getClassName();
+        //获取学生的请假信息，此信息包括学习请假时间、原因
+        Information information = selectStudentInformation(id);
+        String begin_time = information.getBeginTime();
+        String end_time = information.getEndTime();
+        String reason = information.getReason();
+        int number = information.getNumber();
+
+        if (deanYibanId.equals(teacherYibanId) && yibanId.equals(teacherYibanId) && (contentMapper.updateLeave(id, 1, getCode(id)) > 0)) {
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n辅导员已同意你的请假，详情请登录肇庆学院请假系统查看");
             Sleep();
             //转发信息给班长
             //TODO 具体发送给班长的请假信息还需要考虑
-            sendLetter.send(contentMapper.selectMonitor(id), "\r\n辅导员向你发送了一条信息，你们班"+studentName+"同学已经请假成功" +
-                    "\r\n请假时间："+begin_time+"-"+end_time+"\r\n请假节数："+number+"\r\n请假原因："+reason);
+            sendLetter.send(contentMapper.selectMonitor(id), "\r\n辅导员向你发送了一条信息，你们班" + studentName + "同学已经请假成功" +
+                    "\r\n请假时间：" + begin_time + "-" + end_time + "\r\n请假节数：" + number + "\r\n请假原因：" + reason);
             return new Result(Dictionary.SUCCESS);
-        }else if ((contentMapper.updateLeave(id, 1, getCode(id)) > 0) && (yibanId.equals(teacherYibanId))) {
+        } else if ((contentMapper.updateLeave(id, 1, getCode(id)) > 0) && (yibanId.equals(teacherYibanId))) {
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n辅导员已同意你的请假，详情请登录肇庆学院请假系统查看");
             Sleep();
             //转发信息给班长
             //TODO 具体发送给班长的请假信息还需要考虑
-            sendLetter.send(contentMapper.selectMonitor(id), "\r\n辅导员向你发送了一条信息，你们班"+studentName+"同学已经请假成功" +
-                    "\r\n请假时间："+begin_time+"-"+end_time+"\r\n请假节数："+number+"\r\n请假原因："+reason);
+            sendLetter.send(contentMapper.selectMonitor(id), "\r\n辅导员向你发送了一条信息，你们班" + studentName + "同学已经请假成功" +
+                    "\r\n请假时间：" + begin_time + "-" + end_time + "\r\n请假节数：" + number + "\r\n请假原因：" + reason);
             Sleep();
             //发信息给班主任
-            sendLetter.send(deanYibanId,"\r\n辅导员向您发送了一条信息,"+ClassName+"的"+studentName+"已批假，详情请通过肇庆学院请假系统查看");
+            sendLetter.send(deanYibanId, "\r\n辅导员向您发送了一条信息," + ClassName + "的" + studentName + "已批假，详情请通过肇庆学院请假系统查看");
 
             return new Result(Dictionary.SUCCESS);
         } else if ((contentMapper.updateLeave(id, 1, getCode(id)) > 0) && (yibanId.equals(deanYibanId))) {
@@ -118,17 +141,16 @@ public class LeaveHandle {
             Sleep();
             //转发信息给班长
             //TODO 具体发送给班长的请假信息还需要考虑
-            sendLetter.send(contentMapper.selectMonitor(id), "班主任向你发送了一条信息，你们班"+studentName+"同学已经请假成功" +
-                    "\r\n请假时间："+begin_time+"-"+end_time+"\r\n请假节数："+number+"\r\n请假原因："+reason);
+            sendLetter.send(contentMapper.selectMonitor(id), "班主任向你发送了一条信息，你们班" + studentName + "同学已经请假成功" +
+                    "\r\n请假时间：" + begin_time + "-" + end_time + "\r\n请假节数：" + number + "\r\n请假原因：" + reason);
             Sleep();
             //转发消息给辅导员
-            sendLetter.send(teacherYibanId,"\r\n"+ClassName+"的班主任向你发送了一条消息，详情请看肇庆学院请假系统");
+            sendLetter.send(teacherYibanId, "\r\n" + ClassName + "的班主任向你发送了一条消息，详情请看肇庆学院请假系统");
 
             return new Result(Dictionary.SUCCESS);
         } else {
             return new Result(Dictionary.FAIL_OPERATION);
         }
-
     }
 
     /**
@@ -153,16 +175,36 @@ public class LeaveHandle {
     @Transactional
     public Result disagree(long id, String yibanId) throws SendException, RequestInfoException, ReSetTokenException, SystemRunTimeException {
         String studentId = contentMapper.selectStudentId(id);
+        logger.info("studentId:{}", studentId);
+        //获取学生的姓名和班级名称、判断学生是否有转班级
+        Student student = selectStudentNameAndClass(studentId);
+        String judgeIsHaveNewClassId = student.getJudgeIsNewClassId();
+        if (judgeIsHaveNewClassId==null) {
+            return sendDisagreeLetterMsg(id,yibanId,studentId );
+
+        }else{
+            return sendDisagreeLetterMsg(id,yibanId,judgeIsHaveNewClassId);
+        }
+    }
+
+    private Result sendDisagreeLetterMsg(long id, String yibanId,String studentId ) {
+        if (studentId.length()>12){
         //获取辅导员Id
-        String teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
+            teacherYibanId = classMapper.searchTeacherByStudentId(studentId.substring(0, studentId.length() - 2));
         //生成验证码,存入数据库
-        String deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
+            deanYibanId = classMapper.searchDeanByStudentId(studentId.substring(0, studentId.length() - 2));
+        }else {
+            //获取辅导员Id
+            teacherYibanId = classMapper.searchTeacherByStudentId(studentId);
+            //生成验证码,存入数据库
+            deanYibanId = classMapper.searchDeanByStudentId(studentId);
+        }
         //更新数据库
-        if (deanYibanId.equals(teacherYibanId)&&yibanId.equals(teacherYibanId)&&(contentMapper.updateLeaveWithoutCode(id, -1) > 0)){
+        if (deanYibanId.equals(teacherYibanId) && yibanId.equals(teacherYibanId) && (contentMapper.updateLeaveWithoutCode(id, -1) > 0)) {
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n抱歉，你的辅导员不同意你的请假，详情请登录肇院请假系统查看");
             return new Result(Dictionary.SUCCESS);
-        }else if ((contentMapper.updateLeaveWithoutCode(id, -1) > 0) && yibanId.equals(teacherYibanId)) {
+        } else if ((contentMapper.updateLeaveWithoutCode(id, -1) > 0) && yibanId.equals(teacherYibanId)) {
             //发送信息给请假人
             sendLetter.send(contentMapper.selectYibanId(id), "\r\n抱歉，你的辅导员不同意你的请假，详情请登录肇院请假系统查看");
             return new Result(Dictionary.SUCCESS);

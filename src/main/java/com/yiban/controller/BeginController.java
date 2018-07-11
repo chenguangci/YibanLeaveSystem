@@ -35,7 +35,7 @@ public class BeginController {
     private static final String appKey = "6e5022b516e51935";
     private static final String appSecret = "7eafe47e5c585ef1ad6b3e3bd3aff408";
     private static final String callbackUrl = "http://localhost:8080/leave/index";
-    //装载数据
+    //    //装载数据
     private Student student;
 
     @Autowired

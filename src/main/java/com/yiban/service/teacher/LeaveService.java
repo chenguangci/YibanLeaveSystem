@@ -54,9 +54,9 @@ public class LeaveService {
 	 * @Description: TODO(这里用一句话描述这个方法的作用)
 	 * @Params:id Information 2018年4月14日
 	 */
-	public Information selectInformation(long id) {
-		return contentMapper.selectInformation(id);
-	}
+//	public Information selectInformation(long id) {
+//		return contentMapper.selectInformation(id);
+//	}
 
 	/**
 	 * 查询请假的学生信息

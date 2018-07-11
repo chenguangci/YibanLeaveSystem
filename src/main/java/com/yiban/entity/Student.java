@@ -15,6 +15,16 @@ public class Student implements Serializable {
     private String department;
     //学生班级信息
     private String className;
+
+    public String getJudgeIsNewClassId() {
+        return judgeIsNewClassId;
+    }
+
+    public void setJudgeIsNewClassId(String judgeIsNewClassId) {
+        this.judgeIsNewClassId = judgeIsNewClassId;
+    }
+
+    private String judgeIsNewClassId;
     
     public Student()
     {

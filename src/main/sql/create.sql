@@ -8,6 +8,7 @@ CREATE TABLE student(
   `department` VARCHAR(40) COMMENT '院系信息',
   `class_name` VARCHAR(40) COMMENT '班级信息（包括了年级）',
   `yiban_id` VARCHAR(10) COMMENT '易班id',
+  `judgeClassId` VARCHAR(12)COMMENT '判断学生是否有转班级的id',
   PRIMARY KEY (student_id),
   KEY (yiban_id)
 )ENGINE = InnoDB CHARSET = utf8;

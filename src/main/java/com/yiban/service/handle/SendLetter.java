@@ -8,6 +8,7 @@ import com.yiban.exception.RequestInfoException;
 import com.yiban.exception.SystemRunTimeException;
 import com.yiban.mapper.TokenMapper;
 import net.sf.json.JSONObject;
+import org.apache.http.HttpRequest;
 import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
@@ -51,9 +54,9 @@ public class SendLetter {
         //获取token
         getAccessToken();
         //判断日期是否过时，如果过期则重置token
-//        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
-//            resetToken();
-//        }
+        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
+            resetToken();
+        }
 
         sendLetter(userId);
 
@@ -118,6 +121,8 @@ public class SendLetter {
             accessToken.setAddTime(new Date());
             accessToken.setExpireIn(Long.parseLong(map.get("expire_in")));
             int insert = tokenMapper.insertToken(accessToken);
+//            int insert = tokenMapper.updateToken(accessToken);
+            logger.info("插入成功的标志：",insert);
             /*
              * insert代表插入的结果，为0的时候说明插入失败，但不影响业务流程，
              * 这里以错误日志提示，如有出现插入失败，后期再做维修
@@ -142,6 +147,8 @@ public class SendLetter {
      */
     private void getAccessToken() throws SendException, ReSetTokenException, SystemRunTimeException {
         this.accessToken = tokenMapper.selectToken(0);
+//        HttpSession session=request.getSession();
+//        this.accessToken=session.getAttribute("accessToken");
         if (accessToken == null) {
             logger.error("获取的json为空");
             resetToken();

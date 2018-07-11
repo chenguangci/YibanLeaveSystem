@@ -11,6 +11,7 @@
         <result column="name" property="name"/>
         <result column="department" property="department"/>
         <result column="class_name" property="className"/>
+        <result column="judgeClassId" property="judgeIsNewClassId"/>
     </resultMap>
     <select id="select" resultMap="student">
         SELECT a.student_id,a.name,a.department,a.class_name FROM student a WHERE a.yiban_id = #{id}
@@ -18,9 +19,11 @@
     <insert id="insert">
         INSERT IGNORE INTO student VALUES (#{studentId},#{name},#{department},#{className},#{yibanId})
     </insert>
-    <!--查询学生姓名和班级-->
-    <select id="selectStudentNameAndClassName" resultMap="student">
-        SELECT a.name,a.class_name FROM student a WHERE  a.student_id =#{StudentId}
+    <!--查询学生姓名和班级 和 判断学生是否有转班级-->
+    <select id="selectStudentNameAndClass" resultMap="student">
+        SELECT a.name,a.class_name,a.judgeClassId FROM student a WHERE  a.student_id =#{StudentId}
     </select>
+
+
 
 </mapper>

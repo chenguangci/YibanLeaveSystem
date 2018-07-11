@@ -102,7 +102,7 @@
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
 		LEFT JOIN student s ON a.student_id = s.student_id
 		WHERE b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}
-		ORDER BY a.begin_time DESC
+		ORDER BY a.id DESC
 		LIMIT #{limit},#{page}
 	</select>
 
