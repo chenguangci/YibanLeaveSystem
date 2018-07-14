@@ -8,4 +8,5 @@ public interface StudentMapper {
     Student select(String id);
     int insert(Student student);
     Student selectStudentNameAndClass(String studentId);
+    int updateStudentBaseInfo(Student student);
 }

@@ -6,7 +6,7 @@
            flushInterval="60000"
            size="512"/>
     <resultMap id="student" type="com.yiban.entity.Student">
-        <id column="yiban_id" property="yiban_id"/>
+        <id column="yiban_id" property="yibanId"/>
         <result column="student_id" property="studentId"/>
         <result column="name" property="name"/>
         <result column="department" property="department"/>
@@ -17,13 +17,15 @@
         SELECT a.student_id,a.name,a.department,a.class_name FROM student a WHERE a.yiban_id = #{id}
     </select>
     <insert id="insert">
-        INSERT IGNORE INTO student VALUES (#{studentId},#{name},#{department},#{className},#{yibanId})
+        INSERT IGNORE INTO student VALUES (#{studentId},#{name},#{department},#{className},#{yibanId},#{judgeIsNewClassId})
     </insert>
     <!--查询学生姓名和班级 和 判断学生是否有转班级-->
     <select id="selectStudentNameAndClass" resultMap="student">
         SELECT a.name,a.class_name,a.judgeClassId FROM student a WHERE  a.student_id =#{StudentId}
     </select>
-
-
+    <!--更新学生的班级信息-->
+    <update id="updateStudentBaseInfo" parameterType="student">
+        UPDATE student s SET s.class_name=#{className},s.department=#{department} WHERE  s.student_id =#{studentId}
+    </update>
 
 </mapper>

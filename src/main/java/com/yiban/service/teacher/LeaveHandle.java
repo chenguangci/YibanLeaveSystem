@@ -11,6 +11,7 @@ import com.yiban.exception.SystemRunTimeException;
 import com.yiban.mapper.ClassMapper;
 import com.yiban.mapper.ContentMapper;
 import com.yiban.mapper.StudentMapper;
+import com.yiban.service.handle.IdentityHandle;
 import com.yiban.service.handle.SendLetter;
 import org.junit.Assert;
 import org.slf4j.Logger;
@@ -33,8 +34,7 @@ public class LeaveHandle {
     @Autowired
     private SendLetter sendLetter;
     @Autowired
-    private StudentMapper studentMapper;
-
+    private IdentityHandle identityHandle;
     private Logger logger = LoggerFactory.getLogger(LeaveHandle.class);
     private String teacherYibanId;
     private String deanYibanId;
@@ -44,7 +44,7 @@ public class LeaveHandle {
      * @return 学生班级名称和姓名
      */
     private Student selectStudentNameAndClass(String studentId) {
-        return studentMapper.selectStudentNameAndClass(studentId);
+        return identityHandle.selectStudentNameAndClass(studentId);
     }
 
     /**

@@ -21,8 +21,8 @@ $(document).ready(function() {
 					$.each(data, function(n, value) {
 						i++;
 						var trs = "";
-						trs += "<tr><td>" + i + "</td><td>" + cleanTime(value.beginTime)
-								+ "</td><td>" +cleanTime(value.endTime) + "</td><td>"
+						trs += "<tr><td data-label='请假记录'>" + i + "</td><td data-label='开始时间'>" + cleanTime(value.beginTime)
+								+ "</td><td data-label='结束时间'>" +cleanTime(value.endTime) + "</td><td data-label='请假状态'>"
 								+ statusFormatter(value.status)
 								+ "</td><</tr>";
 						tbody += trs;

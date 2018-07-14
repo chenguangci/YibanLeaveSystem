@@ -45,4 +45,20 @@ public class IdentityHandle {
         logger.info("md5的值：{}", md5);
         return md5;
     }
+
+    /**
+     * 更新学生班级和学院信息
+     * @param student
+     */
+    public void updateStudentBaseInfo(Student student) {
+        if (studentMapper.updateStudentBaseInfo(student) == 0)
+            logger.error("更新学生信息出现失败，学生信息：{}",student.toString());
+    }
+    /**
+     * @param studentId
+     * @return 学生班级名称和姓名
+     */
+    public Student selectStudentNameAndClass(String studentId) {
+        return studentMapper.selectStudentNameAndClass(studentId);
+    }
 }

@@ -28,6 +28,7 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.Map;
+
 @Controller
 @RequestMapping(value = "/leave")
 public class BeginController {
@@ -56,14 +57,14 @@ public class BeginController {
             return "redirect:" + url;
         } else {
             JSONObject object = JSONObject.fromObject(authorize.querytoken(code, callbackUrl));
-            logger.info("授权后的toke：{}",object);
+            logger.info("授权后的toke：{}", object);
             if (object.has("access_token")) {
                 String accessToken = object.getString("access_token");
                 String userId = object.getString("userid");
                 session.setAttribute("yiban_id", userId);
                 session.setAttribute("accessToken", accessToken);
                 //添加密匙
-                session.setAttribute("yiban_id_key",identityHandle.key(userId));
+                session.setAttribute("yiban_id_key", identityHandle.key(userId));
                 return "redirect:/leave/toLeave";
             } else {
                 return "/false";
@@ -105,104 +106,127 @@ public class BeginController {
              * 判断是否为学生，如果获取的信息不为空，直接跳转
              */
             if (stu != null) {
-                //添加学号到session中
-                session.setAttribute("student_id",stu.getStudentId());
-                //添加加密信息
-                session.setAttribute("student_id_key",identityHandle.key(stu.getStudentId()));
-                //数据放在student中，用于前端的异步获取
-                //this.student = student;
-                modelAndView.addObject("result", new Result(Dictionary.SUCCESS, stu));
-                modelAndView.setViewName("/student/index");
-                return modelAndView;
-            } else {
                 /*
-                 * 数据库中没有该学生信息,发送请求,查找个人信息
+                获取学生信息
                  */
                 GetInfo info = new GetInfo();
-                Map<String, String> myInfo = info.getMyInfo(accessToken);
+                Map <String, String> myInfo = info.getMyInfo(accessToken);
                 if ("success".equals(myInfo.get("status"))) {
                     if (myInfo.get("yb_studentid") != null && !"".equals(myInfo.get("yb_studentid").trim())) {
                         //学生id不为空，跳转到学生页面，传值
                         student = new Student();
                         student.setYibanId(yibanId);
                         student.setStudentId(myInfo.get("yb_studentid"));
-                        student.setName(myInfo.get("yb_realname"));
                         student.setDepartment(myInfo.get("yb_collegename"));
                         student.setClassName(myInfo.get("yb_classname"));
-                        //判断 班级名称和学号是否存在
-                        String className =student.getClassName();
-                        String studentid=student.getStudentId();
-                        logger.info("学生信息：{}",student.toString());
-                        if((className!=null&&!"".equals(className))&&(studentid!=null&&!"".equals(studentid))){
-                            identityHandle.insert(student);
-                            result = new Result(Dictionary.SUCCESS, student);
-                            //添加学号到session中
-                            session.setAttribute("student_id",student.getStudentId());
-                            //添加加密信息
-                            session.setAttribute("student_id_key",identityHandle.key(student.getStudentId()));
-                            modelAndView.setViewName("/student/index");
-                            //数据放在student中，用于前端的异步获取
-                            //this.student = student;
-                            modelAndView.addObject("result", result);
-                            return modelAndView;
-                        }else {
-                            //提示完成校方认证
-                            result = new Result(Dictionary.AUTHENTICATION);
-                            //TODO 添加跳转地址
-                            modelAndView.addObject("result", result);
-                            modelAndView.setViewName("/false");
-                            return modelAndView;
-                        }
 
-                    } else {
-                        teacher t =new teacher();
-                        t.setEmployid(myInfo.get("yb_employid"));
-                        String employId=t.getEmployid();
-                        if (employId!=null&&!"".equals(employId)) {
-                            //没有学号，默认是教师
-                            result = new Result(Dictionary.SUCCESS, "教师");
-                            /*
-                             * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
-                             */
-                            modelAndView.setViewName("/teacher/jqgrid");
-                            modelAndView.addObject("result", result);
-                            return modelAndView;
-                        }else {
-                            //提示完成校方认证
-                            result = new Result(Dictionary.AUTHENTICATION);
-                            //TODO 添加跳转地址
-                            modelAndView.addObject("result", result);
-                            modelAndView.setViewName("/false");
-                            return modelAndView;
-                        }
+                        identityHandle.updateStudentBaseInfo(student);
                     }
-                } else {
-                    //提示完成校方认证
-                    result = new Result(Dictionary.AUTHENTICATION);
-                    //TODO 添加跳转地址
-                    modelAndView.addObject("result", result);
-                    modelAndView.setViewName("/false");
-                    return modelAndView;
-                }
+
+
             }
-        } catch (Exception e3) {
-            logger.error("跳转到对应的请假界面时发生异常，异常信息：{}",e3.getMessage());
-            result = new Result(Dictionary.SYSTEM_ERROR);
-            modelAndView.addObject("result", result);
-            //TODO 添加跳转地址
-            modelAndView.setViewName("/error");
+            //添加学号到session
+            session.setAttribute("student_id", stu.getStudentId());
+            //添加加密信息
+            session.setAttribute("student_id_key", identityHandle.key(stu.getStudentId()));
+            //数据放在student中，用于前端的异步获取
+            //this.student = student;
+            modelAndView.addObject("result", new Result(Dictionary.SUCCESS, stu));
+            modelAndView.setViewName("/student/index");
             return modelAndView;
+        } else{
+            /*
+             * 数据库中没有该学生信息,发送请求,查找个人信息
+             */
+            GetInfo info = new GetInfo();
+            Map <String, String> myInfo = info.getMyInfo(accessToken);
+            if ("success".equals(myInfo.get("status"))) {
+                if (myInfo.get("yb_studentid") != null && !"".equals(myInfo.get("yb_studentid").trim())) {
+                    //学生id不为空，跳转到学生页面，传值
+                    student = new Student();
+                    student.setYibanId(yibanId);
+                    student.setStudentId(myInfo.get("yb_studentid"));
+                    student.setName(myInfo.get("yb_realname"));
+                    student.setDepartment(myInfo.get("yb_collegename"));
+                    student.setClassName(myInfo.get("yb_classname"));
+                    //判断 班级名称和学号是否存在
+                    String className = student.getClassName();
+                    String studentid = student.getStudentId();
+                    logger.info("学生信息：{}", student.toString());
+                    if ((className != null && !"".equals(className)) && (studentid != null && !"".equals(studentid))) {
+                        identityHandle.insert(student);
+                        result = new Result(Dictionary.SUCCESS, student);
+                        //添加学号到session中
+                        session.setAttribute("student_id", student.getStudentId());
+                        //添加加密信息
+                        session.setAttribute("student_id_key", identityHandle.key(student.getStudentId()));
+                        modelAndView.setViewName("/student/index");
+                        //数据放在student中，用于前端的异步获取
+                        //this.student = student;
+                        modelAndView.addObject("result", result);
+                        return modelAndView;
+                    } else {
+                        //提示完成校方认证
+                        result = new Result(Dictionary.AUTHENTICATION);
+                        //TODO 添加跳转地址
+                        modelAndView.addObject("result", result);
+                        modelAndView.setViewName("/false");
+                        return modelAndView;
+                    }
+
+                } else {
+                    teacher t = new teacher();
+                    t.setEmployid(myInfo.get("yb_employid"));
+                    String employId = t.getEmployid();
+                    if (employId != null && !"".equals(employId)) {
+                        //没有学号，默认是教师
+                        result = new Result(Dictionary.SUCCESS, "教师");
+                        /*
+                         * TODO 数据库中没有班级与教师的易班id对应的信息，跳转后的信息一样是无法处理的
+                         */
+                        modelAndView.setViewName("/teacher/jqgrid");
+                        modelAndView.addObject("result", result);
+                        return modelAndView;
+                    } else {
+                        //提示完成校方认证
+                        result = new Result(Dictionary.AUTHENTICATION);
+                        //TODO 添加跳转地址
+                        modelAndView.addObject("result", result);
+                        modelAndView.setViewName("/false");
+                        return modelAndView;
+                    }
+                }
+            } else {
+                //提示完成校方认证
+                result = new Result(Dictionary.AUTHENTICATION);
+                //TODO 添加跳转地址
+                modelAndView.addObject("result", result);
+                modelAndView.setViewName("/false");
+                return modelAndView;
+            }
         }
+    } catch(
+    Exception e3)
+
+    {
+        logger.error("跳转到对应的请假界面时发生异常，异常信息：{}", e3.getMessage());
+        result = new Result(Dictionary.SYSTEM_ERROR);
+        modelAndView.addObject("result", result);
+        //TODO 添加跳转地址
+        modelAndView.setViewName("/error");
+        return modelAndView;
     }
 
+}
+
+
     /**
-     *
      * @return 返回学号，姓名，学院以及专业班级等信息
      */
     @RequestMapping(value = "/info")
     public Result info() {
         if (this.student != null && !"".equals(this.student.getStudentId()))
-            return new Result(Dictionary.SUCCESS,student);
+            return new Result(Dictionary.SUCCESS, student);
         else
             return new Result(Dictionary.DATA_LOSS);
     }

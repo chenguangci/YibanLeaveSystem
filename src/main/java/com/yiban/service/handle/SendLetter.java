@@ -54,9 +54,9 @@ public class SendLetter {
         //获取token
         getAccessToken();
         //判断日期是否过时，如果过期则重置token
-        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
-            resetToken();
-        }
+//        if (overdue(accessToken.getAddTime(), accessToken.getExpireIn())) {
+//            resetToken();
+//        }
 
         sendLetter(userId);
 
@@ -120,16 +120,16 @@ public class SendLetter {
             accessToken.setToken(map.get("access_token"));
             accessToken.setAddTime(new Date());
             accessToken.setExpireIn(Long.parseLong(map.get("expire_in")));
-            int insert = tokenMapper.insertToken(accessToken);
-//            int insert = tokenMapper.updateToken(accessToken);
-            logger.info("插入成功的标志：",insert);
-            /*
-             * insert代表插入的结果，为0的时候说明插入失败，但不影响业务流程，
-             * 这里以错误日志提示，如有出现插入失败，后期再做维修
-             */
-            if (insert == 0) {
-                logger.error("重置的token更新失败");
-            }
+//            int insert = tokenMapper.insertToken(accessToken);
+//               int insert = tokenMapper.updateToken(accessToken);
+//            logger.info("插入成功的标志：",insert);
+//            /*
+//             * insert代表插入的结果，为0的时候说明插入失败，但不影响业务流程，
+//             * 这里以错误日志提示，如有出现插入失败，后期再做维修
+//             */
+//            if (insert == 0) {
+//                logger.error("重置的token更新失败");
+//            }
         } else if (map.get("status").equals("500")) {
             logger.error("成功返回，但token重置失败，失败原因：{}", json);
             throw new ReSetTokenException("token重置失败");
@@ -146,7 +146,7 @@ public class SendLetter {
      * 理论上方法中的if判断不会发生，有也只是发生在第一次
      */
     private void getAccessToken() throws SendException, ReSetTokenException, SystemRunTimeException {
-        this.accessToken = tokenMapper.selectToken(0);
+//        this.accessToken = tokenMapper.selectToken(0);
 //        HttpSession session=request.getSession();
 //        this.accessToken=session.getAttribute("accessToken");
         if (accessToken == null) {
@@ -162,9 +162,9 @@ public class SendLetter {
      * @param date1 原token的保存日期
      * @return 过期返回true，否则返回false
      */
-    private boolean overdue(Date date1, long expireIn) {
-        Date date2 = new Date();
-//        System.out.println("相差毫秒数" + (date2.getTime() - date1.getTime()));
-        return (date2.getTime() - date1.getTime()) > (expireIn * 1000);
-    }
+//    private boolean overdue(Date date1, long expireIn) {
+//        Date date2 = new Date();
+//      System.out.println("相差毫秒数" + (date2.getTime() - date1.getTime()));
+//        return (date2.getTime() - date1.getTime()) > (expireIn * 1000);
+//    }
 }
