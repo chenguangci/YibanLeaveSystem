@@ -76,7 +76,7 @@
         FROM information a
 		LEFT JOIN student s ON a.student_id = s.student_id
 		WHERE a.id= #{id}
-		ORDER BY a.begin_time DESC
+		ORDER BY a.id DESC
 
 	</select>
 
@@ -90,7 +90,7 @@
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id
 		LEFT JOIN student s ON a.student_id = s.student_id
 		WHERE b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}  AND a.status = 0
-		ORDER BY a.begin_time DESC
+		ORDER BY a.id DESC
 	</select>
 
     <select id="selectAll" resultMap="information">
@@ -110,7 +110,7 @@
 		SELECT
 		a.student_id,a.begin_time,a.end_time,a.number,a.reason,a.phone,a.status,a.file_path,a.code
 		FROM information a WHERE a.student_id = #{myId}
-		ORDER BY a.begin_time DESC
+		ORDER BY a.id DESC
 	</select>
 
     <select id="selectByType" resultMap="information">
@@ -119,7 +119,7 @@
 		FROM information a
 		LEFT JOIN class b ON LEFT(a.student_id,10) = b.class_id AND
 		b.teacher_yiban_id = #{id} OR b.Dean_yiban_id = #{id}
-		ORDER BY a.begin_time DESC
+		ORDER BY a.id DESC
 	</select>
 
     <!--查找请假条数 -->

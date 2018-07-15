@@ -230,4 +230,10 @@ public class BeginController {
         else
             return new Result(Dictionary.DATA_LOSS);
     }
+
+    @RequestMapping("/error")
+    public String error()
+    {
+        return "error";
+    }
 }

@@ -88,7 +88,8 @@
 	<!--注册拦截器 -->
 	 <mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="com.yiban.controller" />
+			<!--<mvc:mapping path="com.yiban.controller" />-->
+			<mvc:mapping path="/**" />
 			<bean class="com.yiban.controller.AllInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors> 
