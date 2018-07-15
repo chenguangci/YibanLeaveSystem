@@ -39,9 +39,13 @@ CREATE TABLE information(
 # 班级表
 CREATE TABLE class(
   class_id VARCHAR(12) NOT NULL ,
+  class_name VARCHAR(10),
   teacher_yiban_id VARCHAR(10),
+  teacher_name VARCHAR(10),
   Dean_yiban_id VARCHAR(10),
+  Dean_name VARCHAR(10),
   monitor VARCHAR(10),
+  monitor_name VARCHAR(10),
   PRIMARY KEY (class_id)
 )ENGINE = InnoDB CHARSET = utf8;
 

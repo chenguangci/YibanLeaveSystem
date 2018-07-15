@@ -223,8 +223,6 @@ window.operateEvents = {
 $('#submitEdit').click(function(){
 	var id=$("#Iid").val();
 	var status = $('input:radio[name="Qing"]:checked').val();
-	alert($("input[name='Qing']"));
-	console.log(status);
 	var information=
 	{
 		"id":id,
