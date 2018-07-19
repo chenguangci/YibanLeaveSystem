@@ -9,7 +9,7 @@ $(function () {
   $('#teacherTable').bootstrapTable({
     	method:'GET',
 	  //"/YibanLeaveSystem/Toteacher/list"
-        url:"/teacher/info",
+        url:"../teacher/info",
         contentType:"application/json",
    	    dataType:"json",
         search:false,
@@ -232,7 +232,7 @@ $('#submitEdit').click(function(){
 	$.ajax({
 		type:"POST",
         // "/YibanLeaveSystem/Toteacher/handle"
-		url:"/teacher/handle",
+		url:"../teacher/handle",
 		data:JSON.stringify(information),
 		contentType:"application/json",
 		dataType:"json",
@@ -255,7 +255,7 @@ $("#down").click(function(){
 	
 	$('#Edit').modal('hide');
     // "/YibanLeaveSystem/Toteacher/download/"+id;
-	window.location.href="/teacher/download/"+id;
+	window.location.href="../teacher/download/"+id;
 
    
 
@@ -279,7 +279,7 @@ $("#printExcel").click(function(){
 		
 		/*window.location.href="/YibanLeaveSystem/Toteacher/downloadExcel?List="+List;*/
         // "/YibanLeaveSystem/Toteacher/downloadExcel/";
-		   var url="/teacher/downloadExcel";
+		   var url="../teacher/downloadExcel";
 		   var form = $("<form></form>").attr("action", url).attr("method", "post");
 		   form.append($("<input></input>").attr("type", "hidden").attr("name", "List").attr("value", List));
 			form.appendTo('body').submit().remove();

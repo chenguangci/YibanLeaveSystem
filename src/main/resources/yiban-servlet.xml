@@ -39,7 +39,7 @@
 				<prop key="number_format">#.##</prop>
 			</props>
 		</property>
-		<property name="templateLoaderPath" value="/WEB-INF/zqu/" />
+		<property name="templateLoaderPath" value="/YibanLeaveSystem/views/zqu/" />
 		<property name="freemarkerVariables">
 			<map>
 				<entry key="xml_escape" value-ref="fmXmlEscape" />

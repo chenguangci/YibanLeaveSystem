@@ -13,6 +13,7 @@ var endTime;
 // }
 
 
+
 function getTime() {
     var begin = {
         elem: '#begin', //选择ID为begin的input
@@ -23,28 +24,55 @@ function getTime() {
         istime: true, //必须填入时间
         istoday: true,  //是否是当天
         calendar: true,
+        // fixed:true,
         theme: 'molv',
         begin: laydate.now(0, "YYYY-MM-DD hh:mm:ss"),  //设置开始时间为当前时间
         choose: function (datas) {
-            beginTime = datas;
             end.min = datas; //开始日选好后，重置结束日的最小日期
             end.begin = datas //将结束日的初始值设定为开始日
         }
-    };
 
+    };
+    // var begin=laydate.render({
+    //     elem: '#begin',
+    //     theme: 'molv',
+    //     type: 'datetime',
+    //     min: laydate.now(0, "YYYY-MM-DD hh:mm:ss"), //设定最小日期为当前日期
+    //     max: '2099-06-16 23:59:59', //最大日期
+    //     isclear: true, // 是否显示清空
+    //     istime: true, //必须填入时间
+    //     istoday: true, //是否是当天
+    //     choose: function (datas) {
+    //         end.min = datas; //开始日选好后，重置结束日的最小日期
+    //         end.begin = datas //将结束日的初始值设定为开始日
+    //     }
+    // });
+    // var end=laydate.render({
+    //     elem: '#end',
+    //     theme: 'molv',
+    //     type: 'datetime',
+    //     min: laydate.now(0, "YYYY-MM-DD hh:mm:ss"), //设定最小日期为当前日期
+    //     max: '2099-06-16 23:59:59', //最大日期
+    //     isclear: true, // 是否显示清空
+    //     istime: true, //必须填入时间
+    //     istoday: true, //是否是当天
+    //     choose: function (datas) {
+    //         begin.max = datas; //结束日选好后，重置开始日的最大日期
+    //     }
+    // });
     var end = {
         elem: '#end',
         format: 'YYYY-MM-DD hh:mm:ss',
-        min: laydate.now(),
+        min: laydate.now(0,"YYYY-MM-DD hh:mm:ss"),
         max: '2099-06-16 23:59:59',
         isclear: true, // 是否显示清空
         istime: true, //必须填入时间
         istoday: true,  //是否是当天
         calendar: true,
+        // fixed:true,
         theme: 'molv',
         begin: laydate.now(0, "YYYY-MM-DD hh:mm:ss"),
         choose: function (datas) {
-            endTime = datas;
             begin.max = datas; //结束日选好后，重置开始日的最大日期
         }
     };
@@ -104,7 +132,7 @@ function JudgeTime(begin, end) {
 function viewRecord() {
 
 
-    window.location.href = "/student/record/" + studentId;
+    window.location.href = "../student/record/" + studentId;
     // /YibanLeaveSystem/Toleave/index1
 }
 
@@ -125,6 +153,20 @@ $(function () {
         fields: {
             /* 验证 */
 
+            // begin1:{
+            //     validators: {
+            //         notEmpty: {
+            //             message: '时间不能为空'
+            //         }
+            //     }
+            // },
+            // end1:{
+            //     validators: {
+            //         notEmpty: {
+            //             message: '时间不能为空'
+            //         }
+            //     }
+            // },
             Mobile: {
                 validators: {
                     notEmpty: {
@@ -215,10 +257,7 @@ var vm = new Vue({
     methods: {
         submitSignIn: function () {
 
-            if (document.getElementById("file").files[0].size / 1024 / 1024 > 5) {
-                alert("请上传小于5MB的文件！");
-                return ;
-            }
+
             $("#testForm").bootstrapValidator('validate');
             if ($("#testForm").data('bootstrapValidator').isValid() && JudgeTime(beginTime, endTime)) {
                 vm.information.studentId = studentId;
@@ -236,7 +275,7 @@ var vm = new Vue({
 
 
                 $.ajaxFileUpload({
-                    url: "/student/leave",
+                    url: "../student/leave",
                     type: "POST",
                     secureuri: false, // 是否需要安全协议，一般设置为false
                     fileElementId: ['file'],
@@ -264,6 +303,11 @@ var vm = new Vue({
 
 
             }
+            if (document.getElementById("file").files.item(0).size / 1024 / 1024 > 5) {
+                alert("请上传小于5MB的文件！");
+                return;
+            }
         }
+
     }
 })

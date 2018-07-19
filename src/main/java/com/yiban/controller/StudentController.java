@@ -41,7 +41,7 @@ public class StudentController {
     /**
      * 跳转页面
      * @Title: record
-     * @Description: TODO(这里用一句话描述这个方法的作用)
+     * @Description: 获取学生的个人请假记录的controller
      * @param @param studentId
      * @param @return    设定文件
      * @return ModelAndView    返回类型

@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 			$.ajax({
 				///YibanLeaveSystem/Toleave/info/
-				url : "/student/info",
+				url : "../../student/info",
 				type : "GET",
 				contentType : "application/json",
 				dataType : "json",

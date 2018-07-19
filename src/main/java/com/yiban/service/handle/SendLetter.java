@@ -28,9 +28,9 @@ import java.util.*;
 @Service
 public class SendLetter {
 
-    private static final String appKey = "6e5022b516e51935";
-    private static final String appSecret = "7eafe47e5c585ef1ad6b3e3bd3aff408";
-    private static final String myId = "10849451";
+    private static final String appKey = "28280d564f061ed3";
+    private static final String appSecret = "2d26823d95d7504927660c30bed2e93a";
+    private static final String myId = "8118009";
     private String content = "尊敬的老师，您有一学生申请请假，详情请登陆易班请假系统查看";
 
     private SendRequest request = new SendRequest();
